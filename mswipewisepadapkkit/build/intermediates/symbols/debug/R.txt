@@ -1,0 +1,7 @@
+int drawable ic_launcher 0x7f090001
+int id progressBar1 0x7f0c0001
+int id tvmessagedialogtitle 0x7f0c0002
+int layout progressdlg 0x7f0f0001
+int string app_name 0x7f150001
+int style AppBaseTheme 0x7f160001
+int style styleCustDlg 0x7f160002

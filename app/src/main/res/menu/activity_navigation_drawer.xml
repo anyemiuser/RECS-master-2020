@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <!--<item-->
+        <!--android:id="@+id/nav_collections"-->
+        <!--android:icon="@drawable/icon_money"-->
+        <!--android:title="RECS Collections" />-->
+
+        <!--<item-->
+        <!--android:id="@+id/nav_search"-->
+        <!--android:icon="@drawable/my_search"-->
+        <!--android:title="Pay RECS Bills" /> -->
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Home" />
+
+
+        <item
+            android:id="@+id/nav_collections"
+            android:icon="@drawable/icon_money"
+            android:title="Collections" />
+
+        <item
+            android:id="@+id/nav_search"
+            android:icon="@drawable/my_search"
+            android:title="Pay Bills" />
+
+
+        <item
+            android:id="@+id/nav_about_us"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="About Us" />
+
+        <item
+            android:id="@+id/nav_change_pwd"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Edit Profile" />
+        <item
+            android:id="@+id/nav_add_vpa"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Add VPA" />
+
+
+        <item
+            android:id="@+id/nav_terms"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/terms" />
+
+        <item
+            android:id="@+id/nav_contact_us"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Contact Us" />
+
+        <item
+            android:id="@+id/nav_refund"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/refund" />
+
+        <item
+            android:id="@+id/nav_privacy"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Privacy Policy" />
+
+        <item
+            android:id="@+id/nav_feed_back"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="FeedBack" />
+
+
+        <item
+            android:id="@+id/nav_logout"
+            android:fontFamily="sans-serif"
+            android:icon="@drawable/logout_icon"
+            android:title="Logout" />
+
+    </group>
+
+
+
+</menu>

@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.loopedlabs.btprinttester.BluetoothPrinterMain" >
+
+    <item
+        android:id="@+id/action_search_device"
+        android:orderInCategory="100"
+        android:title="Search"
+        app:showAsAction="never"/>
+
+</menu>

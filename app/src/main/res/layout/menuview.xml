@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#f2f2f2"
+    android:padding="12dp">
+
+    <include
+        android:id="@+id/top_bar"
+        layout="@layout/top_bar_layout" />
+
+    <RelativeLayout
+        android:layout_width="400dp"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/menuview_Radio_options"
+        android:layout_below="@+id/top_bar"
+        android:background="#f2f2f2">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp">
+
+            <ListView
+                android:id="@+id/menuview_LST_options"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:cacheColorHint="#00000000"
+                android:divider="#EBE6E8"
+                android:dividerHeight="1dp"></ListView>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/menuview_Radio_options"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:id="@+id/menuview_Radio_production"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/menuview_Radio_orientation"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_labs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="labs" />
+
+            <RadioButton
+                android:id="@+id/radio_live"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="live" />
+        </RadioGroup>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_margin="5dp"
+            android:background="@android:color/darker_gray"/>
+
+        <RadioGroup
+            android:id="@+id/menuview_Radio_orientation"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_auto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="auto" />
+
+            <RadioButton
+                android:id="@+id/radio_portrait"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="portrait" />
+
+            <RadioButton
+                android:id="@+id/radio_landscape"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="landscape" />
+        </RadioGroup>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

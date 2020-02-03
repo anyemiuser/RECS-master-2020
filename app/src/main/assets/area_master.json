@@ -1,0 +1,2414 @@
+{
+  "AREA_MASTER": [
+    {
+      "AREACODE": "10115",
+      "AREANAME": "VENKUPALEM (S)",
+      "EROCD": "1"
+    },
+    {
+      "AREACODE": "10116",
+      "AREANAME": "THEGADA",
+      "EROCD": "1"
+    },
+    {
+      "AREACODE": "10105",
+      "AREANAME": "BAYYAVARAM",
+      "EROCD": "1"
+    },
+    {
+      "AREACODE": "20201",
+      "AREANAME": "MUNAGAPAKA",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "20234",
+      "AREANAME": "RAMAGIRI",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "20229",
+      "AREANAME": "JAGGAYYAPETA AGRAHAR",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "20230",
+      "AREANAME": "NARAYADUPALEM",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "20218",
+      "AREANAME": "PATHA NAGAVARAM",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "20226",
+      "AREANAME": "APPIKONDAVANIPALEM",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "20204",
+      "AREANAME": "GAVARALA ANAKAPALLI",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "20206",
+      "AREANAME": "GANAPARTHI",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "20235",
+      "AREANAME": "KOTHA NAGAVARAM",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "20219",
+      "AREANAME": "MADAKAPALEM",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "20208",
+      "AREANAME": "VOMPOLU",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "20202",
+      "AREANAME": "NAGULAPALLI",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "20211",
+      "AREANAME": "CHERLOPALEM",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "20216",
+      "AREANAME": "PATIPALLI",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "80896",
+      "AREANAME": "VENKATAPURAM(MPK SEC",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "20210",
+      "AREANAME": "ARABUPALEM",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "20203",
+      "AREANAME": "UMMALADA",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "20222",
+      "AREANAME": "KUNCHIVANIPALEM",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "20212",
+      "AREANAME": "SIRASAPALLI(T)",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "20209",
+      "AREANAME": "WADRAPALLI",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "20228",
+      "AREANAME": "GANGADEVIPETA",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "20213",
+      "AREANAME": "VOMPOLU PETA",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "20225",
+      "AREANAME": "KUMARAPURAM",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "20214",
+      "AREANAME": "TIMMARAJUPETA",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "20207",
+      "AREANAME": "JOGARAOPETA",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "20217",
+      "AREANAME": "PALLAPU ANANDAPURAM",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "20231",
+      "AREANAME": "KAKARAPALLI",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "20237",
+      "AREANAME": "RAMARAYUDUPETA",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "20205",
+      "AREANAME": "CHUCHIKONDA",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "20241",
+      "AREANAME": "CHINNIVANIPALEM",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "20233",
+      "AREANAME": "NARENDRAPURAM",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "20215",
+      "AREANAME": "THOTADA",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "20221",
+      "AREANAME": "PURUSHOTHAPURAM",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "20227",
+      "AREANAME": "GOLLAPALEM(V)",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "20232",
+      "AREANAME": "RAJUPETA",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "20223",
+      "AREANAME": "MANGALARAO PETA",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "20224",
+      "AREANAME": "MOOLAPETA",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "20220",
+      "AREANAME": "MALLAVARAM",
+      "EROCD": "2"
+    },
+    {
+      "AREACODE": "40056",
+      "AREANAME": "SANKARAM",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "30341",
+      "AREANAME": "JAGANNADHAPURAM",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "40057",
+      "AREANAME": "KONDUPALEM",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "40052",
+      "AREANAME": "CHAINULA AGRAHARAM",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "30348",
+      "AREANAME": "PEDAGOLLALA PALEM",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "30362",
+      "AREANAME": "NARAPADU",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "30301",
+      "AREANAME": "SABBAVARAM",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "30319",
+      "AREANAME": "CH GATLA AGRAHARAM",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "30322",
+      "AREANAME": "PEDANAIDU PALEM",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "30352",
+      "AREANAME": "IRUVADA",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "40064",
+      "AREANAME": "BHUPATHI PALEM",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "40053",
+      "AREANAME": "CH N AGRAHARAM",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "30363",
+      "AREANAME": "BALIJIPALEM",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "30327",
+      "AREANAME": "PAIDIVADA AGRAHARAM",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "30338",
+      "AREANAME": "CHINTHAGATLA",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "30385",
+      "AREANAME": "CHINNAYYAPALEM (T)",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "30367",
+      "AREANAME": "PATHA SABBAVARAM",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "40061",
+      "AREANAME": "GOPALAPURAM",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "30353",
+      "AREANAME": "ASKAPALLI",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "30381",
+      "AREANAME": "AJAYA NAGAR",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "30358",
+      "AREANAME": "JAGARAPU VANIPALEM",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "30323",
+      "AREANAME": "D.M.S.R.P AGRAHARAM",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "40058",
+      "AREANAME": "GOLAGAM",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "40034",
+      "AREANAME": "REBAKA",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "40060",
+      "AREANAME": "SATTAMMA PETA",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "30368",
+      "AREANAME": "DWARAKANAGAR",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "30307",
+      "AREANAME": "A P VANI PALEM",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "30335",
+      "AREANAME": "APPAYYA PALEM",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "30365",
+      "AREANAME": "GORLIVANIPALEM",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "30364",
+      "AREANAME": "ADIREDDYPALEM",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "30332",
+      "AREANAME": "THAVVA VANI PALEM",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "30359",
+      "AREANAME": "BATAJANGALA PALEM",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "30302",
+      "AREANAME": "CHINNAYYAPALEM (S)",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "30334",
+      "AREANAME": "PAIDIVADA",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "30377",
+      "AREANAME": "THAMMAYYA PALEM",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "30303",
+      "AREANAME": "GOLLALAPALEM",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "30318",
+      "AREANAME": "SURREDDY PALEM",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "30308",
+      "AREANAME": "KANNURUVARI KOMPALU",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "30328",
+      "AREANAME": "PEETHAPALEM",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "30379",
+      "AREANAME": "B R VANI PALEM (E)",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "30357",
+      "AREANAME": "PALLAVANI PALEM",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "40054",
+      "AREANAME": "GOLLAPETA(H.O)KODURU",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "40059",
+      "AREANAME": "KAPUSETTIVANIPALEM",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "40033",
+      "AREANAME": "RAYUDUPETA",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "30342",
+      "AREANAME": "AMRUTHAPURAM",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "30329",
+      "AREANAME": "YERUKUNAIDU PALEM",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "40032",
+      "AREANAME": "KODURU",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "40062",
+      "AREANAME": "MARRIPALEM(KODURU)",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "40055",
+      "AREANAME": "BHATLAPUDI",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "30326",
+      "AREANAME": "NALLAREGULA PALEM",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "30361",
+      "AREANAME": "AMMULAPALEM",
+      "EROCD": "3"
+    },
+    {
+      "AREACODE": "40007",
+      "AREANAME": "MARTURU",
+      "EROCD": "4"
+    },
+    {
+      "AREACODE": "40030",
+      "AREANAME": "PAPAYYAPALEM",
+      "EROCD": "4"
+    },
+    {
+      "AREACODE": "40012",
+      "AREANAME": "TAGARAMPUDI",
+      "EROCD": "4"
+    },
+    {
+      "AREACODE": "40005",
+      "AREANAME": "VOODARU",
+      "EROCD": "4"
+    },
+    {
+      "AREACODE": "40016",
+      "AREANAME": "BAGULAWADA",
+      "EROCD": "4"
+    },
+    {
+      "AREACODE": "40011",
+      "AREANAME": "VENKUPALEM",
+      "EROCD": "4"
+    },
+    {
+      "AREACODE": "40020",
+      "AREANAME": "DUDDUPALEM",
+      "EROCD": "4"
+    },
+    {
+      "AREACODE": "40013",
+      "AREANAME": "SEETHANAGARAM",
+      "EROCD": "4"
+    },
+    {
+      "AREACODE": "40065",
+      "AREANAME": "ERIKAMMAPALEM",
+      "EROCD": "4"
+    },
+    {
+      "AREACODE": "40001",
+      "AREANAME": "TUMMAPALA",
+      "EROCD": "4"
+    },
+    {
+      "AREACODE": "40022",
+      "AREANAME": "METTAPALEM",
+      "EROCD": "4"
+    },
+    {
+      "AREACODE": "40018",
+      "AREANAME": "MAKAVARAM",
+      "EROCD": "4"
+    },
+    {
+      "AREACODE": "40019",
+      "AREANAME": "ALLIKANDUPALEM",
+      "EROCD": "4"
+    },
+    {
+      "AREACODE": "40029",
+      "AREANAME": "JAGANNATHAPURAM",
+      "EROCD": "4"
+    },
+    {
+      "AREACODE": "40003",
+      "AREANAME": "DIBBAPALEM",
+      "EROCD": "4"
+    },
+    {
+      "AREACODE": "40024",
+      "AREANAME": "SUNDARAYYAPETA",
+      "EROCD": "4"
+    },
+    {
+      "AREACODE": "40031",
+      "AREANAME": "MONDIPALEM",
+      "EROCD": "4"
+    },
+    {
+      "AREACODE": "40026",
+      "AREANAME": "GADABAPETA",
+      "EROCD": "4"
+    },
+    {
+      "AREACODE": "40009",
+      "AREANAME": "MAMIDIPALEM",
+      "EROCD": "4"
+    },
+    {
+      "AREACODE": "40027",
+      "AREANAME": "ATCHAYYAPETA",
+      "EROCD": "4"
+    },
+    {
+      "AREACODE": "40028",
+      "AREANAME": "GURANNAPALEM",
+      "EROCD": "4"
+    },
+    {
+      "AREACODE": "40017",
+      "AREANAME": "PAPAYYASANTHA PALEM",
+      "EROCD": "4"
+    },
+    {
+      "AREACODE": "50508",
+      "AREANAME": "TEEDA",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50516",
+      "AREANAME": "MASAYYA PETA",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50510",
+      "AREANAME": "ANANDA PURAM",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50509",
+      "AREANAME": "PERANTALA PALEM",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50517",
+      "AREANAME": "KACHULLA PALEM",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50540",
+      "AREANAME": "CHINA YENUGU TUNI",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50524",
+      "AREANAME": "AMEENSAHEBPETA",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50527",
+      "AREANAME": "CHINTALA PALEM",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50526",
+      "AREANAME": "SOMAVARAM",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50532",
+      "AREANAME": "NUTHUNAGUNTALAPALEM",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50502",
+      "AREANAME": "BANGARAYYA PETA",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50538",
+      "AREANAME": "GOLLA GUNTA",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50504",
+      "AREANAME": "KOTTAPALLI",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50503",
+      "AREANAME": "BUCHAYYAPETA",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50536",
+      "AREANAME": "GOBBURU PALEM",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50513",
+      "AREANAME": "CHARAKAM",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50515",
+      "AREANAME": "ATCHERLA",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50525",
+      "AREANAME": "UGGINAPALEM",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50534",
+      "AREANAME": "NARASAPURAM",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50521",
+      "AREANAME": "JAMPAPALEM",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50505",
+      "AREANAME": "KANNURUPALEM",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50533",
+      "AREANAME": "PARAWADAPALEM",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50520",
+      "AREANAME": "SINGAVARAM",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50522",
+      "AREANAME": "A.S.PETA",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50539",
+      "AREANAME": "GOKAVANI PALEM",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50530",
+      "AREANAME": "NARASINGABILLI",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50518",
+      "AREANAME": "PATHA KANNURUPALEM",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50529",
+      "AREANAME": "GOBBURU",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50512",
+      "AREANAME": "GANTA VANIPALEM",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50528",
+      "AREANAME": "YENUGUTHUNI",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50519",
+      "AREANAME": "LAALAM KOTTURU",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50514",
+      "AREANAME": "KOTHA ATCHERLA",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50541",
+      "AREANAME": "JAMMADULAPALEM",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50506",
+      "AREANAME": "GURUGU BHIMAVARAM",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50507",
+      "AREANAME": "SUNDARAYYAPETA",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50535",
+      "AREANAME": "TRIPURE VANI PALEM",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50531",
+      "AREANAME": "JATTAPU REDDY TUNI",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50501",
+      "AREANAME": "THALLAPALEM",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50511",
+      "AREANAME": "ADDAM",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50523",
+      "AREANAME": "CHINNAYYA PALEM",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "50537",
+      "AREANAME": "ATCHUTAPURAM",
+      "EROCD": "5"
+    },
+    {
+      "AREACODE": "60622",
+      "AREANAME": "GORLIVANI PALEM",
+      "EROCD": "6"
+    },
+    {
+      "AREACODE": "60649",
+      "AREANAME": "NAKKAVANI PALEM",
+      "EROCD": "6"
+    },
+    {
+      "AREACODE": "60634",
+      "AREANAME": "LEMARTI AGRAHARAM",
+      "EROCD": "6"
+    },
+    {
+      "AREACODE": "60617",
+      "AREANAME": "VENKATRAMANA PETA",
+      "EROCD": "6"
+    },
+    {
+      "AREACODE": "60635",
+      "AREANAME": "MANTRIPALEM",
+      "EROCD": "6"
+    },
+    {
+      "AREACODE": "60637",
+      "AREANAME": "PEDA MUSHIDIVADA",
+      "EROCD": "6"
+    },
+    {
+      "AREACODE": "60612",
+      "AREANAME": "MARRIPALEM",
+      "EROCD": "6"
+    },
+    {
+      "AREACODE": "60613",
+      "AREANAME": "GONNAVANIPALEM",
+      "EROCD": "6"
+    },
+    {
+      "AREACODE": "60633",
+      "AREANAME": "KOTHA PALEM",
+      "EROCD": "6"
+    },
+    {
+      "AREACODE": "60626",
+      "AREANAME": "MAREADUPUDI AGRAHARA",
+      "EROCD": "6"
+    },
+    {
+      "AREACODE": "60625",
+      "AREANAME": "SIRAMSETTI VANI PALE",
+      "EROCD": "6"
+    },
+    {
+      "AREACODE": "60631",
+      "AREANAME": "SALAPUVANIPALEM",
+      "EROCD": "6"
+    },
+    {
+      "AREACODE": "60618",
+      "AREANAME": "NARASINGA RAO PETA",
+      "EROCD": "6"
+    },
+    {
+      "AREACODE": "60620",
+      "AREANAME": "KONDA KOPPAKA",
+      "EROCD": "6"
+    },
+    {
+      "AREACODE": "60623",
+      "AREANAME": "YERUKUVARI PALEM",
+      "EROCD": "6"
+    },
+    {
+      "AREACODE": "60632",
+      "AREANAME": "THADI",
+      "EROCD": "6"
+    },
+    {
+      "AREACODE": "60621",
+      "AREANAME": "MAREDIPUDI",
+      "EROCD": "6"
+    },
+    {
+      "AREACODE": "60615",
+      "AREANAME": "MAMIDIVANI PALEM",
+      "EROCD": "6"
+    },
+    {
+      "AREACODE": "60641",
+      "AREANAME": "LANKELAPALEM",
+      "EROCD": "6"
+    },
+    {
+      "AREACODE": "60624",
+      "AREANAME": "RAJU PALEM",
+      "EROCD": "6"
+    },
+    {
+      "AREACODE": "60640",
+      "AREANAME": "KOTTA TALARI VANIPAL",
+      "EROCD": "6"
+    },
+    {
+      "AREACODE": "60627",
+      "AREANAME": "MADAKA PALEM",
+      "EROCD": "6"
+    },
+    {
+      "AREACODE": "60628",
+      "AREANAME": "AKKEREDDY VANI PALEM",
+      "EROCD": "6"
+    },
+    {
+      "AREACODE": "60630",
+      "AREANAME": "VALLURU",
+      "EROCD": "6"
+    },
+    {
+      "AREACODE": "60647",
+      "AREANAME": "PACHIKORUVANI PALEM",
+      "EROCD": "6"
+    },
+    {
+      "AREACODE": "60629",
+      "AREANAME": "P.T.V.PALEM",
+      "EROCD": "6"
+    },
+    {
+      "AREACODE": "60648",
+      "AREANAME": "GANDIVANI PALEM",
+      "EROCD": "6"
+    },
+    {
+      "AREACODE": "60639",
+      "AREANAME": "VIJAYA RAMA PURAM",
+      "EROCD": "6"
+    },
+    {
+      "AREACODE": "60619",
+      "AREANAME": "SIRASAPALLI",
+      "EROCD": "6"
+    },
+    {
+      "AREACODE": "60636",
+      "AREANAME": "KANNURU",
+      "EROCD": "6"
+    },
+    {
+      "AREACODE": "70706",
+      "AREANAME": "THALARIVANIPALEM -D",
+      "EROCD": "7"
+    },
+    {
+      "AREACODE": "70786",
+      "AREANAME": "GANGAVARAM",
+      "EROCD": "7"
+    },
+    {
+      "AREACODE": "70711",
+      "AREANAME": "LAKKARAJU PALEM",
+      "EROCD": "7"
+    },
+    {
+      "AREACODE": "70754",
+      "AREANAME": "SETTIVANI PALEM",
+      "EROCD": "7"
+    },
+    {
+      "AREACODE": "70701",
+      "AREANAME": "AGANAMPUDI",
+      "EROCD": "7"
+    },
+    {
+      "AREACODE": "70709",
+      "AREANAME": "MANGALIPALEM",
+      "EROCD": "7"
+    },
+    {
+      "AREACODE": "70747",
+      "AREANAME": "LANKIVANIPALEM",
+      "EROCD": "7"
+    },
+    {
+      "AREACODE": "70760",
+      "AREANAME": "ARJUNAGIRI",
+      "EROCD": "7"
+    },
+    {
+      "AREACODE": "70772",
+      "AREANAME": "KOTTURU(N N)",
+      "EROCD": "7"
+    },
+    {
+      "AREACODE": "70774",
+      "AREANAME": "KOTTURU(V)",
+      "EROCD": "7"
+    },
+    {
+      "AREACODE": "70707",
+      "AREANAME": "YETHAPALEM",
+      "EROCD": "7"
+    },
+    {
+      "AREACODE": "70771",
+      "AREANAME": "NANGINARAPADU",
+      "EROCD": "7"
+    },
+    {
+      "AREACODE": "70704",
+      "AREANAME": "SIVAJEE NAGAR",
+      "EROCD": "7"
+    },
+    {
+      "AREACODE": "70705",
+      "AREANAME": "THALARIVANIPALEM -A",
+      "EROCD": "7"
+    },
+    {
+      "AREACODE": "70703",
+      "AREANAME": "JNNURM(MGP)",
+      "EROCD": "7"
+    },
+    {
+      "AREACODE": "70773",
+      "AREANAME": "VEDULA NARVA",
+      "EROCD": "7"
+    },
+    {
+      "AREACODE": "70702",
+      "AREANAME": "DUVVADA",
+      "EROCD": "7"
+    },
+    {
+      "AREACODE": "80828",
+      "AREANAME": "THIKKAVANI PALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80821",
+      "AREANAME": "POLIREDDIVANI PALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80823",
+      "AREANAME": "GANDIVANI PALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80861",
+      "AREANAME": "DOPPAVANI PALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80817",
+      "AREANAME": "VENKATAPATHI PALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80841",
+      "AREANAME": "GORLlVANI PALEM(P)",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80834",
+      "AREANAME": "YEERINAIDU PALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80807",
+      "AREANAME": "BOTTAVANI PALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80888",
+      "AREANAME": "TAMMAYYAPALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80854",
+      "AREANAME": "SRINIVASA NAGAR",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80856",
+      "AREANAME": "BAPADU PALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80831",
+      "AREANAME": "SINGARA PADU",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80855",
+      "AREANAME": "KATTAVANI PALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80802",
+      "AREANAME": "VADACHEEPURUPALLI (W",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80836",
+      "AREANAME": "KORANGI PALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80891",
+      "AREANAME": "SAMMANGI PALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80852",
+      "AREANAME": "YEDURUVANI PALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80897",
+      "AREANAME": "BASAVA TARAKA RAMA NAGAR",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80837",
+      "AREANAME": "GORUSUVANIPALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80840",
+      "AREANAME": "THANAM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80860",
+      "AREANAME": "GORLIVANIPALEM(D)",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80827",
+      "AREANAME": "HASTINA PURAM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80815",
+      "AREANAME": "VOOTAGEDDAPALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80829",
+      "AREANAME": "GANGUNAIDU PALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80898",
+      "AREANAME": "GOLLALAPALEM H/O DOS",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80824",
+      "AREANAME": "NARASA PURAM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80839",
+      "AREANAME": "KALAPAKA",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80835",
+      "AREANAME": "NETTIVANI PALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80820",
+      "AREANAME": "RAMUNAIDUGARI DODDI",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80846",
+      "AREANAME": "BHARANIKAM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80862",
+      "AREANAME": "PONNURU AGRAHARAM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80869",
+      "AREANAME": "EEDULAPAKA BONANGI",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80808",
+      "AREANAME": "MOTURU PALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80826",
+      "AREANAME": "RAVADA",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80853",
+      "AREANAME": "BODDAPUVANI PALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80830",
+      "AREANAME": "MANDALAVARI DODDI",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80818",
+      "AREANAME": "PANDIVANI PALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80822",
+      "AREANAME": "VISSANNAPETA",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80850",
+      "AREANAME": "SWAYAMBHUVARAM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80895",
+      "AREANAME": "PARAWADA",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80849",
+      "AREANAME": "JAJULAVANIPALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80812",
+      "AREANAME": "DALAIPALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80870",
+      "AREANAME": "PANAKALAYYA PETA",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80857",
+      "AREANAME": "KOTHAVENNELA PALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80833",
+      "AREANAME": "JAGANNADHAPURAM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80859",
+      "AREANAME": "CHEEPURLA PALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80803",
+      "AREANAME": "JALLUDU PALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80819",
+      "AREANAME": "PATHA RAJANNA PALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80847",
+      "AREANAME": "V L NARAYANA PURAM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80804",
+      "AREANAME": "DHARMARAYUDU PETA",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80845",
+      "AREANAME": "DESAPATHRUNIPALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80843",
+      "AREANAME": "PENTASEEMA BONANGI",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80814",
+      "AREANAME": "CHERI BANDARU PALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80811",
+      "AREANAME": "MUTYALAMMA PALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80851",
+      "AREANAME": "SWAMINAIDU PALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80844",
+      "AREANAME": "PAYAKARAO BONANGI",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80801",
+      "AREANAME": "VENKATAPURAM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80825",
+      "AREANAME": "VIYYAPUVARI DODDI",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80813",
+      "AREANAME": "RAVIPALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80842",
+      "AREANAME": "MARISAVANI PALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80809",
+      "AREANAME": "KOLLIVANI PALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80810",
+      "AREANAME": "REKHAVANI PALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80805",
+      "AREANAME": "DOSURU",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80816",
+      "AREANAME": "GOLLAPETA",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80838",
+      "AREANAME": "NAIDU PALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80848",
+      "AREANAME": "VENNALA PALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80858",
+      "AREANAME": "GOLLA GUNTA",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80899",
+      "AREANAME": "GOLLALAPALEM(P)",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80806",
+      "AREANAME": "METTAPALEM",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80832",
+      "AREANAME": "JALARI PETA",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "80872",
+      "AREANAME": "GOLAPETA(E P BONANGI",
+      "EROCD": "8"
+    },
+    {
+      "AREACODE": "90973",
+      "AREANAME": "RAVADA",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90201",
+      "AREANAME": "MUNAGAPAKA",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90838",
+      "AREANAME": "NAIDU PALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90111",
+      "AREANAME": "KUNCHANGI",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90533",
+      "AREANAME": "PARAWADAPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90336",
+      "AREANAME": "GOTIWADA",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90350",
+      "AREANAME": "ELLUPPI",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90241",
+      "AREANAME": "CHINNIVANIPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90630",
+      "AREANAME": "VALLURU",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90848",
+      "AREANAME": "VARINIVARI PALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90356",
+      "AREANAME": "GALIBHIMAVARAM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90504",
+      "AREANAME": "KOTTAPALLI",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90031",
+      "AREANAME": "MONDIPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90636",
+      "AREANAME": "KANNURU",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90057",
+      "AREANAME": "KONDUPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90001",
+      "AREANAME": "TUMMAPALA",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90018",
+      "AREANAME": "MAKAVARAM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90840",
+      "AREANAME": "THANAM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90811",
+      "AREANAME": "MUTYALAMMAPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90380",
+      "AREANAME": "MALLUNAIDUPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90532",
+      "AREANAME": "NUTHUNAGUNTALAPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90215",
+      "AREANAME": "THOTADA",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90003",
+      "AREANAME": "DIBBAPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90230",
+      "AREANAME": "NARAYADUPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90706",
+      "AREANAME": "THALARIVANIPALEM -D",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90707",
+      "AREANAME": "YETHAPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90747",
+      "AREANAME": "LANKIVANIPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90754",
+      "AREANAME": "SETTIVANI PALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90703",
+      "AREANAME": "J.N.N.U.R.M (MGP)",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90318",
+      "AREANAME": "SURREDY PALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90218",
+      "AREANAME": "PATHA NAGAVARAM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90621",
+      "AREANAME": "MAREDIPUDI",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90228",
+      "AREANAME": "GANGADEVIPETA",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90527",
+      "AREANAME": "CHINTHALAPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90827",
+      "AREANAME": "HASTHUINAPURAM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90846",
+      "AREANAME": "BHARNIKAM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90506",
+      "AREANAME": "G.BHEEMAVARAM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90332",
+      "AREANAME": "THAVVA VANI PALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90116",
+      "AREANAME": "THEGADA",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90016",
+      "AREANAME": "BAGULAWADA",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90202",
+      "AREANAME": "NAGULAPALLI",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90059",
+      "AREANAME": "KAPUSETTIVANIPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90103",
+      "AREANAME": "VISANNAPETA",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90511",
+      "AREANAME": "ADDAM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90849",
+      "AREANAME": "JAJULAVANIPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90011",
+      "AREANAME": "VENKUPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90860",
+      "AREANAME": "GORLIVANIPALEM (D)",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90205",
+      "AREANAME": "CHUCHIKONDA",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90760",
+      "AREANAME": "ARJANAGIRI",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90304",
+      "AREANAME": "ANTHAKAPALLI",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90812",
+      "AREANAME": "DALAIPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90850",
+      "AREANAME": "SWAYAMBUVARAM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90634",
+      "AREANAME": "LEMARTHI",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90101",
+      "AREANAME": "KASIMKOTA",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90612",
+      "AREANAME": "MARRIPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90020",
+      "AREANAME": "DUDDUPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90786",
+      "AREANAME": "GANGAVARAM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90216",
+      "AREANAME": "PATIPALLI",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90340",
+      "AREANAME": "ADDURU",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90053",
+      "AREANAME": "CH N AGRAHARAM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90346",
+      "AREANAME": "LAGISETTIPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90009",
+      "AREANAME": "MAMIDIPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90823",
+      "AREANAME": "Gandivanipalem",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90841",
+      "AREANAME": "Gorlivanipalem (p)",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90106",
+      "AREANAME": "PISINIKADA",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90105",
+      "AREANAME": "BAYYAVARAM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90212",
+      "AREANAME": "SIRASAPALLI(T)",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90702",
+      "AREANAME": "DUVVADA",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90112",
+      "AREANAME": "SAMPATHIPURAM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90343",
+      "AREANAME": "ARIPAKA",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90813",
+      "AREANAME": "RAVIPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90821",
+      "AREANAME": "POLIREDDYPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90013",
+      "AREANAME": "SEETHANAGARAM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90503",
+      "AREANAME": "BUCHAYYAPETA",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90520",
+      "AREANAME": "SINGAVARAM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90019",
+      "AREANAME": "ALLIKANDUPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90114",
+      "AREANAME": "V.J.PALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90530",
+      "AREANAME": "NARASINGABILLI",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90505",
+      "AREANAME": "KANNURUPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90618",
+      "AREANAME": "NARASINGA RAO PETA",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90641",
+      "AREANAME": "LANKELAPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90826",
+      "AREANAME": "RAVADA",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90056",
+      "AREANAME": "SANKARAM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90359",
+      "AREANAME": "BATAJANGALA PALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90012",
+      "AREANAME": "TAGARAMPUDI",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90312",
+      "AREANAME": "BODUVALASA",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90774",
+      "AREANAME": "V.KOTTURU",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90632",
+      "AREANAME": "THADI",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90844",
+      "AREANAME": "P.R.BONANGI",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90805",
+      "AREANAME": "DOSURU",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90032",
+      "AREANAME": "KODURU",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90711",
+      "AREANAME": "LAKKARAJUPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90903",
+      "AREANAME": "MANTRIPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90364",
+      "AREANAME": "ADIREDDYPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90802",
+      "AREANAME": "W.CH.PALLI",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90524",
+      "AREANAME": "AMEENSAHEBPETA",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90302",
+      "AREANAME": "CHINNAYYAPALEM (S)",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90353",
+      "AREANAME": "ASKAPALLI",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90635",
+      "AREANAME": "MANTRIPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90629",
+      "AREANAME": "P.T.V.PALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90365",
+      "AREANAME": "GORLIVANIPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90317",
+      "AREANAME": "RAYAPURA AGRAHARAM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90771",
+      "AREANAME": "NANGINARAPADU",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90709",
+      "AREANAME": "MANGALIPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90117",
+      "AREANAME": "SATYANARAYANA PURAM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90344",
+      "AREANAME": "YETHAPALEE",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90329",
+      "AREANAME": "YERUKUNAIDU PALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90816",
+      "AREANAME": "GOLLAPETA",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90515",
+      "AREANAME": "ATCHERLA",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90204",
+      "AREANAME": "GAVARALA ANAKAPALLI",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90501",
+      "AREANAME": "THALLAPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90526",
+      "AREANAME": "SOMAVARAM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90235",
+      "AREANAME": "K.NAGAVARAM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90342",
+      "AREANAME": "AMRUTHAPURAM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90303",
+      "AREANAME": "GOLLALAPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90110",
+      "AREANAME": "KUNDRAM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90007",
+      "AREANAME": "MARTURU",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90541",
+      "AREANAME": "JAMMADULAPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90537",
+      "AREANAME": "ATCHUTAPURAM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90804",
+      "AREANAME": "DHARMARAYUDU PETA",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90620",
+      "AREANAME": "KONDA KOPPAKA",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90348",
+      "AREANAME": "PEDAGOLLALA PALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90624",
+      "AREANAME": "RAJU PALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90622",
+      "AREANAME": "GORLIVANI PALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90301",
+      "AREANAME": "SABBAVARAM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90005",
+      "AREANAME": "VOODARU",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90815",
+      "AREANAME": "VOOTAGEDDAPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90525",
+      "AREANAME": "UGGINAPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90352",
+      "AREANAME": "IRUVADA",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90528",
+      "AREANAME": "YENUGUTHUNI",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90102",
+      "AREANAME": "VEDURUPARTHI",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90208",
+      "AREANAME": "VOMPOLU",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90869",
+      "AREANAME": "EEDULAPAKA BONANGI",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90845",
+      "AREANAME": "DESAPATHRUNIPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90203",
+      "AREANAME": "UMMALADA",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90701",
+      "AREANAME": "AGANAMPUDI",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90034",
+      "AREANAME": "REBAKA",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90355",
+      "AREANAME": "VANGALI",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90327",
+      "AREANAME": "P.W.AGRAHARAM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90362",
+      "AREANAME": "NARAPADU",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90508",
+      "AREANAME": "TEEDA",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90209",
+      "AREANAME": "WADRAPALLI",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90895",
+      "AREANAME": "PARAWADA",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90321",
+      "AREANAME": "GULLEPALLI",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90801",
+      "AREANAME": "VENKATAPURAM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90623",
+      "AREANAME": "YERUKUVARI PALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90322",
+      "AREANAME": "PEDANAIDU PALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90837",
+      "AREANAME": "GORUSUVANIPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90851",
+      "AREANAME": "S.V.N.PALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90613",
+      "AREANAME": "GONNAVANIPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90058",
+      "AREANAME": "GOLAGAM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90631",
+      "AREANAME": "SALAPUVANIPALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90507",
+      "AREANAME": "SUNDARAYYAPETA",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90839",
+      "AREANAME": "KALAPAKA",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90637",
+      "AREANAME": "PEDA MUSHIDIVADA",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90107",
+      "AREANAME": "KOTTURU",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90349",
+      "AREANAME": "MOGALIPURAM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90773",
+      "AREANAME": "VEDULLANARAVA",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90055",
+      "AREANAME": "BATLAPUDI",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90062",
+      "AREANAME": "MARRIPALEM(KODURU)",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90619",
+      "AREANAME": "SIRASAPALLI",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "90843",
+      "AREANAME": "P.S.BONANGI",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "10107",
+      "AREANAME": "KOTTURU",
+      "EROCD": "11"
+    },
+    {
+      "AREACODE": "10111",
+      "AREANAME": "KUNCHANGI",
+      "EROCD": "11"
+    },
+    {
+      "AREACODE": "10110",
+      "AREANAME": "KUNDRAM",
+      "EROCD": "11"
+    },
+    {
+      "AREACODE": "10108",
+      "AREANAME": "MOOLAPETA K",
+      "EROCD": "11"
+    },
+    {
+      "AREACODE": "10106",
+      "AREANAME": "PISINIKADA",
+      "EROCD": "11"
+    },
+    {
+      "AREACODE": "10114",
+      "AREANAME": "V J PALEM",
+      "EROCD": "11"
+    },
+    {
+      "AREACODE": "10117",
+      "AREANAME": "SATYANARYANAPURAM",
+      "EROCD": "11"
+    },
+    {
+      "AREACODE": "10113",
+      "AREANAME": "RONGALIVANIPALEM",
+      "EROCD": "11"
+    },
+    {
+      "AREACODE": "30343",
+      "AREANAME": "ARIPAKA",
+      "EROCD": "33"
+    },
+    {
+      "AREACODE": "30383",
+      "AREANAME": "NAYANAMMA PALEM",
+      "EROCD": "33"
+    },
+    {
+      "AREACODE": "30378",
+      "AREANAME": "KILLI VANI PALEM",
+      "EROCD": "33"
+    },
+    {
+      "AREACODE": "30350",
+      "AREANAME": "ELLUPPI",
+      "EROCD": "33"
+    },
+    {
+      "AREACODE": "30355",
+      "AREANAME": "VANGALI",
+      "EROCD": "33"
+    },
+    {
+      "AREACODE": "30317",
+      "AREANAME": "RAYAPURA AGRAHARAM",
+      "EROCD": "33"
+    },
+    {
+      "AREACODE": "30305",
+      "AREANAME": "OMMIVANIPALEM",
+      "EROCD": "33"
+    },
+    {
+      "AREACODE": "30337",
+      "AREANAME": "CHAVIDI PETA",
+      "EROCD": "33"
+    },
+    {
+      "AREACODE": "30324",
+      "AREANAME": "SOMANADHA PURAM",
+      "EROCD": "33"
+    },
+    {
+      "AREACODE": "30351",
+      "AREANAME": "MARRIPALEM",
+      "EROCD": "33"
+    },
+    {
+      "AREACODE": "30321",
+      "AREANAME": "GULLEPALLI",
+      "EROCD": "33"
+    },
+    {
+      "AREACODE": "30304",
+      "AREANAME": "ANTHAKAPALLI",
+      "EROCD": "33"
+    },
+    {
+      "AREACODE": "30333",
+      "AREANAME": "TELUKULA VANI PALEM",
+      "EROCD": "33"
+    },
+    {
+      "AREACODE": "30336",
+      "AREANAME": "GOTIWADA",
+      "EROCD": "33"
+    },
+    {
+      "AREACODE": "30384",
+      "AREANAME": "SIRASAPALLI",
+      "EROCD": "33"
+    },
+    {
+      "AREACODE": "30339",
+      "AREANAME": "TEKKALI PALEM",
+      "EROCD": "33"
+    },
+    {
+      "AREACODE": "30315",
+      "AREANAME": "BANGARAMMA PALEM",
+      "EROCD": "33"
+    },
+    {
+      "AREACODE": "30344",
+      "AREANAME": "PEDA YATAPALEM",
+      "EROCD": "33"
+    },
+    {
+      "AREACODE": "30380",
+      "AREANAME": "MALLUNAIDUPALEM",
+      "EROCD": "33"
+    },
+    {
+      "AREACODE": "30311",
+      "AREANAME": "DUDDUVAKA",
+      "EROCD": "33"
+    },
+    {
+      "AREACODE": "30320",
+      "AREANAME": "T JANGALAPALEM",
+      "EROCD": "33"
+    },
+    {
+      "AREACODE": "30306",
+      "AREANAME": "BONDAVANIPALEM",
+      "EROCD": "33"
+    },
+    {
+      "AREACODE": "30376",
+      "AREANAME": "CH BANGARAMMA PALEM",
+      "EROCD": "33"
+    },
+    {
+      "AREACODE": "30346",
+      "AREANAME": "LAGISETTIPALEM",
+      "EROCD": "33"
+    },
+    {
+      "AREACODE": "30349",
+      "AREANAME": "MOGALIPURAM",
+      "EROCD": "33"
+    },
+    {
+      "AREACODE": "30314",
+      "AREANAME": "RAPARTHIVANIPALEM",
+      "EROCD": "33"
+    },
+    {
+      "AREACODE": "30331",
+      "AREANAME": "RAMULAMMA PALEM",
+      "EROCD": "33"
+    },
+    {
+      "AREACODE": "30309",
+      "AREANAME": "AYYANNA PALEM",
+      "EROCD": "33"
+    },
+    {
+      "AREACODE": "30340",
+      "AREANAME": "ADDURU",
+      "EROCD": "33"
+    },
+    {
+      "AREACODE": "30345",
+      "AREANAME": "CHINA YATA PALEM",
+      "EROCD": "33"
+    },
+    {
+      "AREACODE": "30356",
+      "AREANAME": "GALIBHIMAVARAM",
+      "EROCD": "33"
+    },
+    {
+      "AREACODE": "30312",
+      "AREANAME": "BODUVALASA",
+      "EROCD": "33"
+    },
+    {
+      "AREACODE": "30313",
+      "AREANAME": "B R VANI PALEM",
+      "EROCD": "33"
+    },
+    {
+      "AREACODE": "90309",
+      "AREANAME": "AYYANNA PALEM",
+      "EROCD": "9"
+    },
+    {
+      "AREACODE": "10104",
+      "AREANAME": "RAMANNAPALEM",
+      "EROCD": "1"
+    },
+    {
+      "AREACODE": "10102",
+      "AREANAME": "VEDURUPARTHI",
+      "EROCD": "1"
+    },
+    {
+      "AREACODE": "10101",
+      "AREANAME": "KASIMKOTA",
+      "EROCD": "1"
+    },
+    {
+      "AREACODE": "10112",
+      "AREANAME": "SAMPATHIPURAM",
+      "EROCD": "1"
+    },
+    {
+      "AREACODE": "10103",
+      "AREANAME": "VISANNAPETA",
+      "EROCD": "1"
+    }
+  ]
+}

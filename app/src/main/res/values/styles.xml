@@ -1,0 +1,110 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="NavigationDrawerStyle">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:typeface">sans</item>
+        <item name="android:iconPreview">@mipmap/ic_launcher_round</item>
+
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">?android:attr/listDivider</item>
+    </style>
+
+
+    <style name="Divider.Horizontal" parent="AppTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/Divider.Width</item>
+        <item name="android:background">@color/Divider</item>
+    </style>
+
+
+    <style name="TextView" parent="AppTheme">
+        <item name="android:textColor">@color/TextColor.Gray</item>
+        <item name="android:textSize">@dimen/Text.Standard</item>
+    </style>
+
+    <style name="TextView.MainHeader" parent="TextView">
+        <item name="android:textColor">@color/ColorPrimary.Header</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/Text.VeryLarge</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="TextView.Header" parent="TextView">
+        <item name="android:textColor">@color/TextColor.Header</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/Text.Large</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:singleLine">true</item>
+
+    </style>
+
+    <style name="TextView.EmptyState" parent="TextView">
+        <item name="android:textColor">@color/TextColor.White</item>
+        <item name="android:textSize">@dimen/Text.EmptyState</item>
+        <item name="android:layout_margin">@dimen/Margin.Double</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="TextView.Standard" parent="TextView">
+        <item name="android:textColor">@color/TextColor.Standard</item>
+        <item name="android:textSize">@dimen/Text.Standard</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:minHeight">@dimen/Text.MinHeight</item>
+    </style>
+
+    <style name="MaterialDialogSheet" parent="@android:style/Theme.Dialog">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <!--<item name="android:windowIsFloating">false</item>-->
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowAnimationStyle">@style/MaterialDialogSheetAnimation</item>
+    </style>
+
+
+    <style name="MaterialDialogSheetAnimation">
+        <item name="android:windowEnterAnimation">@anim/popup_show</item>
+        <item name="android:windowExitAnimation">@anim/popup_hide</item>
+    </style>
+
+    <!--<style name="styleCustDlg" parent="android:style/Theme.Dialog">-->
+        <!--<item name="android:windowNoTitle">true</item>-->
+    <!--</style>-->
+
+    <style name="styleCustDlg" parent="android:style/Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@android:color/black</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+</resources>

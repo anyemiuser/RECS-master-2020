@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="10dp" >
+    <ScrollView
+        android:layout_marginTop="48dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.anyemi.recska.ui_components.MyTextViewArial
+                android:id="@+id/bluetoothstate"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                />
+            <Button
+                android:id="@+id/listpaireddevices"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="List Paired Devices"
+                android:enabled="false"
+                android:background="@drawable/button_shape"
+                android:visibility="gone"
+
+                />
+
+            <Button
+                android:id="@+id/buttonABORT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="X"
+                android:textSize="20dp"
+                android:layout_gravity="right"
+                android:textStyle="bold"
+                android:visibility="gone"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/grey_text_color"
+                android:paddingLeft="10dp">
+
+
+
+
+                <EditText
+                    android:id="@+id/textUser"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="User ID"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/black" />
+
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/grey_text_color"
+                android:paddingLeft="10dp">
+            <EditText
+                android:id="@+id/textPswd"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="Password"
+                android:inputType="textPassword"
+
+                android:maxLength="4"
+                android:textColor="@color/black" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/grey_text_color"
+                android:paddingLeft="10dp">
+
+            <EditText
+                android:id="@+id/textAMT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/Amount"
+                android:inputType="numberDecimal"
+
+                android:textColor="#000000"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/grey_text_color"
+                android:paddingLeft="10dp"
+                android:visibility="gone">
+
+            <EditText
+                android:id="@+id/textCBAmt"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="Phone Number"
+                android:inputType="numberDecimal"
+                android:textColor="#000000"
+                android:maxLength="8"
+                android:visibility="gone"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/grey_text_color"
+                android:paddingLeft="10dp">
+
+            <EditText
+                android:id="@+id/phone_num"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone Number"
+                android:inputType="numberDecimal"
+                android:textColor="#000000"
+                android:maxLength="10"
+                android:visibility="visible"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <Spinner
+                android:id="@+id/spinner1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:background="@android:drawable/btn_dropdown"
+                android:spinnerMode="dropdown"/>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/button1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_shape"
+                    android:text="Make payment"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:layout_marginRight="5dp"/>
+                <Button
+                    android:id="@+id/buttonHistory"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_shape"
+                    android:text="history"
+                    android:textColor="@color/white"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="5dp"
+                    android:visibility="gone"/>
+            </LinearLayout>
+
+
+
+
+            <com.anyemi.recska.ui_components.MyTextViewArial
+                android:id="@+id/textView1"
+                style="@style/TextView.Header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingBottom="10dp"
+                android:gravity="center|left"
+                android:text=""
+                android:textSize="18sp"
+                android:singleLine="false"
+                android:textColor="@color/text_color" />
+
+
+
+        </LinearLayout>
+    </ScrollView>
+    <FrameLayout
+        android:id="@+id/frameContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+    </FrameLayout>
+</LinearLayout>

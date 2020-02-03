@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/login_REL_content"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <include
+        android:id="@+id/top_bar"
+        layout="@layout/top_bar">
+
+    </include>
+
+    <!-- <RelativeLayout
+          android:id="@+id/top_bar"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="2dp"
+          android:background="#f2f2f2"
+          android:gravity="top"
+          android:orientation="vertical" >
+
+          <TextView
+              android:id="@+id/topbar_LBL_heading"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentLeft="true"
+              android:layout_alignParentTop="true"
+              android:text="Login"
+              android:textColor="#000000"
+              android:textSize="35dp"
+              android:typeface="sans" />
+  .
+
+          <TextView
+              android:id="@+id/topbar_LBL_status"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentRight="true"
+              android:layout_alignParentTop="true"
+              android:gravity="center"
+              android:padding="4dp"
+              android:text="@string/host_offline"
+              android:textSize="20sp" />
+
+      </RelativeLayout>-->
+
+    <RelativeLayout
+        android:id="@+id/content"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/top_bar"
+        android:layout_marginTop="20dp"
+        android:paddingBottom="12dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:background="#f5f5f5" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <EditText
+                android:id="@+id/login_TXT_merchantid"
+                android:layout_width="253dip"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+
+                android:ems="10"
+                android:hint="User Id"
+                android:inputType="number"
+                android:maxLength="10"
+                android:paddingLeft="6dp"
+                android:textSize="22dp" />
+
+            <EditText
+                android:id="@+id/login_TXT_merchantpassword"
+                android:layout_width="253dip"
+                android:layout_height="40dp"
+                android:layout_below="@+id/login_TXT_merchantid"
+
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:maxLength="10"
+                android:paddingLeft="6dp"
+                android:textSize="22dp" />
+
+            <EditText
+                android:id="@+id/login_TXT_timeout"
+                android:layout_width="253dip"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/login_TXT_merchantpassword"
+
+                android:ems="10"
+                android:hint="Time Out"
+                android:inputType="number"
+                android:maxLength="10"
+                android:paddingLeft="6dp"
+                android:textSize="22dp" />
+
+            <Button
+                android:id="@+id/login_BTN_signin"
+                android:layout_width="100dp"
+                android:layout_height="44dp"
+                android:layout_below="@+id/login_TXT_timeout"
+                android:layout_marginTop="10dp"
+
+                android:gravity="center"
+                android:text="Sign in"
+                android:textColor="#ffffff"
+                android:textSize="25dp" />
+
+            <CheckBox
+                android:id="@+id/login_CHK_remember_me"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/login_BTN_signin"
+                android:layout_below="@+id/login_TXT_merchantpassword"
+                android:layout_marginRight="4dp"
+                android:layout_marginTop="0dp"
+                android:layout_toRightOf="@+id/login_BTN_signin"
+                android:text="Remember me"
+                android:textColor="#000000"
+                android:textSize="18dp"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

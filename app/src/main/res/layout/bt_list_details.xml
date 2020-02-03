@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/relativeLayoutHeader"
+        android:layout_width="fill_parent"
+        android:layout_height="50sp"
+        android:background="@color/myPrimaryColor"
+        >
+
+        <TextView
+            android:id="@+id/tv_provider"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:padding="5dp"
+            android:textSize="15sp"
+            android:text="Device"
+            android:textAlignment="center"
+            android:layout_weight="0.8"
+            />
+
+        <View
+            android:id="@+id/seperator1"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/view_seperator" />
+
+        <TextView
+            android:id="@+id/tv_scheme"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            android:padding="5dp"
+            android:text="Device Name"
+            android:layout_weight="0.6"
+            />
+        <View
+            android:id="@+id/seperator2"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/view_seperator" />
+
+        <TextView
+            android:id="@+id/tv_minAmount"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textSize="15sp"
+            android:text="Status"
+            android:textAlignment="center"
+            android:layout_weight="0.8"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/layout_body">
+
+
+        <ListView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/bt_list"
+            android:background="#FFFFFF"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+</LinearLayout>

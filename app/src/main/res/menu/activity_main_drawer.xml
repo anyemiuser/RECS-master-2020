@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group >
+
+        <item
+            android:id="@+id/nav_My_Acc"
+            android:icon="@mipmap/ic_launcher_round"
+            android:title="My Account"
+            android:fontFamily="sans-serif"
+            />
+        <item
+            android:id="@+id/nav_My_leads"
+            android:icon="@mipmap/ic_launcher_round"
+            android:title="My Leads"
+            android:fontFamily="sans-serif"/>
+        <item
+            android:id="@+id/nav_post_Rental"
+            android:icon="@mipmap/ic_launcher_round"
+            android:title="Post New Rental"
+            android:fontFamily="sans-serif"/>
+        <item
+            android:id="@+id/nav_find_tenants"
+            android:icon="@mipmap/ic_launcher_round"
+            android:title="Find Tenants"
+            android:fontFamily="sans-serif"/>
+
+        <item
+            android:id="@+id/nav_upgrade"
+            android:icon="@mipmap/ic_launcher_round"
+            android:title="Upgrade"
+            android:fontFamily="sans-serif"/>
+        <item
+            android:id="@+id/nav_Support"
+            android:icon="@mipmap/ic_launcher_round"
+            android:title="Support"
+            android:fontFamily="sans-serif"/>
+        <item
+            android:id="@+id/nav_Logout"
+            android:icon="@mipmap/ic_launcher_round"
+            android:title="Logout"
+            android:fontFamily="sans-serif"/>
+
+    </group>
+
+
+
+</menu>
