@@ -11,6 +11,8 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,6 +37,7 @@ import com.google.gson.Gson;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by SuryaTejaChalla on 12-02-2018.
@@ -46,20 +49,22 @@ public class feedBackFragment extends Fragment implements View.OnClickListener, 
     ViewGroup header;
 
     Button btn_pay;
-    EditText et_phone_num, et_name, et_user_name, et_password, et_conform_password;
-    TextInputLayout til_name, til_user_name, til_phone_id, til_conform_password, til_password;
+    EditText et_phone_num,et_service_no, et_name, et_user_name, et_password, et_conform_password;
+    TextInputLayout til_service_no,til_name, til_user_name, til_phone_id, til_conform_password, til_password;
 
     // ListView lv_my_account;
     Button btn_search;
-    Spinner spnr_sort_by;
+    Spinner spnr_sort_by,spnr_type,issue_type;
     EditText et_search;
     LinearLayout linearLayout;
     RefundFragment.ListingAdapter mAdapter;
     ArrayList<CollectionsModel.CollectionsBean> mCollections = new ArrayList<>();
     ArrayList<CollectionsModel.CollectionsBean> SCollections = new ArrayList<>();
+    ArrayList<String> ero_names_array = new ArrayList<>();
+    ArrayList<String> ero_ids_array = new ArrayList<>();
     Object rdata;
     String query = "";
-
+    String ero_id = "0";
     public feedBackFragment() {
     }
 
@@ -92,11 +97,14 @@ public class feedBackFragment extends Fragment implements View.OnClickListener, 
 
         btn_pay = rootView.findViewById(R.id.btn_pay);
 
+        spnr_type=rootView.findViewById(R.id.spnr_type);
+        issue_type=rootView.findViewById(R.id.issue_type);
         et_name = rootView.findViewById(R.id.et_name);
         et_user_name = rootView.findViewById(R.id.et_user_name);
         et_password = rootView.findViewById(R.id.et_password);
         et_conform_password = rootView.findViewById(R.id.et_conform_password);
         et_phone_num = rootView.findViewById(R.id.et_phone_num);
+        et_service_no=rootView.findViewById(R.id.et_service_no);
 
         til_name = rootView.findViewById(R.id.til_name);
         til_user_name = rootView.findViewById(R.id.til_user_name);
@@ -104,7 +112,9 @@ public class feedBackFragment extends Fragment implements View.OnClickListener, 
         til_password = rootView.findViewById(R.id.til_password);
         til_conform_password = rootView.findViewById(R.id.til_conform_password);
         til_phone_id = rootView.findViewById(R.id.til_phone_id);
+        til_service_no=rootView.findViewById(R.id.til_service_no);
 
+        et_service_no.addTextChangedListener(this);
         et_name.addTextChangedListener(this);
         et_user_name.addTextChangedListener(this);
         et_password.addTextChangedListener(this);
@@ -113,6 +123,47 @@ public class feedBackFragment extends Fragment implements View.OnClickListener, 
 
         btn_pay.setText("Submit");
         btn_pay.setOnClickListener(this);
+        ero_names_array.clear();
+        ero_ids_array.clear();
+
+        issue_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(position==3){
+                    spnr_type.setVisibility(View.VISIBLE);
+                }
+                else {
+                    ero_id="0";
+                    spnr_type.setVisibility(View.GONE);
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        ero_names_array.addAll(Arrays.asList(getResources().getStringArray(R.array.ero_names)));
+        ero_ids_array.addAll(Arrays.asList(getResources().getStringArray(R.array.ero_ids)));
+        ArrayAdapter<String> feederAdapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_item, ero_names_array);
+        spnr_type.setAdapter(feederAdapter);
+
+        spnr_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                if (position != 0) {
+                    ero_id = getResources().getStringArray(R.array.ero_ids)[position];
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
     }
 
 
@@ -142,6 +193,9 @@ public class feedBackFragment extends Fragment implements View.OnClickListener, 
         } else if (et_conform_password.hasFocus() && et_conform_password.getText().toString().length() > 0) {
             til_conform_password.setErrorEnabled(false);
             til_conform_password.setError(null);
+        } else if (et_service_no.hasFocus() && et_service_no.getText().toString().length() > 0) {
+            til_service_no.setErrorEnabled(false);
+            til_service_no.setError(null);
         }
 
 
@@ -167,7 +221,11 @@ public class feedBackFragment extends Fragment implements View.OnClickListener, 
     private boolean performValidation() {
         boolean isValid = false;
 
-        if (et_name.getText().toString().equals("")) {
+        if (et_service_no.getText().toString().equals("")) {
+            til_service_no.setError("Please enter Service Number");
+            et_service_no.requestFocus();
+        }
+       else if (et_name.getText().toString().equals("")) {
             til_name.setError("Please enter Name");
             et_name.requestFocus();
         } else if (et_user_name.getText().toString().equals("")) {
@@ -253,6 +311,8 @@ public class feedBackFragment extends Fragment implements View.OnClickListener, 
             jsonObject.put("email", et_password.getText().toString());
             jsonObject.put("mobile_number", et_phone_num.getText().toString());
             jsonObject.put("message", et_conform_password.getText().toString());
+            jsonObject.put("servicenumber", et_service_no.getText().toString());
+
             return jsonObject.toString();
         } catch (Exception e) {
             e.printStackTrace();

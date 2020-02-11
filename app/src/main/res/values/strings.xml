@@ -223,6 +223,13 @@
         <item>DNP</item>
 
     </string-array>
+    <string-array name="issue_type_array">
+        <item>Select Issue Type</item>
+        <item>Payment</item>
+        <item>Meter Reading</item>
+        <item>Supplier</item>
+    </string-array>
+
 
 
 

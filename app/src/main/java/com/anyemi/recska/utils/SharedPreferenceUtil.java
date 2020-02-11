@@ -547,6 +547,67 @@ public class SharedPreferenceUtil {
             return "0";
         }
     }
+    public static String setServiceNo(Context context, String SupplierId) {
+
+        try {
+            saveInPreference(context, "SERVICE_NO", SupplierId);
+        } catch (Exception e) {
+            PrintLog.print(TAG, e.getMessage());
+            e.printStackTrace();
+        }
+        return SupplierId;
+    }
+
+    public static String getServiceNo(Context context) {
+        try {
+            return getFromPreference(context, "SERVICE_NO", "");
+        } catch (Exception e) {
+            PrintLog.print(TAG, e.getMessage());
+            e.printStackTrace();
+            return "0";
+        }
+    }
+    public static String setEro(Context context, String SupplierId) {
+
+        try {
+            saveInPreference(context, "ERO_NO", SupplierId);
+        } catch (Exception e) {
+            PrintLog.print(TAG, e.getMessage());
+            e.printStackTrace();
+        }
+        return SupplierId;
+    }
+
+    public static String getEro(Context context) {
+        try {
+            return getFromPreference(context, "ERO_NO", "");
+        } catch (Exception e) {
+            PrintLog.print(TAG, e.getMessage());
+            e.printStackTrace();
+            return "0";
+        }
+    }
+    public static String setAREA(Context context, String SupplierId) {
+
+        try {
+            saveInPreference(context, "AREA_NO", SupplierId);
+        } catch (Exception e) {
+            PrintLog.print(TAG, e.getMessage());
+            e.printStackTrace();
+        }
+        return SupplierId;
+    }
+
+    public static String getAREA(Context context) {
+        try {
+            return getFromPreference(context, "AREA_NO", "");
+        } catch (Exception e) {
+            PrintLog.print(TAG, e.getMessage());
+            e.printStackTrace();
+            return "0";
+        }
+    }
+
 
 
 

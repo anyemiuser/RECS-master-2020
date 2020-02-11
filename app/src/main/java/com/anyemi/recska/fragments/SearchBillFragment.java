@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.InputFilter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,7 @@ import com.anyemi.recska.bgtask.BackgroundThread;
 import com.anyemi.recska.connection.Constants;
 import com.anyemi.recska.connection.HomeServices;
 import com.anyemi.recska.model.AreaModel;
+import com.anyemi.recska.model.CollectionsModel;
 import com.anyemi.recska.model.DemandModelNew;
 import com.anyemi.recska.model.PaymentRequestModel;
 import com.anyemi.recska.model.RegisterModel;
@@ -119,6 +121,7 @@ public class SearchBillFragment extends Fragment {
         initData();
 
 
+
         aryTaxNames.clear();
         aryTaxIds.clear();
 
@@ -127,6 +130,8 @@ public class SearchBillFragment extends Fragment {
 
         paymentMethods.clear();
         paymentMethods.addAll(Arrays.asList(getResources().getStringArray(R.array.payment_names)));
+
+        attemptLogin(SharedPreferenceUtil.getUserId(getActivity()));
 
         return rootView;
     }
@@ -164,7 +169,16 @@ public class SearchBillFragment extends Fragment {
 
             ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_item, areas_names);
             spnr_village.setAdapter(adapter);
-
+          /*  Log.e("spnr_tax_type",SharedPreferenceUtil.getEro(getActivity()));
+            if(!SharedPreferenceUtil.getEro(getActivity()).equals("")){
+                spnr_type.setSelection(Integer.parseInt(SharedPreferenceUtil.getEro(getActivity())));
+            }
+            if(!SharedPreferenceUtil.getAREA(getActivity()).equals("")){
+                spnr_village.setSelection(Integer.parseInt(SharedPreferenceUtil.getAREA(getActivity())));
+            }
+            if(!SharedPreferenceUtil.getServiceNo(getActivity()).equals("")){
+                et_search.setText(SharedPreferenceUtil.getServiceNo(getActivity()));
+            }*/
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -202,6 +216,7 @@ public class SearchBillFragment extends Fragment {
         act_search.setThreshold(2);
         act_search.setAdapter(adapter);
 
+
         act_search.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -210,6 +225,7 @@ public class SearchBillFragment extends Fragment {
                 et_search.setText(areas_service_codes.get(index));
             }
         });
+
 
         //btn_search.setFilters(new InputFilter[]{filter,new InputFilter.LengthFilter(10)});
 
@@ -270,6 +286,8 @@ public class SearchBillFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> arg0) {
             }
         });
+
+
 
 
         spnr_tax_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -911,6 +929,10 @@ public class SearchBillFragment extends Fragment {
                 try {
                     if (data != null || data.equals("")) {
 
+                        SharedPreferenceUtil.setServiceNo(getActivity(),et_search.getText().toString());
+                        SharedPreferenceUtil.setEro(getActivity(),spnr_type.getSelectedItemPosition()+"");
+                        SharedPreferenceUtil.setAREA(getActivity(),spnr_village.getSelectedItemPosition()+"");
+
                         Gson gson = new Gson();
                         mResponsedata = new DemandModelNew();
                         mResponsedata = gson.fromJson(data.toString(), DemandModelNew.class);
@@ -954,6 +976,7 @@ public class SearchBillFragment extends Fragment {
             requestObject.put("property_type", tax_type);
             requestObject.put("user_id", SharedPreferenceUtil.getUserId(getActivity()));
             requestObject.put("version_id", "0.1");
+
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -1108,6 +1131,28 @@ public class SearchBillFragment extends Fragment {
             return "";
         }
     }
+    private void attemptLogin(final String id) {
+        new BackgroundTask(getActivity(), new BackgroundThread() {
+            @Override
+            public Object runTask() {
+                return HomeServices.getCollections(getActivity(), id);
+            }
+
+            public void taskCompleted(Object data) {
+
+                if (data != null || data.equals("")) {
+                    Gson gson = new Gson();
+                    CollectionsModel mResponsedata = new CollectionsModel();
+                    mResponsedata = gson.fromJson(data.toString(), CollectionsModel.class);
+                    String text=mResponsedata.getCollections().get(0).getLoan_number();
+                    et_search.setText(text);
+                } else {
+                    Globals.showToast(getContext(), "No Data Found");
+                }
+            }
+        }, getString(R.string.loading_txt)).execute();
+    }
+
 
 }
 
