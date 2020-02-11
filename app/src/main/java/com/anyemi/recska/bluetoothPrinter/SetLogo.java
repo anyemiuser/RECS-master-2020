@@ -49,6 +49,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.anyemi.recska.R;
+import com.anyemi.recska.utils.SharedPreferenceUtil;
 import com.ngx.DebugLog;
 import com.ngx.NgxImageFactory;
 
@@ -86,6 +87,7 @@ public class SetLogo extends Fragment {
 
 				boolean r  = BluetoothPrinterMain.mBtp.setLogo(fileUri.getPath(), bIgnoreAlpha, bInvertBitmap, threshold);
 				if (r) {
+					SharedPreferenceUtil.saveInPreference(getContext(),"LogoUri",fileUri.toString());
 					Toast.makeText(getActivity(), "Set Logo OK",
 							Toast.LENGTH_SHORT).show();
 				} else {
