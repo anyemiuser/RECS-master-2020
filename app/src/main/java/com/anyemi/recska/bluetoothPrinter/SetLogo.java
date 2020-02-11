@@ -85,6 +85,10 @@ public class SetLogo extends Fragment {
 				}
 				DebugLog.logTrace("A : " + bIgnoreAlpha + " I : " + bInvertBitmap + " T : " + threshold);
 
+				if(fileUri!=null){
+					SharedPreferenceUtil.saveInPreference(getContext(),"LogoUri",fileUri.toString());
+
+				}
 				boolean r  = BluetoothPrinterMain.mBtp.setLogo(fileUri.getPath(), bIgnoreAlpha, bInvertBitmap, threshold);
 				if (r) {
                     Log.e("fileUri",fileUri+" logo");
