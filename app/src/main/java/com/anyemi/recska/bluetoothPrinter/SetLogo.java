@@ -87,7 +87,9 @@ public class SetLogo extends Fragment {
 
 				boolean r  = BluetoothPrinterMain.mBtp.setLogo(fileUri.getPath(), bIgnoreAlpha, bInvertBitmap, threshold);
 				if (r) {
-					SharedPreferenceUtil.saveInPreference(getContext(),"LogoUri",fileUri.toString());
+                    Log.e("fileUri",fileUri+" logo");
+
+                    SharedPreferenceUtil.saveInPreference(getContext(),"LogoUri",fileUri.toString());
 					Toast.makeText(getActivity(), "Set Logo OK",
 							Toast.LENGTH_SHORT).show();
 				} else {

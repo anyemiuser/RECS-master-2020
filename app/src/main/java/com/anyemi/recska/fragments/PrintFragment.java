@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,6 +70,7 @@ public class PrintFragment extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.ascii_layout, container, false);
         r_bundle = getActivity().getIntent().getExtras();
         String uri=SharedPreferenceUtil.getFromPreference(getContext(),"LogoUri","");
+        Log.e("LogoUri",uri+" logo");
         if(uri!="")
             fileUri= Uri.parse(uri);
         String data = r_bundle.getString("print_data");
