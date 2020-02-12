@@ -71,6 +71,8 @@ public class Constants {
     public static final String POST_PAYMENT_REQUEST_TWO = base_url + "meTranStatusQueryWeb";
     public static final String POST_PAYMENT_REGISTER = base_url + "register";
     public static final String POST_FEEDBACK = base_url + "feedback";
+    public static final String POST_FEEDBACK_NEW = base_url + "mod_feedback";
+
     public static final String POST_UPDATE_PROFILE = base_url + "updateprofile";
     public static final String POST_UPDATE_NUMBER = base_url + "updatePhoneNumber";
     public static final String POST_UPDATE_AADHAR = base_url + "updateUpdateAadhar";
@@ -83,6 +85,7 @@ public class Constants {
     public static final String GET_BANKS = base_url + "getbanks";
     public static final String GET_BRANCHES = base_url + "getbranches";
     public static final String POST_REPORTS = base_url + "PaymentWiseTranscitions";
+    public static final String POST_REPORTS_NEW = base_url + "mod_PaymentWiseTranscitions";
 
 
     public static final String GET_INSTA_PAYMENT_MODES = base_url + "instpmodes_servtax ";

@@ -39,6 +39,35 @@ public class ReportsModel {
         private Object payment_type;
         private String Totalamount;
 
+        public String getBillamount() {
+            return Billamount;
+        }
+
+        public void setBillamount(String billamount) {
+            Billamount = billamount;
+        }
+
+        public String getAdjustmentamount() {
+            return Adjustmentamount;
+        }
+
+        public void setAdjustmentamount(String adjustmentamount) {
+            Adjustmentamount = adjustmentamount;
+        }
+
+        public String getArrearsamount() {
+            return Arrearsamount;
+        }
+
+        public void setArrearsamount(String arrearsamount) {
+            Arrearsamount = arrearsamount;
+        }
+
+        private String Billamount;
+        private String Adjustmentamount;
+        private String Arrearsamount;
+
+
         public String getTotalTranscitions() {
             return TotalTranscitions;
         }

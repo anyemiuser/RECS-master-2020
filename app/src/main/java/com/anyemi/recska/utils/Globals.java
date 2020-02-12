@@ -10,7 +10,12 @@ import android.widget.Toast;
 
 import com.anyemi.recska.NavigationActivity;
 import com.anyemi.recska.R;
+import com.anyemi.recska.activities.CollectionsDetailsActivity;
+import com.anyemi.recska.bgtask.BackgroundTask;
+import com.anyemi.recska.bgtask.BackgroundThread;
 import com.anyemi.recska.connection.Constants;
+import com.anyemi.recska.connection.HomeServices;
+import com.anyemi.recska.model.CollectionsModel;
 import com.anyemi.recska.model.InstamojoPaymentModel;
 import com.anyemi.recska.model.PaymentRequestModel;
 import com.google.gson.Gson;
@@ -149,12 +154,42 @@ public class Globals {
 
 
     public static void ProceedNextScreen(final Context context, final PaymentRequestModel paymentRequestModel) {
+        String l_type = SharedPreferenceUtil.getLoginType(context);
 
         try {
-            Intent intent = new Intent(context, NavigationActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            intent.putExtra("FRAGMENT", "COLLECTION");
-            context.startActivity(intent);
+            if(l_type.equals(Constants.LOGIN_TYPE_CUSTOMER)) {
+                Intent intent = new Intent(context, NavigationActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.putExtra("FRAGMENT", "COLLECTION");
+                context.startActivity(intent);
+            }else {
+                final Gson gson=new Gson();
+                new BackgroundTask(context, new BackgroundThread() {
+                    @Override
+                    public Object runTask() {
+                        return HomeServices.getCollections(context, SharedPreferenceUtil.getUserId(context)+"&loan_number="+paymentRequestModel.getAssessment_id()+"");
+                    }
+
+                    public void taskCompleted(Object data) {
+
+                        if (data != null || data.equals("")) {
+                           // parseData(data);
+                            CollectionsModel mResponsedata = new CollectionsModel();
+                            mResponsedata = gson.fromJson(data.toString(), CollectionsModel.class);
+                            ArrayList<CollectionsModel.CollectionsBean> SCollections = new ArrayList<>();
+                            SCollections.addAll(mResponsedata.getCollections());
+                            Gson gson = new Gson();
+                            Intent i = new Intent(context, CollectionsDetailsActivity.class);
+                            i.putExtra(Constants.PAYMENTS_DATA, gson.toJson(SCollections.get(0)));
+                            context.startActivity(i);
+
+                        } else {
+                            Globals.showToast(context, "No Data Found");
+                        }
+                    }
+                }, context.getString(R.string.loading_txt)).execute();
+
+            }
 
             Globals.showToast(context, "Payment Successful");
         }catch (Exception e){

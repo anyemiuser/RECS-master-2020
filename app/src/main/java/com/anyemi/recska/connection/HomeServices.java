@@ -136,7 +136,7 @@ public class HomeServices {
 
     public static Object getReports(Context aContext, String loginRequest) {
         try {
-            return Connection.callHttpPostRequestsV2Jobj(aContext, Constants.POST_REPORTS, loginRequest);
+            return Connection.callHttpPostRequestsV2Jobj(aContext, Constants.POST_REPORTS_NEW, loginRequest);
         } catch (Exception e) {
             e.printStackTrace();
             return e;
@@ -193,7 +193,7 @@ public class HomeServices {
 
     public static Object submitFeedBack(Context aContext, String request) {
         try {
-            return Connection.callHttpPostRequestsV2Jobj(aContext, Constants.POST_FEEDBACK, request);
+            return Connection.callHttpPostRequestsV2Jobj(aContext, Constants.POST_FEEDBACK_NEW, request);
         } catch (Exception e) {
             e.printStackTrace();
             return e;

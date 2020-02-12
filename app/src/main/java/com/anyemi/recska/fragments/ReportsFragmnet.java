@@ -170,7 +170,8 @@ public class ReportsFragmnet extends Fragment {
                         new DatePickerDialog(getActivity(), dpd, mYear, mMonth, mDay);
                 dialog.show();
             }
-        }); btn_search.setOnClickListener(new View.OnClickListener() {
+        });
+        btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (btn_from_date.getText().toString().equals("")) {
@@ -228,6 +229,13 @@ public class ReportsFragmnet extends Fragment {
                 _listView = new ViewHolder();
                 _listView.ll_item = convertView.findViewById(R.id.ll_item);
                 _listView.tv_c_name = convertView.findViewById(R.id.tv_c_name);
+                _listView.tv_a_name = convertView.findViewById(R.id.tv_a_name);
+                _listView.tv_a_amount = convertView.findViewById(R.id.tv_a_amount);
+                _listView.tv_ad_name = convertView.findViewById(R.id.tv_ad_name);
+                _listView.tv_ad_amount = convertView.findViewById(R.id.tv_ad_amount);
+                _listView.tv_t_amount = convertView.findViewById(R.id.tv_t_amount);
+                _listView.tv_t_name = convertView.findViewById(R.id.tv_t_name);
+
                 _listView.tv_s_amount = convertView.findViewById(R.id.tv_s_amount);
                 _listView.tv_s_number = convertView.findViewById(R.id.tv_s_number);
                 _listView.tv_payment_date = convertView.findViewById(R.id.tv_payment_date);
@@ -268,12 +276,24 @@ public class ReportsFragmnet extends Fragment {
 
 
 
-                _listView.tv_c_name.setText("Total Amount");
+                _listView.tv_c_name.setText("Bill Amount");
+                _listView.tv_ad_name.setText("Adjustment Amount");
+                _listView.tv_a_name.setText("Arears Amount");
+                _listView.tv_t_name.setText("Total Amount");
+
                 _listView.tv_s_number.setText("Total Number of Transactions " + tenant_matches_listings.get(position).getTotalTranscitions());
 
              try {
-                 String resultStr = Utils.parseAmount(String.valueOf(tenant_matches_listings.get(position).getTotalamount()));
-                 _listView.tv_s_amount.setText(getResources().getString(R.string.Rs) + " " + resultStr + " /-");
+                 String billAmount = Utils.parseAmount(String.valueOf(tenant_matches_listings.get(position).getBillamount()));
+                 String arear = Utils.parseAmount(String.valueOf(tenant_matches_listings.get(position).getArrearsamount()));
+                 String admount = Utils.parseAmount(String.valueOf(tenant_matches_listings.get(position).getAdjustmentamount()));
+                 String total = Utils.parseAmount(String.valueOf(tenant_matches_listings.get(position).getTotalamount()));
+
+                 _listView.tv_s_amount.setText(getResources().getString(R.string.Rs)+"  "+ billAmount);
+                 _listView.tv_ad_amount.setText(getResources().getString(R.string.Rs)+"  "+ admount);
+                 _listView.tv_a_amount.setText(getResources().getString(R.string.Rs)+"  "+ arear);
+                 _listView.tv_t_amount.setText(getResources().getString(R.string.Rs)+"  "+ total);
+
              }catch (Exception e){
 
              }
@@ -286,7 +306,7 @@ public class ReportsFragmnet extends Fragment {
 
         class ViewHolder {
 
-            TextView tv_c_name, tv_s_number, tv_s_amount, tv_payment_date;
+            TextView tv_c_name, tv_s_number, tv_s_amount, tv_payment_date,tv_a_name,tv_a_amount,tv_ad_name,tv_ad_amount,tv_t_name,tv_t_amount;
             LinearLayout ll_item;
             Button viewDetails;
             ImageView iv_payment_type;
@@ -300,8 +320,6 @@ public class ReportsFragmnet extends Fragment {
             public Object runTask() {
                 return HomeServices.getReports(getActivity(), prepareRequest());
             }
-
-
 
             public void taskCompleted(Object data) {
 

@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.anyemi.recska.NavigationActivity;
 import com.anyemi.recska.R;
@@ -64,7 +65,7 @@ public class feedBackFragment extends Fragment implements View.OnClickListener, 
     ArrayList<String> ero_ids_array = new ArrayList<>();
     Object rdata;
     String query = "";
-    String ero_id = "0";
+    String ero_id = "0",type="";
     public feedBackFragment() {
     }
 
@@ -224,6 +225,8 @@ public class feedBackFragment extends Fragment implements View.OnClickListener, 
         if (et_service_no.getText().toString().equals("")) {
             til_service_no.setError("Please enter Service Number");
             et_service_no.requestFocus();
+        } else if (issue_type.getSelectedItemPosition()==0) {
+            Toast.makeText(getActivity(),"Please select Issue Type",Toast.LENGTH_SHORT).show();
         }
        else if (et_name.getText().toString().equals("")) {
             til_name.setError("Please enter Name");
@@ -302,6 +305,8 @@ public class feedBackFragment extends Fragment implements View.OnClickListener, 
     }
 
     private String prepareRegisterRequest() {
+        type=issue_type.getSelectedItem().toString();
+
         try {
             JSONObject jsonObject;
             jsonObject = new JSONObject();
@@ -312,6 +317,8 @@ public class feedBackFragment extends Fragment implements View.OnClickListener, 
             jsonObject.put("mobile_number", et_phone_num.getText().toString());
             jsonObject.put("message", et_conform_password.getText().toString());
             jsonObject.put("servicenumber", et_service_no.getText().toString());
+            jsonObject.put("type", type);
+            jsonObject.put("eroid", ero_id);
 
             return jsonObject.toString();
         } catch (Exception e) {
