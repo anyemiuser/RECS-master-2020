@@ -1144,8 +1144,10 @@ public class SearchBillFragment extends Fragment {
                     Gson gson = new Gson();
                     CollectionsModel mResponsedata = new CollectionsModel();
                     mResponsedata = gson.fromJson(data.toString(), CollectionsModel.class);
-                    String text=mResponsedata.getCollections().get(0).getLoan_number();
-                    et_search.setText(text);
+                    if(mResponsedata.getCollections()!=null) {
+                        String text = mResponsedata.getCollections().get(0).getLoan_number();
+                        et_search.setText(text);
+                    }
                 } else {
                     Globals.showToast(getContext(), "No Data Found");
                 }

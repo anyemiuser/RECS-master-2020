@@ -160,6 +160,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         }
 
         if (frag_name.equals("COLLECTION")) {
+            aTitle.setText("Collections");
             fragment = new CollectionsFragment();
             getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).commit();
 

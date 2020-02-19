@@ -3,6 +3,7 @@ package com.anyemi.recska.utils;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.TypedValue;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -163,11 +164,12 @@ public class Globals {
                 intent.putExtra("FRAGMENT", "COLLECTION");
                 context.startActivity(intent);
             }else {
+                Log.e("l_type",l_type);
                 final Gson gson=new Gson();
                 new BackgroundTask(context, new BackgroundThread() {
                     @Override
                     public Object runTask() {
-                        return HomeServices.getCollections(context, SharedPreferenceUtil.getUserId(context)+"&loan_number="+paymentRequestModel.getAssessment_id()+"");
+                        return HomeServices.getCollections(context, SharedPreferenceUtil.getUserId(context)+"&loan_number="+SharedPreferenceUtil.getServiceNo(context)+"");
                     }
 
                     public void taskCompleted(Object data) {
@@ -181,7 +183,9 @@ public class Globals {
                             Gson gson = new Gson();
                             Intent i = new Intent(context, CollectionsDetailsActivity.class);
                             i.putExtra(Constants.PAYMENTS_DATA, gson.toJson(SCollections.get(0)));
+                            i.putExtra("redirect","collection");
                             context.startActivity(i);
+
 
                         } else {
                             Globals.showToast(context, "No Data Found");

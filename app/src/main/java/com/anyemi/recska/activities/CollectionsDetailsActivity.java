@@ -23,6 +23,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.anyemi.recska.NavigationActivity;
 import com.anyemi.recska.R;
 import com.anyemi.recska.bluetoothPrinter.BluetoothPrinterMain;
 import com.anyemi.recska.connection.Constants;
@@ -625,11 +626,33 @@ public class CollectionsDetailsActivity extends AppCompatActivity implements Vie
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                finish();
+                if(getIntent().getStringExtra("redirect").equals("collection")){
+                    Intent intent = new Intent(context, NavigationActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    intent.putExtra("FRAGMENT", "COLLECTION");
+                    context.startActivity(intent);
+                }else
+                    finish();
+
+
                 break;
             default:
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if(getIntent().getStringExtra("redirect").equals("collection")){
+            Intent intent = new Intent(context, NavigationActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.putExtra("FRAGMENT", "COLLECTION");
+            context.startActivity(intent);
+        }else
+            finish();
+
+
     }
 }
