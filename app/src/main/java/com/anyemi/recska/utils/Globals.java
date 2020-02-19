@@ -182,6 +182,7 @@ public class Globals {
                             SCollections.addAll(mResponsedata.getCollections());
                             Gson gson = new Gson();
                             Intent i = new Intent(context, CollectionsDetailsActivity.class);
+                            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             i.putExtra(Constants.PAYMENTS_DATA, gson.toJson(SCollections.get(0)));
                             i.putExtra("redirect","collection");
                             context.startActivity(i);

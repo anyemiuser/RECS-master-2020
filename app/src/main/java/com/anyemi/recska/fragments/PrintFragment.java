@@ -645,6 +645,7 @@ public class PrintFragment extends Fragment implements View.OnClickListener {
                                     options);
 */
                                 Bitmap bitmap = NgxImageFactory.LoadLogo(fileUri.getPath());
+                                woyouService.setAlignment(1, callback);
                                 woyouService.printBitmap(bitmap, callback);
                             }
 

@@ -629,7 +629,7 @@ public class CollectionsDetailsActivity extends AppCompatActivity implements Vie
                 if(getIntent().getStringExtra("redirect").equals("collection")){
                     Intent intent = new Intent(context, NavigationActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    intent.putExtra("FRAGMENT", "COLLECTION");
+                //    intent.putExtra("FRAGMENT", "COLLECTION");
                     context.startActivity(intent);
                 }else
                     finish();
@@ -648,7 +648,7 @@ public class CollectionsDetailsActivity extends AppCompatActivity implements Vie
         if(getIntent().getStringExtra("redirect").equals("collection")){
             Intent intent = new Intent(context, NavigationActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            intent.putExtra("FRAGMENT", "COLLECTION");
+         //   intent.putExtra("FRAGMENT", "COLLECTION");
             context.startActivity(intent);
         }else
             finish();
