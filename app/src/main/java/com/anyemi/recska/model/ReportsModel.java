@@ -67,6 +67,26 @@ public class ReportsModel {
         private String Adjustmentamount;
         private String Arrearsamount;
 
+        public String getReconnection_fee() {
+            return Reconnection_fee;
+        }
+
+        public void setReconnection_fee(String reconnection_fee) {
+            Reconnection_fee = reconnection_fee;
+        }
+
+        private String Reconnection_fee;
+
+        public String getPayment_mode_name() {
+            return payment_mode_name;
+        }
+
+        public void setPayment_mode_name(String payment_mode_name) {
+            this.payment_mode_name = payment_mode_name;
+        }
+
+        private String payment_mode_name;
+
 
         public String getTotalTranscitions() {
             return TotalTranscitions;

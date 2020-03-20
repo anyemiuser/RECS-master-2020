@@ -204,6 +204,44 @@
                             android:text=""
                             android:textColor="@color/TextColor.Black" />
                         </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                        <com.anyemi.recska.ui_components.MyTextViewArial
+
+                            style="@style/TextView.Standard"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:gravity="left|center"
+                            android:textSize="13sp"
+                            android:text="Reconnection fees"
+                            android:textColor="@color/TextColor.Black" />
+
+
+                        <com.anyemi.recska.ui_components.MyTextViewArial
+                            android:id="@+id/tv_reconnection_fee"
+                            style="@style/TextView.Standard"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:gravity="right|center"
+                            android:textSize="13sp"
+                            android:text=""
+                            android:textColor="@color/TextColor.Black" />
+                        </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                         <LinearLayout

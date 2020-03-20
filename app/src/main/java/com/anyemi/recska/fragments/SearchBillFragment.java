@@ -889,9 +889,12 @@ public class SearchBillFragment extends Fragment {
         }
 
         class ViewHolder {
-            TextView tv_due_date, tv_due, tv_surcharge, tv_last_paid_amount, tv_last_paid_date, tv_fine, tv_total, tv_rec, tv_adj_amount, tv_arrears;
+            TextView tv_due_date, tv_surcharge, tv_last_paid_amount, tv_last_paid_date, tv_fine, tv_total,
+                    tv_rec, tv_adj_amount ;
             LinearLayout ll_item;
             CheckBox chbk_check_amount;
+
+            EditText tv_due,tv_arrears;
         }
     }
 

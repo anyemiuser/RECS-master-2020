@@ -155,11 +155,11 @@
                     android:gravity="left|center"
                     android:text="Last Paid Amount" />
 
-                <TextView
+                <EditText
                     android:id="@+id/tv_due"
                     style="@style/TextView.Standard"
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
+                    android:layout_height="60dp"
                     android:gravity="left|center"
                     android:text="Bill Amount" />
 
@@ -172,11 +172,11 @@
                     android:layout_height="35dp"
                     android:gravity="left|center"
                     android:text="Adj Amount" />
-                <TextView
+                <EditText
                     android:id="@+id/tv_arrears"
                     style="@style/TextView.Standard"
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
+                    android:layout_height="60dp"
                     android:gravity="left|center"
                     android:text="Arrears" />
 
