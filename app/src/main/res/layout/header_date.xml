@@ -27,7 +27,6 @@
                 android:background="@drawable/button_shape2"
                 android:gravity="center"
                 android:layout_gravity="center"
-
                 android:text="From Date"
                 android:textColor="@color/background"
                 android:textSize="18sp" />
@@ -42,10 +41,24 @@
                 android:background="@drawable/button_shape2"
                 android:gravity="center"
                 android:layout_gravity="center"
-
                 android:text="To Date"
                 android:textColor="@color/background"
                 android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/spnr_p_modes"
+            style="@style/TextView.MainHeader"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:padding="7dp"
+            android:layout_weight="1"
+            android:background="@drawable/dropdown_new"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="Get Data"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/background"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/btn_search"
@@ -56,11 +69,12 @@
             android:background="@drawable/button_shape2"
             android:gravity="center"
             android:layout_gravity="center"
-
             android:text="Get Data"
             android:layout_marginTop="15dp"
             android:textColor="@color/background"
             android:textSize="18sp" />
+
+
         </LinearLayout>
 
 

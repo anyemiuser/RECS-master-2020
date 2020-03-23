@@ -11,6 +11,7 @@ import android.text.format.Time;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -39,6 +40,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 
 public class ReportsFragmnet extends Fragment {
@@ -48,6 +50,8 @@ public class ReportsFragmnet extends Fragment {
 
     ListView lv_my_account;
     Button btn_search;
+Spinner spnr_p_modes;
+    ArrayList<String> paymmentModesNames = new ArrayList<>();
 
     Button btn_to_date,btn_from_date;
     LinearLayout linearLayout;
@@ -110,6 +114,12 @@ public class ReportsFragmnet extends Fragment {
         btn_from_date = header.findViewById(R.id.btn_from_date);
         btn_to_date = header.findViewById(R.id.btn_to_date);
         btn_search = header.findViewById(R.id.btn_search);
+        spnr_p_modes = header.findViewById(R.id.spnr_p_modes);
+
+        paymmentModesNames.addAll(Arrays.asList(getResources().getStringArray(R.array.payment_names)));
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_item, paymmentModesNames);
+        spnr_p_modes.setAdapter(adapter);
 
 
 
@@ -235,6 +245,7 @@ public class ReportsFragmnet extends Fragment {
                 _listView.tv_ad_amount = convertView.findViewById(R.id.tv_ad_amount);
                 _listView.tv_t_amount = convertView.findViewById(R.id.tv_t_amount);
                 _listView.tv_t_name = convertView.findViewById(R.id.tv_t_name);
+                _listView.tv_reconnection_fee = convertView.findViewById(R.id.tv_reconnection_fee);
 
                 _listView.tv_s_amount = convertView.findViewById(R.id.tv_s_amount);
                 _listView.tv_s_number = convertView.findViewById(R.id.tv_s_number);
@@ -252,6 +263,7 @@ public class ReportsFragmnet extends Fragment {
 
                 if (tenant_matches_listings.get(position).getPayment_type().equals(Constants.PAYMENT_MODE_AADHAR)) {
                     _listView.iv_payment_type.setBackground(getResources().getDrawable(R.drawable.aadharhdpi));
+
                 } else if (tenant_matches_listings.get(position).getPayment_type().equals(Constants.PAYMENT_MODE_BHARATH_QR)) {
                     _listView.iv_payment_type.setBackground(getResources().getDrawable(R.drawable.bharath_qr));
                 } else if (tenant_matches_listings.get(position).getPayment_type().equals(Constants.PAYMENT_MODE_BHIM)) {
@@ -272,16 +284,21 @@ public class ReportsFragmnet extends Fragment {
                     _listView.iv_payment_type.setBackground(getResources().getDrawable(R.drawable.any_emi_launcher));
                 }
 
-                _listView.tv_payment_date.setVisibility(View.GONE);
+                _listView.tv_payment_date.setText(tenant_matches_listings.get(position).getPayment_mode_name());
+
+              //  _listView.tv_payment_date.setVisibility(View.GONE);
+              //  _listView.tv_payment_date.setVisibility();
 
 
 
                 _listView.tv_c_name.setText("Bill Amount");
+                _listView.tv_reconnection_fee.setText(tenant_matches_listings.get(position).getReconnection_fee());
                 _listView.tv_ad_name.setText("Adjustment Amount");
                 _listView.tv_a_name.setText("Arears Amount");
                 _listView.tv_t_name.setText("Total Amount");
 
-                _listView.tv_s_number.setText("Total Number of Transactions " + tenant_matches_listings.get(position).getTotalTranscitions());
+                _listView.tv_s_number.setText("Total Number of Transactions " +
+                        tenant_matches_listings.get(position).getTotalTranscitions());
 
              try {
                  String billAmount = Utils.parseAmount(String.valueOf(tenant_matches_listings.get(position).getBillamount()));
@@ -306,7 +323,7 @@ public class ReportsFragmnet extends Fragment {
 
         class ViewHolder {
 
-            TextView tv_c_name, tv_s_number, tv_s_amount, tv_payment_date,tv_a_name,tv_a_amount,tv_ad_name,tv_ad_amount,tv_t_name,tv_t_amount;
+            TextView tv_c_name,tv_reconnection_fee, tv_s_number, tv_s_amount, tv_payment_date,tv_a_name,tv_a_amount,tv_ad_name,tv_ad_amount,tv_t_name,tv_t_amount;
             LinearLayout ll_item;
             Button viewDetails;
             ImageView iv_payment_type;
@@ -345,6 +362,7 @@ public class ReportsFragmnet extends Fragment {
             requestObject.put("fdate", btn_from_date.getText().toString());
             requestObject.put("tdate",  btn_to_date.getText().toString());
             requestObject.put("user_id",SharedPreferenceUtil.getUserId(getActivity()) );
+            requestObject.put("P_MODES",spnr_p_modes.getSelectedItem().toString() );
 
         } catch (JSONException e) {
             e.printStackTrace();
