@@ -211,8 +211,9 @@
                         <com.anyemi.recska.ui_components.MyTextViewArial
 
                             style="@style/TextView.Standard"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="30dp"
+                            android:layout_weight="1"
                             android:gravity="left|center"
                             android:textSize="13sp"
                             android:text="Reconnection fees"
@@ -258,7 +259,7 @@
                                 android:textSize="12sp"
                                 android:gravity="left|center"
 
-                                android:textColor="@color/TextColor.Gray"
+                                android:textColor="@color/TextColor.Black"
                                 android:text="date" />
 
                             <ImageView

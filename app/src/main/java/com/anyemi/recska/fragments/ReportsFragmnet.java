@@ -52,6 +52,7 @@ public class ReportsFragmnet extends Fragment {
     Button btn_search;
 Spinner spnr_p_modes;
     ArrayList<String> paymmentModesNames = new ArrayList<>();
+    ArrayList<String> paymmentModesIds = new ArrayList<>();
 
     Button btn_to_date,btn_from_date;
     LinearLayout linearLayout;
@@ -117,6 +118,7 @@ Spinner spnr_p_modes;
         spnr_p_modes = header.findViewById(R.id.spnr_p_modes);
 
         paymmentModesNames.addAll(Arrays.asList(getResources().getStringArray(R.array.payment_names)));
+        paymmentModesIds.addAll(Arrays.asList(getResources().getStringArray(R.array.payment_ids)));
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_item, paymmentModesNames);
         spnr_p_modes.setAdapter(adapter);
@@ -284,7 +286,11 @@ Spinner spnr_p_modes;
                     _listView.iv_payment_type.setBackground(getResources().getDrawable(R.drawable.any_emi_launcher));
                 }
 
-                _listView.tv_payment_date.setText(tenant_matches_listings.get(position).getPayment_mode_name());
+
+                int index =paymmentModesIds.indexOf(tenant_matches_listings.get(position).getPayment_type());
+
+
+                _listView.tv_payment_date.setText(paymmentModesNames.get(index));
 
               //  _listView.tv_payment_date.setVisibility(View.GONE);
               //  _listView.tv_payment_date.setVisibility();
@@ -359,10 +365,14 @@ Spinner spnr_p_modes;
 
         JSONObject requestObject = new JSONObject();
         try {
+
+            int index=spnr_p_modes.getSelectedItemPosition();
+
+
             requestObject.put("fdate", btn_from_date.getText().toString());
             requestObject.put("tdate",  btn_to_date.getText().toString());
             requestObject.put("user_id",SharedPreferenceUtil.getUserId(getActivity()) );
-            requestObject.put("P_MODES",spnr_p_modes.getSelectedItem().toString() );
+            requestObject.put("P_MODES",   paymmentModesIds.get(index));
 
         } catch (JSONException e) {
             e.printStackTrace();

@@ -99,6 +99,7 @@
 
 
     <string-array name="payment_names">
+        <item>All</item>
         <item>*99#</item>
         <item>Aadhar Pay</item>
         <item>Bharat QR</item>
@@ -120,6 +121,7 @@
     </string-array>
 
     <string-array name="payment_ids">
+        <item></item>
         <item>*99#</item>
         <item>AADHAR</item>
         <item>BQ</item>

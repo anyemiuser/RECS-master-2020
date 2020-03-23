@@ -68,14 +68,14 @@ public class ReportsModel {
         private String Arrearsamount;
 
         public String getReconnection_fee() {
-            return Reconnection_fee;
+            return reconnection_fee;
         }
 
         public void setReconnection_fee(String reconnection_fee) {
-            Reconnection_fee = reconnection_fee;
+            reconnection_fee = reconnection_fee;
         }
 
-        private String Reconnection_fee;
+        private String reconnection_fee;
 
         public String getPayment_mode_name() {
             return payment_mode_name;

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.InputFilter;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,7 +56,7 @@ public class SearchBillFragment extends Fragment {
     private View rootView;
 
     Spinner spnr_area_name;
-    Spinner spnr_tax_type,spnr_type,spnr_village;
+    Spinner spnr_tax_type, spnr_type, spnr_village;
     EditText et_search;
     Button btn_search;
     String page, area_id, tax_type;
@@ -68,12 +67,12 @@ public class SearchBillFragment extends Fragment {
     ArrayList<String> ero_ids_array = new ArrayList<>();
 
     ListView lv_my_account;
-    LinearLayout ll_search, ll_details;
+    LinearLayout ll_search, ll_details, ll_footer;
     ListingAdapter mAdapter;
     ArrayList<DemandModelNew.EmiBean> emis = new ArrayList<>();
     ArrayList<DemandModelNew.TaxArrayBean> taxArrayBean = new ArrayList<>();
     TextView tv_c_name, tv_phone_num, tv_aadhar, tv_assment_num, tv_address, tv_ero, tv_tax_type;
-    AutoCompleteTextView act_search ;
+    AutoCompleteTextView act_search;
 
 
     DemandModelNew mResponsedata;
@@ -92,6 +91,9 @@ public class SearchBillFragment extends Fragment {
     String id_string = "";
     String ero_id = "0";
     ViewGroup header;
+
+    EditText et_bill, et_arrear;
+    ViewGroup footer;
     PaymentRequestModel paymentRequestModel;
 
 
@@ -119,7 +121,6 @@ public class SearchBillFragment extends Fragment {
 
         initHeaderView();
         initData();
-
 
 
         aryTaxNames.clear();
@@ -160,7 +161,7 @@ public class SearchBillFragment extends Fragment {
 
             for (int i = 0; i < areas_master.size(); i++) {
 
-                if(areas_master.get(i).getEROCD().equals(ero_id)){
+                if (areas_master.get(i).getEROCD().equals(ero_id)) {
                     areas_names.add(areas_master.get(i).getAREANAME());
                     areas_service_codes.add(areas_master.get(i).getAREACODE());
                 }
@@ -191,6 +192,13 @@ public class SearchBillFragment extends Fragment {
         header = (ViewGroup) inflater.inflate(R.layout.header_deamand_slip, lv_my_account, false);
         lv_my_account.addHeaderView(header, null, false);
 
+        footer = (ViewGroup) inflater.inflate(R.layout.footer_bill_pay, lv_my_account, false);
+        lv_my_account.addFooterView(footer, null, false);
+
+
+        et_bill = footer.findViewById(R.id.et_bill);
+        et_arrear = footer.findViewById(R.id.et_arrear);
+
 
         tv_c_name = header.findViewById(R.id.tv_c_name);
         tv_phone_num = header.findViewById(R.id.tv_phone_num);
@@ -202,7 +210,9 @@ public class SearchBillFragment extends Fragment {
         act_search.setVisibility(View.GONE);
         tv_tax_type = header.findViewById(R.id.tv_tax_type);
         ll_details = header.findViewById(R.id.ll_details);
+        ll_footer = footer.findViewById(R.id.ll_footer);
 
+        ll_footer.setVisibility(View.GONE);
 
         spnr_area_name = header.findViewById(R.id.spnr_area_name);
         spnr_tax_type = header.findViewById(R.id.spnr_tax_type);
@@ -277,7 +287,7 @@ public class SearchBillFragment extends Fragment {
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long arg3) {
 
 
-                   et_search.setText(areas_service_codes.get(position));
+                et_search.setText(areas_service_codes.get(position));
 
 
             }
@@ -286,8 +296,6 @@ public class SearchBillFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> arg0) {
             }
         });
-
-
 
 
         spnr_tax_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -363,20 +371,35 @@ public class SearchBillFragment extends Fragment {
         btn_print_on_device.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mSelectedEmis.size() > 0) {
+                if (performValidations()) {
                     // openPaymentModesActivity();
 
                     calculateAmount();
-                } else {
-                    Globals.showToast(getActivity(), "Please click on Due");
                 }
+            }
+
+            private boolean performValidations() {
+                boolean isValid = false;
+
+                if (mSelectedEmis.size() == 0) {
+                    Globals.showToast(getActivity(), "Please click on Due");
+                } else if (et_bill.getText().toString().equals("")) {
+                    Globals.showToast(getActivity(), "Please Enter Bill Amount");
+                } else if (et_arrear.getText().toString().equals("")) {
+                    Globals.showToast(getActivity(), "Please Enter Arreas Amount");
+                } else {
+                    isValid = true;
+                }
+
+
+                return isValid;
             }
 
 
         });
     }
 
- // method to calculate the total amount consisting of bills, service charge
+    // method to calculate the total amount consisting of bills, service charge
     private void calculateAmount() {
 
         String EMI_ID;
@@ -429,6 +452,9 @@ public class SearchBillFragment extends Fragment {
                 }
 
                 Final_Bill_Amount = Emi_Amount + User_Charge;
+
+                Final_Bill_Amount = Integer.parseInt(et_bill.getText().toString()) +
+                        Integer.parseInt(et_arrear.getText().toString()) + User_Charge;
 
 
                 final_amount = final_amount + Final_Bill_Amount;
@@ -494,7 +520,7 @@ public class SearchBillFragment extends Fragment {
         paymentRequestModel.setCredit_service_tax_(CREDIT_SERVICE_TAX);
         paymentRequestModel.setDebit_service_tax_(DEBIT_SERVICE_TAX);
 
-        paymentRequestModel.setActualDueAmount(ACTUAL_DUE_AMOUNT);
+        paymentRequestModel.setActualDueAmount(et_bill.getText().toString());
         paymentRequestModel.setServiceCharge(SERVICE_CHARGE);
         paymentRequestModel.setTotal_amount(TOTAL_AMOUNT);
         paymentRequestModel.setPayment_through("Mobile");
@@ -623,6 +649,7 @@ public class SearchBillFragment extends Fragment {
     private void setData() {
 
         ll_details.setVisibility(View.VISIBLE);
+        ll_footer.setVisibility(View.VISIBLE);
         btn_print_on_device.setVisibility(View.VISIBLE);
 
         if (mResponsedata.getLoan_details().getCustomer_name() != null) {
@@ -630,9 +657,9 @@ public class SearchBillFragment extends Fragment {
         }
 
         if (mResponsedata.getLoan_details().getPhone() != null && !mResponsedata.getLoan_details().getPhone().equals("")) {
-            String phn= mResponsedata.getLoan_details().getPhone();
-            phn=phn.substring(phn.length() - 3);
-            tv_phone_num.setText("*****"+phn);
+            String phn = mResponsedata.getLoan_details().getPhone();
+            phn = phn.substring(phn.length() - 3);
+            tv_phone_num.setText("*****" + phn);
             tv_phone_num.setTextColor(getResources().getColor(R.color.Standard));
         } else {
             tv_phone_num.setText("Click to Update");
@@ -640,10 +667,10 @@ public class SearchBillFragment extends Fragment {
         }
 
         if (mResponsedata.getLoan_details().getAdhaar() != null && !mResponsedata.getLoan_details().getAdhaar().equals("")) {
-            String phn= mResponsedata.getLoan_details().getAdhaar();
-            phn=phn.substring(phn.length() - 3);
-            tv_aadhar.setText("*****"+phn);
-          //  tv_aadhar.setText(mResponsedata.getLoan_details().getAdhaar().toString());
+            String phn = mResponsedata.getLoan_details().getAdhaar();
+            phn = phn.substring(phn.length() - 3);
+            tv_aadhar.setText("*****" + phn);
+            //  tv_aadhar.setText(mResponsedata.getLoan_details().getAdhaar().toString());
             tv_aadhar.setTextColor(getResources().getColor(R.color.Standard));
         } else {
             tv_aadhar.setText("Click to Update");
@@ -890,11 +917,11 @@ public class SearchBillFragment extends Fragment {
 
         class ViewHolder {
             TextView tv_due_date, tv_surcharge, tv_last_paid_amount, tv_last_paid_date, tv_fine, tv_total,
-                    tv_rec, tv_adj_amount ;
+                    tv_rec, tv_adj_amount;
             LinearLayout ll_item;
             CheckBox chbk_check_amount;
 
-            EditText tv_due,tv_arrears;
+            TextView tv_due, tv_arrears;
         }
     }
 
@@ -932,9 +959,9 @@ public class SearchBillFragment extends Fragment {
                 try {
                     if (data != null || data.equals("")) {
 
-                        SharedPreferenceUtil.setServiceNo(getActivity(),et_search.getText().toString());
-                        SharedPreferenceUtil.setEro(getActivity(),spnr_type.getSelectedItemPosition()+"");
-                        SharedPreferenceUtil.setAREA(getActivity(),spnr_village.getSelectedItemPosition()+"");
+                        SharedPreferenceUtil.setServiceNo(getActivity(), et_search.getText().toString());
+                        SharedPreferenceUtil.setEro(getActivity(), spnr_type.getSelectedItemPosition() + "");
+                        SharedPreferenceUtil.setAREA(getActivity(), spnr_village.getSelectedItemPosition() + "");
 
                         Gson gson = new Gson();
                         mResponsedata = new DemandModelNew();
@@ -1134,6 +1161,7 @@ public class SearchBillFragment extends Fragment {
             return "";
         }
     }
+
     private void attemptLogin(final String id) {
         new BackgroundTask(getActivity(), new BackgroundThread() {
             @Override
@@ -1147,7 +1175,7 @@ public class SearchBillFragment extends Fragment {
                     Gson gson = new Gson();
                     CollectionsModel mResponsedata = new CollectionsModel();
                     mResponsedata = gson.fromJson(data.toString(), CollectionsModel.class);
-                    if(mResponsedata.getCollections()!=null) {
+                    if (mResponsedata.getCollections() != null) {
                         String text = mResponsedata.getCollections().get(0).getLoan_number();
                         et_search.setText(text);
                     }
