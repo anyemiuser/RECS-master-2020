@@ -26,6 +26,7 @@ import com.anyemi.recska.R;
 import com.anyemi.recska.activities.PaymentHistoryActivity;
 import com.anyemi.recska.bgtask.BackgroundTask;
 import com.anyemi.recska.bgtask.BackgroundThread;
+import com.anyemi.recska.bluetoothPrinter.BluetoothPrinterMain;
 import com.anyemi.recska.connection.Constants;
 import com.anyemi.recska.connection.HomeServices;
 import com.anyemi.recska.model.CollectionsModel;
@@ -46,10 +47,10 @@ import java.util.Calendar;
 public class ReportsFragmnet extends Fragment {
 
     private View rootView;
-    ViewGroup header;
+    ViewGroup header,footer;
 
     ListView lv_my_account;
-    Button btn_search;
+    Button btn_search,btnPrint;
 Spinner spnr_p_modes;
     ArrayList<String> paymmentModesNames = new ArrayList<>();
     ArrayList<String> paymmentModesIds = new ArrayList<>();
@@ -110,12 +111,16 @@ Spinner spnr_p_modes;
 
         LayoutInflater inflater = getLayoutInflater();
         header = (ViewGroup) inflater.inflate(R.layout.header_date, lv_my_account, false);
+        footer = (ViewGroup) inflater.inflate(R.layout.footer_print, lv_my_account, false);
+
         lv_my_account.addHeaderView(header, null, false);
+        lv_my_account.addFooterView(footer);
 
         btn_from_date = header.findViewById(R.id.btn_from_date);
         btn_to_date = header.findViewById(R.id.btn_to_date);
         btn_search = header.findViewById(R.id.btn_search);
         spnr_p_modes = header.findViewById(R.id.spnr_p_modes);
+        btnPrint=footer.findViewById(R.id.btn_print);
 
         paymmentModesNames.addAll(Arrays.asList(getResources().getStringArray(R.array.payment_names)));
         paymmentModesIds.addAll(Arrays.asList(getResources().getStringArray(R.array.payment_ids)));
@@ -123,7 +128,15 @@ Spinner spnr_p_modes;
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_item, paymmentModesNames);
         spnr_p_modes.setAdapter(adapter);
 
-
+        btnPrint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Gson gson = new Gson();
+                Intent i = new Intent(getActivity(), BluetoothPrinterMain.class);
+                i.putExtra("reports_data",rdata.toString());
+                startActivity(i);
+            }
+        });
 
         btn_from_date.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -351,10 +364,12 @@ Spinner spnr_p_modes;
                 if (data != null || data.equals("")) {
                     rdata = data;
                     parseData(rdata);
+                    btnPrint.setVisibility(View.VISIBLE);
 
                 } else {
                     Globals.showToast(getContext(), "No Data Found");
                     mReports.clear();
+                    btnPrint.setVisibility(View.GONE);
                     mAdapter.notifyDataSetChanged();
                 }
             }

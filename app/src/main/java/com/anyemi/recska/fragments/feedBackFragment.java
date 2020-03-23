@@ -228,7 +228,7 @@ public class feedBackFragment extends Fragment implements View.OnClickListener, 
         } else if (issue_type.getSelectedItemPosition()==0) {
             Toast.makeText(getActivity(),"Please select Issue Type",Toast.LENGTH_SHORT).show();
         }
-       else if (et_name.getText().toString().equals("")) {
+        else if (et_name.getText().toString().equals("")) {
             til_name.setError("Please enter Name");
             et_name.requestFocus();
         } else if (et_user_name.getText().toString().equals("")) {
@@ -278,25 +278,25 @@ public class feedBackFragment extends Fragment implements View.OnClickListener, 
             public void taskCompleted(Object data) {
 
                 if (data != null || data.equals("")) {
-                        try {
-                            Gson gson = new Gson();
-                            RegisterModel registerModel = new RegisterModel();
-                            registerModel = gson.fromJson(data.toString(), RegisterModel.class);
-                            if (registerModel.getStatus().equals("Success")) {
-                                Globals.showToast(getActivity(), "FeedBack Submit Successfully");
+                    try {
+                        Gson gson = new Gson();
+                        RegisterModel registerModel = new RegisterModel();
+                        registerModel = gson.fromJson(data.toString(), RegisterModel.class);
+                        if (registerModel.getStatus().equals("Success")) {
+                            Globals.showToast(getActivity(), "FeedBack Submit Successfully");
 
-                                Intent intent = new Intent(getActivity(), NavigationActivity.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                startActivity(intent);
+                            Intent intent = new Intent(getActivity(), NavigationActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
 
-                            } else {
-                                Globals.showToast(getActivity(), "Unable Submit FeedBack Please Try again later");
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                        } else {
+                            Globals.showToast(getActivity(), "Unable Submit FeedBack Please Try again later");
                         }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
 
-                    } else {
+                } else {
                     Globals.showToast(getActivity(), "Unable Fetch Dat Please Try again later");
                 }
             }

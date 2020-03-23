@@ -19,6 +19,7 @@ import com.anyemi.recska.bluetoothPrinter.BluetoothPrinterMain;
 import com.anyemi.recska.bluetoothPrinter.SetLogo;
 import com.anyemi.recska.connection.Constants;
 import com.anyemi.recska.model.CollectionsModel;
+import com.anyemi.recska.model.ReportsModel;
 import com.anyemi.recska.utils.Globals;
 import com.anyemi.recska.utils.SharedPreferenceUtil;
 import com.anyemi.recska.utils.Utils;
@@ -59,6 +60,7 @@ public class PrintFragment extends Fragment implements View.OnClickListener {
     ArrayList<String> paymmentModesId = new ArrayList<>();
     ArrayList<String> aryTaxNames = new ArrayList<>();
     ArrayList<String> aryTaxIds = new ArrayList<>();
+    ArrayList<ReportsModel.PaymentWiseTranscitionsDetailsBean> mReports = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -74,6 +76,10 @@ public class PrintFragment extends Fragment implements View.OnClickListener {
         if(uri!="")
             fileUri= Uri.parse(uri);
         String data = r_bundle.getString("print_data");
+        String reportData=r_bundle.getString("reports_data");
+        if(reportData!=null){
+            parseData(reportData);
+        }
 
         paymmentModesNames.clear();
         paymmentModesId.clear();
@@ -89,6 +95,42 @@ public class PrintFragment extends Fragment implements View.OnClickListener {
         printDetails = gson.fromJson(data, CollectionsModel.CollectionsBean.class);
         intiView(view);
         return view;
+    }
+    private void parseData(String data) {
+
+        mReports.clear();
+        Gson gson = new Gson();
+        ReportsModel mResponsedata = new ReportsModel();
+        mResponsedata = gson.fromJson(data, ReportsModel.class);
+        try {
+            mReports.addAll(mResponsedata.getPaymentWiseTranscitionsDetails());
+        } catch (Exception e) {
+            e.printStackTrace();
+            mReports.clear();
+            //Globals.showToast(getActivity(),mResponsedata.getMsg());
+         //   Globals.showToast(getActivity(), "Sorry No data found");
+        }
+        String login_type= SharedPreferenceUtil.getLoginType(getActivity());
+        if(login_type.equals(Constants.LOGIN_TYPE_COLLECTION_AGENT)|| login_type.equals(Constants.LOGIN_TYPE_CUSTOMER)){
+            if(woyouService!=null)
+            for(int i=0;i<mReports.size();i++){
+                try {
+                    woyouService.setAlignment(1, callback);
+                    woyouService.printTextWithFont("\n-------" + "ARECS" + "-------\n", "BOLD", 30, callback);
+                    woyouService.printTextWithFont("Reports\n", "BOLD", fontSize, callback);
+                    woyouService.setAlignment(0,callback);
+                    woyouService.printTextWithFont(mReports.get(i).getPayment_type()+": "+mReports.get(i).getTotalTranscitions()+"\n","",fontSize,callback);
+                    woyouService.printTextWithFont("Bill Amount: "+mReports.get(i).getBillamount()+"\n","",fontSize,callback);
+                    woyouService.printTextWithFont("Adjustment Amount: "+mReports.get(i).getAdjustmentamount()+"\n","",fontSize,callback);
+                    woyouService.printTextWithFont("Arears Amount: "+mReports.get(i).getArrearsamount()+"\n","",fontSize,callback);
+                    woyouService.printTextWithFont("Total Amount: "+mReports.get(i).getTotalamount()+"\n\n","",fontSize,callback);
+
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+            getActivity().finish();
+        }
     }
 
     private void intiView(View v) {
