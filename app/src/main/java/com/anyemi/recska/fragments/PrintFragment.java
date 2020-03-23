@@ -504,7 +504,7 @@ public class PrintFragment extends Fragment implements View.OnClickListener {
                         mBtp.printLineFeed();
                         mBtp.printTextLine("                             Signature");
                         mBtp.printLineFeed();
-                        mBtp.printTextLine("         Thank you Payment Success         ");
+                        mBtp.printTextLine("         Thank you Payment Success        ");
                         mBtp.printTextLine(" *****************************************");
                         mBtp.printLineFeed();
                         mBtp.setPrintFontStyle(BtpCommands.FONT_STYLE_BOLD);
@@ -743,9 +743,9 @@ public class PrintFragment extends Fragment implements View.OnClickListener {
                                 woyouService.printTextWithFont("User Charges  : " + "Rs. " + Utils.parseAmount(printDetails.getService_charge()) + " /-\n", "BOLD", fontSize, callback);
                                 woyouService.printTextWithFont("Bank Charges  : " + "Rs. " + Utils.parseAmount(printDetails.getBank_charges()) + " /-\n", "BOLD", fontSize, callback);
                                 woyouService.printTextWithFont("Total Amount  : " + "Rs. " + Utils.parseAmount(String.valueOf(total_amount)) + " /-\n", "BOLD", fontSize, callback);
-                                woyouService.printTextWithFont("******Charges as per ARECS Norms******\n", "", fontSize, callback);
+                                woyouService.printTextWithFont("******Charges as per ARECS Norms******\n\n\n", "", fontSize, callback);
                                 woyouService.printTextWithFont("                             Signature\n", "", fontSize, callback);
-                                woyouService.printTextWithFont("         Thank you Payment Success       \n", "", fontSize, callback);
+                                woyouService.printTextWithFont("         Thank you Payment Success    \n", "", fontSize, callback);
 
                                 woyouService.printTextWithFont("**************************************\n", "", fontSize, callback);
 
@@ -780,7 +780,7 @@ public class PrintFragment extends Fragment implements View.OnClickListener {
                                 woyouService.printTextWithFont("Bank Charge    : " + responseMap.get("Bank Charges   ")+"\n", "BOLD", fontSize, callback);
                                 woyouService.printTextWithFont("Total Amount   : " + responseMap.get("Total Amount   "+"\n"), "BOLD", fontSize, callback);
                                 woyouService.printTextWithFont("********Charges as per GVMC Norms********\n", "", fontSize, callback);
-                                woyouService.printTextWithFont("                              Signature\n", "", fontSize, callback);
+                                woyouService.printTextWithFont("                                Signature\n", "", fontSize, callback);
                                 woyouService.printTextWithFont("         Thank you Payment Success       \n", "", fontSize, callback);
 
                                 woyouService.printTextWithFont("*****************************************\n", "", fontSize, callback);
@@ -824,8 +824,8 @@ public class PrintFragment extends Fragment implements View.OnClickListener {
                                 woyouService.printTextWithFont("Bank Charge    : " + responseMap.get("Bank Charges   ")+"\n", "BOLD", fontSize, callback);
                                 woyouService.printTextWithFont("Total Amount   : " + responseMap.get("Total Amount   "+"\n"), "BOLD", fontSize, callback);
                                 woyouService.printTextWithFont("*******Charges as per APEPDCL Norms*******\n", "", fontSize, callback);
-                                woyouService.printTextWithFont("                             Signature\n", "", fontSize, callback);
-                                woyouService.printTextWithFont("         Thank you Payment Success       \n", "", fontSize, callback);
+                                woyouService.printTextWithFont("                                 Signature\n", "", fontSize, callback);
+                                woyouService.printTextWithFont("         Thank you Payment Success        \n", "", fontSize, callback);
 
                                 woyouService.printTextWithFont("****************************************\n", "", fontSize, callback);
                                 woyouService.printTextWithFont("Contact : 8008612200/8008615500", "BOLD", 30, callback);
