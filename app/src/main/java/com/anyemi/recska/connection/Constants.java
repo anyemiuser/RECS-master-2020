@@ -62,6 +62,7 @@ public class Constants {
     public static final String RESET_PASSWORD = base_url + "changePassword";
 //    public static final String ASS_URL = base_url + "getassment_details";
     public static final String ASS_URL = "https://api.anyemi.com/recs_v1/getassment_details";
+    public static final String UPDATE_BILL = base_url + "updatebilldata";
     public static final String UPI_LIST = base_url + "getuserUPI";
     public static final String GET_SUB_CATEGORIES = base_url + "collections?id=";
     public static final String POST_PAYMENT_ADD_VPA = base_url + "storeUPI";

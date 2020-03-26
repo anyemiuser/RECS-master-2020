@@ -270,7 +270,7 @@ public class LoginActivity extends AppCompatActivity {
                             SharedPreferenceUtil.setGroupId(getApplicationContext(),mResponsedata.getGroup_id());
                             SharedPreferenceUtil.setFIN_ID(getApplicationContext(),"1");
 
-                            if (mResponsedata.getGroup_id().equals("14")) {
+                             if (mResponsedata.getGroup_id().equals("14")) {
                                 SharedPreferenceUtil.setLoginType(getApplicationContext(), Constants.LOGIN_TYPE_CUSTOMER);
                             } else if (mResponsedata.getGroup_id().equals("11")) {
                                 SharedPreferenceUtil.setLoginType(getApplicationContext(), Constants.LOGIN_TYPE_COLLECTION_AGENT);

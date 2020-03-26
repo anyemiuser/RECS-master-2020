@@ -113,6 +113,13 @@ public class HomeServices {
             e.printStackTrace();
             return e;
         }
+    }public static Object updateBill(Context aContext, String loginRequest) {
+        try {
+            return Connection.callHttpPostRequestsV2Jobj(aContext, Constants.UPDATE_BILL, loginRequest);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return e;
+        }
     }
 
 

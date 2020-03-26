@@ -118,7 +118,7 @@ public class SearchBillFragment extends Fragment {
         setHasOptionsMenu(false);
         mUserId = SharedPreferenceUtil.getUserId(getActivity());
         initView();
-
+        r_user_id=SharedPreferenceUtil.getUserId(getActivity());
         initHeaderView();
         initData();
 
@@ -195,9 +195,12 @@ public class SearchBillFragment extends Fragment {
         footer = (ViewGroup) inflater.inflate(R.layout.footer_bill_pay, lv_my_account, false);
         lv_my_account.addFooterView(footer, null, false);
 
+        ll_footer = footer.findViewById(R.id.ll_footer);
 
         et_bill = footer.findViewById(R.id.et_bill);
         et_arrear = footer.findViewById(R.id.et_arrear);
+        ll_footer.setVisibility(View.GONE);
+
 
 
         tv_c_name = header.findViewById(R.id.tv_c_name);
@@ -210,9 +213,7 @@ public class SearchBillFragment extends Fragment {
         act_search.setVisibility(View.GONE);
         tv_tax_type = header.findViewById(R.id.tv_tax_type);
         ll_details = header.findViewById(R.id.ll_details);
-        ll_footer = footer.findViewById(R.id.ll_footer);
 
-        ll_footer.setVisibility(View.GONE);
 
         spnr_area_name = header.findViewById(R.id.spnr_area_name);
         spnr_tax_type = header.findViewById(R.id.spnr_tax_type);
@@ -372,7 +373,7 @@ public class SearchBillFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (performValidations()) {
-                    // openPaymentModesActivity();
+                   //  openPaymentModesActivity();
 
                     calculateAmount();
                 }
@@ -381,15 +382,35 @@ public class SearchBillFragment extends Fragment {
             private boolean performValidations() {
                 boolean isValid = false;
 
-                if (mSelectedEmis.size() == 0) {
-                    Globals.showToast(getActivity(), "Please click on Due");
-                } else if (et_bill.getText().toString().equals("")) {
-                    Globals.showToast(getActivity(), "Please Enter Bill Amount");
-                } else if (et_arrear.getText().toString().equals("")) {
-                    Globals.showToast(getActivity(), "Please Enter Arreas Amount");
-                } else {
-                    isValid = true;
+                if (!SharedPreferenceUtil.getLoginType(getActivity()).equals(Constants.LOGIN_TYPE_CUSTOMER)) {
+                    if (mSelectedEmis.size() == 0) {
+                        Globals.showToast(getActivity(), "Please click on Due");
+                    }
+
+
+                    /*/else if (et_bill.getText().toString().equals("")) {
+                        Globals.showToast(getActivity(), "Please Enter Bill Amount");
+                    } else if (et_arrear.getText().toString().equals("")) {
+                        Globals.showToast(getActivity(), "Please Enter Arreas Amount");
+                    } */
+
+
+                    else {
+                        isValid = true;
+                    }
+                }else{
+                    if (mSelectedEmis.size() == 0) {
+                        Globals.showToast(getActivity(), "Please click on Due");
+                    }  else {
+                        isValid = true;
+                    }
+
+
                 }
+
+
+
+
 
 
                 return isValid;
@@ -451,10 +472,45 @@ public class SearchBillFragment extends Fragment {
                     e.printStackTrace();
                 }
 
-                Final_Bill_Amount = Emi_Amount + User_Charge;
+                if (!SharedPreferenceUtil.getLoginType(getActivity()).equals(Constants.LOGIN_TYPE_CUSTOMER)) {
+                    ll_footer.setVisibility(View.VISIBLE);
 
-                Final_Bill_Amount = Integer.parseInt(et_bill.getText().toString()) +
+                    if(et_bill.getText().toString().equals("") && et_arrear.getText().toString().equals("")){
+
+                        Final_Bill_Amount = Emi_Amount + User_Charge;
+                    }else if(et_arrear.getText().toString().equals("")){
+
+                        Final_Bill_Amount = Integer.parseInt(et_bill.getText().toString()) +
+                                User_Charge
+                                +Double.parseDouble(emis.get(0).getReconnection_fee());
+                    }else if(et_bill.getText().toString().equals("")){
+
+                        Final_Bill_Amount = Double.parseDouble(emis.get(0).getBillamt())+
+                                +Double.parseDouble(emis.get(0).getReconnection_fee())+
                         Integer.parseInt(et_arrear.getText().toString()) + User_Charge;
+                    }else {
+
+                        Final_Bill_Amount = Integer.parseInt(et_bill.getText().toString()) +
+                                Integer.parseInt(et_arrear.getText().toString()) + User_Charge
+                                + Double.parseDouble(emis.get(0).getReconnection_fee());
+                    }
+
+
+                }else{
+                    ll_footer.setVisibility(View.GONE);
+                    Final_Bill_Amount = Emi_Amount + User_Charge;
+
+                    et_bill.setText(Final_Bill_Amount+"");
+                    et_arrear.setText("0");
+
+
+                }
+
+
+
+
+
+
 
 
                 final_amount = final_amount + Final_Bill_Amount;
@@ -531,9 +587,12 @@ public class SearchBillFragment extends Fragment {
 
         if (final_amount != 0) {
 
-            Intent i = new Intent(getActivity(), PaymentModeActivityNew.class);
-            i.putExtra(Constants.PAYMENT_REQUEST_MODEL, request);
-            startActivity(i);
+            upDateBillAmount(request);
+
+
+//            Intent i = new Intent(getActivity(), PaymentModeActivityNew.class);
+//            i.putExtra(Constants.PAYMENT_REQUEST_MODEL, request);
+//            startActivity(i);
         } else {
             Globals.showToast(getActivity(), "Unable to Process Amount");
         }
@@ -636,10 +695,8 @@ public class SearchBillFragment extends Fragment {
         r_assessment_id = mResponsedata.getLoan_details().getLoan_number();
 
         if (final_amount != 0) {
+            //upDateBillAmount();
 
-            Intent i = new Intent(getActivity(), PaymentModeActivityNew.class);
-            i.putExtra(Constants.PAYMENT_REQUEST_MODEL, preparePaymentRequest());
-            startActivity(i);
         } else {
             Globals.showToast(getActivity(), "Unable to Process Amount");
         }
@@ -649,7 +706,15 @@ public class SearchBillFragment extends Fragment {
     private void setData() {
 
         ll_details.setVisibility(View.VISIBLE);
-        ll_footer.setVisibility(View.VISIBLE);
+
+        if (!SharedPreferenceUtil.getLoginType(getActivity()).equals(Constants.LOGIN_TYPE_CUSTOMER)) {
+            ll_footer.setVisibility(View.VISIBLE);
+        }else{
+            ll_footer.setVisibility(View.GONE);
+
+
+        }
+
         btn_print_on_device.setVisibility(View.VISIBLE);
 
         if (mResponsedata.getLoan_details().getCustomer_name() != null) {
@@ -997,6 +1062,31 @@ public class SearchBillFragment extends Fragment {
         }, getString(R.string.loading_txt)).execute();
     }
 
+    private void upDateBillAmount(final String req) {
+        new BackgroundTask(getActivity(), new BackgroundThread() {
+            @Override
+            public Object runTask() {
+                return HomeServices.updateBill(getActivity(), buildUpdateRequest());
+            }
+
+            public void taskCompleted(Object data) {
+
+                try {
+                    if (data != null || data.equals("")) {
+                        Intent i = new Intent(getActivity(), PaymentModeActivityNew.class);
+                        i.putExtra(Constants.PAYMENT_REQUEST_MODEL, req);
+                        startActivity(i);
+                    } else {
+                        Globals.showToast(getActivity(), "Unable To Process Request");
+                    }
+                } catch (Exception e) {
+                    Globals.showToast(getActivity(), "Service Number not found");
+                    e.printStackTrace();
+                }
+            }
+        }, getString(R.string.loading_txt)).execute();
+    }
+
 
     public String buildLoginRequest() {
         JSONObject requestObject = new JSONObject();
@@ -1008,6 +1098,19 @@ public class SearchBillFragment extends Fragment {
             requestObject.put("version_id", "0.1");
 
 
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return requestObject.toString();
+    }
+
+    public String buildUpdateRequest() {
+        JSONObject requestObject = new JSONObject();
+        try {
+            requestObject.put("assessment_id", et_search.getText().toString());
+            requestObject.put("change_billamt", et_bill.getText().toString());
+            requestObject.put("newarrears", et_arrear.getText().toString());
+            requestObject.put("user_id", SharedPreferenceUtil.getUserId(getActivity()));
         } catch (JSONException e) {
             e.printStackTrace();
         }
