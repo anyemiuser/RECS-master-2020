@@ -931,7 +931,7 @@ public class SearchBillFragment extends Fragment {
                     _listView.tv_surcharge.setText(getResources().getString(R.string.Rs) + " " + data.getSurcharge_fee() + " /-");
                 }
 
-                _listView.tv_surcharge.setText("0");
+                _listView.tv_surcharge.setText(getResources().getString(R.string.Rs) +"  "+"0");
 
                 _listView.tv_adj_amount.setText(getResources().getString(R.string.Rs) + " " + adj_amount + " /-");
                 _listView.tv_arrears.setText(getResources().getString(R.string.Rs) + " " + arrears_amount + " /-");

@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Android Apps-RECS-master-2020.iml" filepath="$PROJECT_DIR$/Android Apps-RECS-master-2020.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Android Apps-RECS-master-2020.iml" filepath="$PROJECT_DIR$/Android Apps-RECS-master-2020.iml" group="RECS-master-2020" />
       <module fileurl="file://$PROJECT_DIR$/RECS-master-2020.iml" filepath="$PROJECT_DIR$/RECS-master-2020.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/RECS-master-2020-app.iml" filepath="$PROJECT_DIR$/app/RECS-master-2020-app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/sdkui/RECS-master-2020-sdkui.iml" filepath="$PROJECT_DIR$/sdkui/RECS-master-2020-sdkui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/RECS-master-2020-app.iml" filepath="$PROJECT_DIR$/app/RECS-master-2020-app.iml" group="RECS-master-2020/app" />
+      <module fileurl="file://$PROJECT_DIR$/sdkui/RECS-master-2020-sdkui.iml" filepath="$PROJECT_DIR$/sdkui/RECS-master-2020-sdkui.iml" group="RECS-master-2020/sdkui" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/sdkui/sdkui.iml" filepath="$PROJECT_DIR$/sdkui/sdkui.iml" />
     </modules>
