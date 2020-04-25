@@ -246,7 +246,7 @@ public class PendingTransactionsFragment extends Fragment {
         public View getView(final int position, View convertView, ViewGroup parent) {
             // final MyAccountListingsResponse2 studentList = tenant_matches_listings.get(position);
             if (convertView == null) {
-                convertView = mInflater.inflate(R.layout.lv_power_bill_collections, null, false);
+                convertView = mInflater.inflate(R.layout.lv_reports, null, false);
                 _listView = new ViewHolder();
                 _listView.ll_item = convertView.findViewById(R.id.ll_item);
                 _listView.tv_c_name = convertView.findViewById(R.id.tv_c_name);

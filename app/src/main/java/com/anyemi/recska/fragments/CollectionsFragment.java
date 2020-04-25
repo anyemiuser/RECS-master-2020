@@ -5,6 +5,7 @@ package com.anyemi.recska.fragments;
  */
 
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -14,8 +15,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -38,7 +41,12 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.gson.Gson;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
 
 
 /**
@@ -53,15 +61,25 @@ public class CollectionsFragment extends Fragment {
 
     ListView lv_my_account;
     Button btn_search;
+    Button get_data;
+    Button from_date;
+    Button to_date;
     Spinner spnr_sort_by;
+    Spinner spnr_p_model;
     EditText et_search;
     LinearLayout linearLayout;
     ListingAdapter mAdapter;
+
+    ArrayList<String> paymmentModesNames = new ArrayList<>();
+    ArrayList<String> paymmentModesIds = new ArrayList<>();
+
+
     ArrayList<CollectionsModel.CollectionsBean> mCollections = new ArrayList<>();
     ArrayList<CollectionsModel.CollectionsBean> SCollections = new ArrayList<>();
     ArrayList<PendingTransactionModel.TransactionsBean> pending_Collections = new ArrayList<>();
     Object rdata;
     String query = "";
+
 
     public CollectionsFragment() {
     }
@@ -74,7 +92,7 @@ public class CollectionsFragment extends Fragment {
         initializeComponents();
         initHeaderView();
 
-        attemptLogin(SharedPreferenceUtil.getUserId(getActivity()));
+
         return rootView;
     }
 
@@ -117,6 +135,91 @@ public class CollectionsFragment extends Fragment {
 
         et_search = header.findViewById(R.id.ett_search);
         btn_search = header.findViewById(R.id.btn_search);
+        get_data=header.findViewById(R.id.btn1_search);
+        from_date=header.findViewById(R.id.btn_from_date);
+        to_date=header.findViewById(R.id.btn_to_date);
+        spnr_p_model=header.findViewById(R.id.spnr_p_modes);
+        paymmentModesNames.addAll(Arrays.asList(getResources().getStringArray(R.array.payment_names)));
+        paymmentModesIds.addAll(Arrays.asList(getResources().getStringArray(R.array.payment_ids)));
+
+
+
+        from_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePickerDialog.OnDateSetListener dpd = new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                          int dayOfMonth) {
+
+                        int s = monthOfYear + 1;
+                        //   String a = dayOfMonth + "/" + s + "/" + year;
+
+                        String a = year + "/" + s + "/" + dayOfMonth ;
+                        from_date.setText(a);
+                    }
+                };
+
+//
+
+                Calendar c = Calendar.getInstance();
+                int mYear = c.get(Calendar.YEAR);
+                int mMonth = c.get(Calendar.MONTH);
+                int mDay = c.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog =
+                        new DatePickerDialog(getActivity(), dpd, mYear, mMonth, mDay);
+                dialog.show();
+
+
+            }
+        });
+
+        to_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePickerDialog.OnDateSetListener dpd = new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                          int dayOfMonth) {
+
+                        int s = monthOfYear + 1;
+                        //String a = dayOfMonth + "/" + s + "/" + year;
+                        String a = year + "/" + s + "/" + dayOfMonth ;
+                        to_date.setText(a);
+                    }
+                };
+
+//
+
+                Calendar c = Calendar.getInstance();
+                int mYear = c.get(Calendar.YEAR);
+                int mMonth = c.get(Calendar.MONTH);
+                int mDay = c.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog =
+                        new DatePickerDialog(getActivity(), dpd, mYear, mMonth, mDay);
+                dialog.show();
+            }
+        });
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_item, paymmentModesNames);
+        spnr_p_model.setAdapter(adapter);
+
+
+        get_data.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (from_date.getText().toString().equals("From Date")) {
+                    Globals.showToast(getActivity(), "Please Select From Date");
+                }else if (to_date.getText().toString().equals("To Date")) {
+                    Globals.showToast(getActivity(), "Please Select To Date");
+                } else {
+                    attemptLogin(SharedPreferenceUtil.getUserId(getActivity()));                }
+
+
+            }
+        });
+
 
         btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -190,7 +293,7 @@ public class CollectionsFragment extends Fragment {
         public View getView(final int position, View convertView, ViewGroup parent) {
             // final MyAccountListingsResponse2 studentList = tenant_matches_listings.get(position);
             if (convertView == null) {
-                convertView = mInflater.inflate(R.layout.lv_power_bill_collections, null, false);
+                convertView = mInflater.inflate(R.layout.lv_collections, null, false);
                 _listView = new ViewHolder();
                 _listView.ll_item = convertView.findViewById(R.id.ll_item);
                 _listView.tv_c_name = convertView.findViewById(R.id.tv_c_name);
@@ -306,7 +409,7 @@ public class CollectionsFragment extends Fragment {
         new BackgroundTask(getActivity(), new BackgroundThread() {
             @Override
             public Object runTask() {
-                return HomeServices.getCollections(getActivity(), id);
+                return HomeServices.getCollections(getActivity(), prepareRequest());
             }
 
             public void taskCompleted(Object data) {
@@ -320,6 +423,24 @@ public class CollectionsFragment extends Fragment {
                 }
             }
         }, getString(R.string.loading_txt)).execute();
+    }
+    private String prepareRequest() {
+
+        JSONObject requestObject = new JSONObject();
+        try {
+
+            int index=spnr_p_model.getSelectedItemPosition();
+
+
+            requestObject.put("fdate", from_date.getText().toString());
+            requestObject.put("tdate",  to_date.getText().toString());
+            requestObject.put("user_id",SharedPreferenceUtil.getUserId(getActivity()) );
+            requestObject.put("P_MODES",   paymmentModesIds.get(index));
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return requestObject.toString();
     }
 
 

@@ -1,6 +1,5 @@
 package com.anyemi.recska.activities;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -29,10 +28,8 @@ import android.widget.TextView;
 import com.anyemi.recska.R;
 import com.anyemi.recska.bgtask.BackgroundTask;
 import com.anyemi.recska.bgtask.BackgroundThread;
-import com.anyemi.recska.bluetoothPrinter.BluetoothPrinterMain;
 import com.anyemi.recska.connection.Constants;
 import com.anyemi.recska.connection.HomeServices;
-import com.anyemi.recska.fragments.CollectionsFragment;
 import com.anyemi.recska.model.CollectionsModel;
 import com.anyemi.recska.utils.Globals;
 import com.anyemi.recska.utils.SharedPreferenceUtil;
@@ -41,8 +38,10 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.gson.Gson;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class PaymentHistoryActivity extends AppCompatActivity {
 
@@ -224,7 +223,7 @@ public class PaymentHistoryActivity extends AppCompatActivity {
         public View getView(final int position, View convertView, ViewGroup parent) {
             // final MyAccountListingsResponse2 studentList = tenant_matches_listings.get(position);
             if (convertView == null) {
-                convertView = mInflater.inflate(R.layout.lv_power_bill_collections, null, false);
+                convertView = mInflater.inflate(R.layout.lv_collections, null, false);
                 _listView = new ViewHolder();
                 _listView.ll_item = convertView.findViewById(R.id.ll_item);
                 _listView.tv_c_name = convertView.findViewById(R.id.tv_c_name);
@@ -327,7 +326,7 @@ public class PaymentHistoryActivity extends AppCompatActivity {
         new BackgroundTask(getApplicationContext(), new BackgroundThread() {
             @Override
             public Object runTask() {
-                return HomeServices.getCollections(getApplicationContext(), id);
+                return HomeServices.getCollections(getApplicationContext(),prepareRequest());
             }
 
             public void taskCompleted(Object data) {
@@ -342,6 +341,30 @@ public class PaymentHistoryActivity extends AppCompatActivity {
             }
         }, getString(R.string.loading_txt)).execute();
     }
+
+    private String prepareRequest() {
+
+        JSONObject requestObject = new JSONObject();
+        try {
+
+          //  int index="";
+
+
+            requestObject.put("fdate", "");
+            requestObject.put("tdate",  "");
+            requestObject.put("user_id",SharedPreferenceUtil.getUserId(getApplicationContext()));
+            requestObject.put("P_MODES",   "");
+            requestObject.put("loan_number",  service_number);
+
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return requestObject.toString();
+    }
+
+
 
     private void parseData(Object data) {
         mCollections.clear();

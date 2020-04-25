@@ -7,7 +7,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
-import android.text.format.Time;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,6 @@ import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -23,14 +21,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.anyemi.recska.R;
-import com.anyemi.recska.activities.PaymentHistoryActivity;
 import com.anyemi.recska.bgtask.BackgroundTask;
 import com.anyemi.recska.bgtask.BackgroundThread;
 import com.anyemi.recska.bluetoothPrinter.BluetoothPrinterMain;
 import com.anyemi.recska.connection.Constants;
 import com.anyemi.recska.connection.HomeServices;
-import com.anyemi.recska.model.CollectionsModel;
-import com.anyemi.recska.model.PendingTransactionModel;
 import com.anyemi.recska.model.ReportsModel;
 import com.anyemi.recska.utils.Globals;
 import com.anyemi.recska.utils.SharedPreferenceUtil;
@@ -250,7 +245,7 @@ Spinner spnr_p_modes;
         public View getView(final int position, View convertView, ViewGroup parent) {
             // final MyAccountListingsResponse2 studentList = tenant_matches_listings.get(position);
             if (convertView == null) {
-                convertView = mInflater.inflate(R.layout.lv_power_bill_collections, null, false);
+                convertView = mInflater.inflate(R.layout.lv_reports, null, false);
                 _listView = new ViewHolder();
                 _listView.ll_item = convertView.findViewById(R.id.ll_item);
                 _listView.tv_c_name = convertView.findViewById(R.id.tv_c_name);
@@ -261,6 +256,7 @@ Spinner spnr_p_modes;
                 _listView.tv_t_amount = convertView.findViewById(R.id.tv_t_amount);
                 _listView.tv_t_name = convertView.findViewById(R.id.tv_t_name);
                 _listView.tv_reconnection_fee = convertView.findViewById(R.id.tv_reconnection_fee);
+                _listView.tv_reconnection_fee_name = convertView.findViewById(R.id.tv_reconnection_fee_name);
 
                 _listView.tv_s_amount = convertView.findViewById(R.id.tv_s_amount);
                 _listView.tv_s_number = convertView.findViewById(R.id.tv_s_number);
@@ -313,6 +309,7 @@ Spinner spnr_p_modes;
                 _listView.tv_c_name.setText("Bill Amount");
                 _listView.tv_reconnection_fee.setText(tenant_matches_listings.get(position).getReconnection_fee());
                 _listView.tv_ad_name.setText("Adjustment Amount");
+                _listView.tv_reconnection_fee_name.setText("Reconnection fees");
                 _listView.tv_a_name.setText("Arears Amount");
                 _listView.tv_t_name.setText("Total Amount");
 
@@ -342,7 +339,7 @@ Spinner spnr_p_modes;
 
         class ViewHolder {
 
-            TextView tv_c_name,tv_reconnection_fee, tv_s_number, tv_s_amount, tv_payment_date,tv_a_name,tv_a_amount,tv_ad_name,tv_ad_amount,tv_t_name,tv_t_amount;
+            TextView tv_c_name,tv_reconnection_fee_name,tv_reconnection_fee, tv_s_number, tv_s_amount, tv_payment_date,tv_a_name,tv_a_amount,tv_ad_name,tv_ad_amount,tv_t_name,tv_t_amount;
             LinearLayout ll_item;
             Button viewDetails;
             ImageView iv_payment_type;

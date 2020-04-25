@@ -123,9 +123,9 @@ public class HomeServices {
     }
 
 
-    public static Object getCollections(Context aContext, String id) {
+    public static Object getCollections(Context aContext, String requestbody) {
         try {
-            return Connection.callHttpGetRequestsV2(aContext, Constants.GET_SUB_CATEGORIES + id, null);
+            return Connection.callHttpPostRequestsV2Jobj(aContext, Constants.GET_SUB_CATEGORIES , requestbody);
         } catch (Exception e) {
             e.printStackTrace();
             return e;

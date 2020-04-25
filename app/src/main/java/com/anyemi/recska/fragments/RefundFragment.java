@@ -11,7 +11,6 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -22,7 +21,6 @@ import com.anyemi.recska.bgtask.BackgroundThread;
 import com.anyemi.recska.connection.HomeServices;
 import com.anyemi.recska.model.CollectionsModel;
 import com.anyemi.recska.utils.Globals;
-import com.anyemi.recska.utils.SharedPreferenceUtil;
 import com.anyemi.recska.utils.Utils;
 import com.google.gson.Gson;
 
@@ -175,7 +173,7 @@ public class RefundFragment  extends Fragment {
         public View getView(final int position, View convertView, ViewGroup parent) {
             // final MyAccountListingsResponse2 studentList = tenant_matches_listings.get(position);
             if (convertView == null) {
-                convertView = mInflater.inflate(R.layout.lv_power_bill_collections, null, false);
+                convertView = mInflater.inflate(R.layout.lv_reports, null, false);
                 _listView = new ListingAdapter.ViewHolder();
                 _listView.ll_item = convertView.findViewById(R.id.ll_item);
                 _listView.tv_c_name = convertView.findViewById(R.id.tv_c_name);

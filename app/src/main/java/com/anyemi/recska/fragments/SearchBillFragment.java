@@ -132,7 +132,7 @@ public class SearchBillFragment extends Fragment {
         paymentMethods.clear();
         paymentMethods.addAll(Arrays.asList(getResources().getStringArray(R.array.payment_names)));
 
-        attemptLogin(SharedPreferenceUtil.getUserId(getActivity()));
+       attemptLogin(SharedPreferenceUtil.getUserId(getActivity()));
 
         return rootView;
     }
@@ -1252,6 +1252,22 @@ public class SearchBillFragment extends Fragment {
 
     }
 
+    private String prepareCollRequest() {
+        try {
+            JSONObject requestObject;
+            requestObject = new JSONObject();
+            requestObject.put("fdate", "");
+            requestObject.put("tdate", "");
+            requestObject.put("user_id", SharedPreferenceUtil.getUserId(getActivity()));
+            requestObject.put("P_MODES", "");
+            return requestObject.toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "";
+        }
+    }
+
+
     private String prepareRequest(String s) {
         try {
             JSONObject jsonObject;
@@ -1269,7 +1285,7 @@ public class SearchBillFragment extends Fragment {
         new BackgroundTask(getActivity(), new BackgroundThread() {
             @Override
             public Object runTask() {
-                return HomeServices.getCollections(getActivity(), id);
+                return HomeServices.getCollections(getActivity(), prepareCollRequest());
             }
 
             public void taskCompleted(Object data) {

@@ -92,7 +92,6 @@ public class CollectionsDetailsActivity extends AppCompatActivity implements Vie
             Font.BOLD);
     private static Font smallBold = new Font(Font.FontFamily.TIMES_ROMAN, 12,
             Font.BOLD);
-
     static Context context;
 
     @Override

@@ -21,6 +21,9 @@ import com.anyemi.recska.model.InstamojoPaymentModel;
 import com.anyemi.recska.model.PaymentRequestModel;
 import com.google.gson.Gson;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -169,7 +172,8 @@ public class Globals {
                 new BackgroundTask(context, new BackgroundThread() {
                     @Override
                     public Object runTask() {
-                        return HomeServices.getCollections(context, SharedPreferenceUtil.getUserId(context)+"&loan_number="+SharedPreferenceUtil.getServiceNo(context)+"");
+                        return HomeServices.getCollections(context, prepareRequest(context)
+                                );
                     }
 
                     public void taskCompleted(Object data) {
@@ -200,6 +204,28 @@ public class Globals {
         }catch (Exception e){
             e.printStackTrace();
         }
+
+
+
     }
+    private static String prepareRequest(Context context) {
+
+        JSONObject requestObject = new JSONObject();
+        try {
+
+
+            requestObject.put("fdate", "");
+            requestObject.put("tdate",  "");
+            requestObject.put("user_id",SharedPreferenceUtil.getUserId(context) );
+            requestObject.put("P_MODES",   "");
+            requestObject.put("loan_number",   SharedPreferenceUtil.getServiceNo(context));
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return requestObject.toString();
+    }
+
+
 
 }
