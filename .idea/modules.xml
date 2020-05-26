@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Android Apps-RECS-master-2020.iml" filepath="$PROJECT_DIR$/Android Apps-RECS-master-2020.iml" group="RECS-master-2020" />
+      <module fileurl="file://$PROJECT_DIR$/app/Android Apps-RECS-master-2020-app.iml" filepath="$PROJECT_DIR$/app/Android Apps-RECS-master-2020-app.iml" group="RECS-master-2020/app" />
       <module fileurl="file://$PROJECT_DIR$/AndroidStudioProjects-RECS-master-2020.iml" filepath="$PROJECT_DIR$/AndroidStudioProjects-RECS-master-2020.iml" group="RECS-master-2020" />
       <module fileurl="file://$PROJECT_DIR$/RECS-master-2020.iml" filepath="$PROJECT_DIR$/RECS-master-2020.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/RECS-master-2020-app.iml" filepath="$PROJECT_DIR$/app/RECS-master-2020-app.iml" group="RECS-master-2020/app" />
