@@ -162,6 +162,26 @@ public class SharedPreferenceUtil {
             return "";
         }
     }
+ public static String setOrderid(Context context, String usertype) {
+
+        try {
+            saveInPreference(context, "orderid", usertype);
+        } catch (Exception e) {
+            PrintLog.print(TAG, e.getMessage());
+            e.printStackTrace();
+        }
+        return usertype;
+    }
+
+    public static String getOrderid(Context context) {
+        try {
+            return getFromPreference(context, "orderid", "");
+        } catch (Exception e) {
+            PrintLog.print(TAG, e.getMessage());
+            e.printStackTrace();
+            return "";
+        }
+    }
 
 
 

@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import com.anyemi.recska.R;
 import com.anyemi.recska.activities.PaymentModeActivityNew;
+import com.anyemi.recska.activities.UpdateBillModel;
 import com.anyemi.recska.bgtask.BackgroundTask;
 import com.anyemi.recska.bgtask.BackgroundThread;
 import com.anyemi.recska.connection.Constants;
@@ -1073,8 +1074,17 @@ public class SearchBillFragment extends Fragment {
 
                 try {
                     if (data != null || data.equals("")) {
+                        UpdateBillModel  Billupdate_model;
+                        Gson gson = new Gson();
+                        Billupdate_model = gson.fromJson(data.toString(), UpdateBillModel.class);
+
+                        paymentRequestModel.setORDER_ID(Billupdate_model.getOrderid());
+                        String request = new Gson().toJson(paymentRequestModel);
+
+
+
                         Intent i = new Intent(getActivity(), PaymentModeActivityNew.class);
-                        i.putExtra(Constants.PAYMENT_REQUEST_MODEL, req);
+                        i.putExtra(Constants.PAYMENT_REQUEST_MODEL, request);
                         startActivity(i);
                     } else {
                         Globals.showToast(getActivity(), "Unable To Process Request");
