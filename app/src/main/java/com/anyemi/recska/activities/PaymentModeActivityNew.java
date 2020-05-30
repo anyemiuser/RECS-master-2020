@@ -200,7 +200,7 @@ public class PaymentModeActivityNew extends AppCompatActivity implements AepPaym
         paymentRequestModel.setTrsno(prm.getTrsno());
         paymentRequestModel.setPayment_type(prm.getPayment_type());
         paymentRequestModel.setMobile_number(prm.getMobile_number());
-        paymentRequestModel.setRemarks(new Gson().toJson(s));
+  //      paymentRequestModel.setRemarks(new Gson().toJson(s));
         // Globals.showToast(getApplicationContext(),s);
         submitPayment();
 

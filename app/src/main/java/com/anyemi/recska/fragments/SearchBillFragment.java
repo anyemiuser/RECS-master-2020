@@ -930,6 +930,8 @@ public class SearchBillFragment extends Fragment {
 
 
             double User_Charges = 0;
+
+            _listView.tv_fine.setText(getResources().getString(R.string.Rs) + " " + data.getService_charge() + " /-");
 //
 //            try {
 //
