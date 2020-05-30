@@ -48,7 +48,7 @@
             android:layout_height="60dp"
             android:padding="7dp"
             android:layout_weight="1"
-            android:background="@drawable/dropdown_new"
+
             android:gravity="center"
             android:layout_gravity="center"
             android:text="Get Data"

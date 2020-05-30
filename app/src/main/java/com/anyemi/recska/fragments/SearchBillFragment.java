@@ -71,7 +71,7 @@ public class SearchBillFragment extends Fragment {
     LinearLayout ll_search, ll_details, ll_footer;
     ListingAdapter mAdapter;
     ArrayList<DemandModelNew.EmiBean> emis = new ArrayList<>();
-    ArrayList<DemandModelNew.TaxArrayBean> taxArrayBean = new ArrayList<>();
+
     TextView tv_c_name, tv_phone_num, tv_aadhar, tv_assment_num, tv_address, tv_ero, tv_tax_type;
     AutoCompleteTextView act_search;
 
@@ -79,7 +79,7 @@ public class SearchBillFragment extends Fragment {
     DemandModelNew mResponsedata;
     Button btn_print_on_device;
     ArrayList<String> mSelectedEmis = new ArrayList<>();
-    ArrayList<String> paymentMethods = new ArrayList<>();
+
     ArrayList<String> aryTaxNames = new ArrayList<>();
     ArrayList<String> aryTaxIds = new ArrayList<>();
 
@@ -130,8 +130,6 @@ public class SearchBillFragment extends Fragment {
         aryTaxNames.addAll(Arrays.asList(getResources().getStringArray(R.array.tax_type_array)));
         aryTaxIds.addAll(Arrays.asList(getResources().getStringArray(R.array.tax_id_array)));
 
-        paymentMethods.clear();
-        paymentMethods.addAll(Arrays.asList(getResources().getStringArray(R.array.payment_names)));
 
        attemptLogin(SharedPreferenceUtil.getUserId(getActivity()));
 
@@ -375,8 +373,54 @@ public class SearchBillFragment extends Fragment {
             public void onClick(View view) {
                 if (performValidations()) {
                    //  openPaymentModesActivity();
+                   int USER_ID = Integer.parseInt(SharedPreferenceUtil.getUserId(getActivity()));
+                   String MOBILE_NUMBER="";
+                   String ASSESMENT_NUMBER="";
+                   String SERVICE_CHARGE=mResponsedata.getEmi().get(0).getService_charge();
 
-                    calculateAmount();
+                    if (mResponsedata.getLoan_details().getPhone() != null) {
+                        MOBILE_NUMBER = mResponsedata.getLoan_details().getPhone();
+                    } else {
+                        MOBILE_NUMBER = "";
+                    }
+                    ASSESMENT_NUMBER = mResponsedata.getLoan_details().getLoan_number();
+
+                    paymentRequestModel = new PaymentRequestModel();
+                    paymentRequestModel.setUser_id(USER_ID);
+                    paymentRequestModel.setEmi_ids(mSelectedEmis.get(0));
+                    paymentRequestModel.setPayment_type("");
+                    paymentRequestModel.setBankname("");
+                    paymentRequestModel.setCheckdate("");
+                    paymentRequestModel.setRr_number("");
+                    paymentRequestModel.setMobile_number(MOBILE_NUMBER);
+                    paymentRequestModel.setUpi_id("");
+                    paymentRequestModel.setAssessment_id(ASSESMENT_NUMBER);
+
+                  /*  paymentRequestModel.setGst_credit(GST_CREDIT_CARD);
+                    paymentRequestModel.setGst_debit(GST_DEBIT_CARD);
+
+                    paymentRequestModel.setCredit_service_tax_(CREDIT_SERVICE_TAX);
+                    paymentRequestModel.setDebit_service_tax_(DEBIT_SERVICE_TAX);
+
+
+                   */
+
+                    paymentRequestModel.setActualDueAmount(et_bill.getText().toString());
+                    paymentRequestModel.setServiceCharge(SERVICE_CHARGE);
+                    paymentRequestModel.setTotal_amount(mResponsedata.getEmi().get(0).getFinal_amount()+"");
+                    paymentRequestModel.setPayment_through("Mobile");
+
+
+                    String request = new Gson().toJson(paymentRequestModel);
+
+
+                    if (mResponsedata.getEmi().get(0).getFinal_amount() != 0) {
+                        upDateBillAmount(request);
+                    } else {
+                        Globals.showToast(getActivity(), "Unable to Process Amount");
+                    }
+
+                   // calculateAmount();
                 }
             }
 
@@ -422,287 +466,287 @@ public class SearchBillFragment extends Fragment {
     }
 
     // method to calculate the total amount consisting of bills, service charge
-    private void calculateAmount() {
-
-        String EMI_ID;
-        int USER_ID;
-        String MOBILE_NUMBER;
-        String ASSESMENT_NUMBER;
-        String GST_CREDIT_CARD = "";
-        String GST_DEBIT_CARD = "";
-        String CREDIT_SERVICE_TAX = "";
-        String DEBIT_SERVICE_TAX = "";
-        String ACTUAL_DUE_AMOUNT = "";
-        String SERVICE_CHARGE = "";
-        String TOTAL_AMOUNT = "";
-
-        double User_Charge = 0;
-        double Emi_Amount = 0; //with Arrears etc
-        double Bill_Amount = 0; // without Arrears etc
-        double Final_Bill_Amount = 0;  // Amount to pay include service charge exclude bank charges
-        final_amount = 0;
-
-
-        USER_ID = Integer.parseInt(SharedPreferenceUtil.getUserId(getActivity()));
-
-        if (mResponsedata.getLoan_details().getPhone() != null) {
-            MOBILE_NUMBER = mResponsedata.getLoan_details().getPhone();
-        } else {
-            MOBILE_NUMBER = "";
-        }
-        ASSESMENT_NUMBER = mResponsedata.getLoan_details().getLoan_number();
-
-
-        for (int position = 0; position < emis.size(); position++) {
-
-            if (mSelectedEmis.contains(emis.get(position).getId())) {
-                try {
-                    for (int i = 0; i < taxArrayBean.size(); i++) {
-                        Double maxLimit = Double.parseDouble(taxArrayBean.get(i).getTo());
-                        Emi_Amount = Double.parseDouble(emis.get(position).getEmi_amount());  //2177
-                        Bill_Amount = Double.parseDouble(emis.get(position).getBillamt()); // without Arrears etc dummy
-
-                        if (maxLimit > Emi_Amount) {
-                            User_Charge = Double.parseDouble(taxArrayBean.get(i).getTransaction_amount());
-                            User_Charge = User_Charge + ((Emi_Amount * Double.parseDouble(taxArrayBean.get(i).getExtra_tax())) / 100);
-                            SERVICE_CHARGE = Utils.parseTwoDigitAmount(String.valueOf(User_Charge));
-                            break;
-                        }
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-                if (!SharedPreferenceUtil.getLoginType(getActivity()).equals(Constants.LOGIN_TYPE_CUSTOMER)) {
-                    ll_footer.setVisibility(View.VISIBLE);
-
-                    if(et_bill.getText().toString().equals("") && et_arrear.getText().toString().equals("")){
-
-                        Final_Bill_Amount = Emi_Amount + User_Charge;
-                    }else if(et_arrear.getText().toString().equals("")){
-
-                        Final_Bill_Amount = Integer.parseInt(et_bill.getText().toString()) +
-                                User_Charge
-                                +Double.parseDouble(emis.get(0).getReconnection_fee());
-                    }else if(et_bill.getText().toString().equals("")){
-
-                        Final_Bill_Amount = Double.parseDouble(emis.get(0).getBillamt())+
-                                +Double.parseDouble(emis.get(0).getReconnection_fee())+
-                        Integer.parseInt(et_arrear.getText().toString()) + User_Charge;
-                    }else {
-
-                        Final_Bill_Amount = Integer.parseInt(et_bill.getText().toString()) +
-                                Integer.parseInt(et_arrear.getText().toString()) + User_Charge
-                                + Double.parseDouble(emis.get(0).getReconnection_fee());
-                    }
-
-
-                }else{
-                    ll_footer.setVisibility(View.GONE);
-                    Final_Bill_Amount = Emi_Amount + User_Charge;
-
-                    et_bill.setText(Final_Bill_Amount+"");
-                    et_arrear.setText("0");
-
-
-                }
-
-
-
-
-
-
-
-
-                final_amount = final_amount + Final_Bill_Amount;
-
-                TOTAL_AMOUNT = Utils.parseTwoDigitAmount(String.valueOf(final_amount));
-                ACTUAL_DUE_AMOUNT = Utils.parseTwoDigitAmount(String.valueOf(Emi_Amount));
-                //ACTUAL_DUE_AMOUNT = Utils.parseTwoDigitAmount(String.valueOf(Bill_Amount));
-
-                /*
-                 ** Getting Tax Details
-                 */
-
-
-                try {
-                    for (int i = 0; i < taxArrayBean.size(); i++) {
-                        Double maxLimit = Double.parseDouble(taxArrayBean.get(i).getTo());
-                        if (maxLimit > final_amount) {
-                            GST_CREDIT_CARD = taxArrayBean.get(i).getGst_credit();
-                            GST_DEBIT_CARD = taxArrayBean.get(i).getGst_debit();
-                            CREDIT_SERVICE_TAX = taxArrayBean.get(i).getCredit_service_tax_();
-                            DEBIT_SERVICE_TAX = taxArrayBean.get(i).getDebit_service_tax_();
-                            break;
-                        }
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-
-            }
-        }
-
-        /*
-         ** Prepare Selected Emi
-         */
-
-        id_string = "";
-        for (int i = 0; i < mSelectedEmis.size(); i++) {
-            if (i == 0 || mSelectedEmis.size() == i - 1) {
-                id_string = id_string + mSelectedEmis.get(i);
-            } else {
-                id_string = id_string + "&" + mSelectedEmis.get(i);
-            }
-        }
-
-        EMI_ID = id_string;
-
-
-        paymentRequestModel = new PaymentRequestModel();
-        paymentRequestModel.setUser_id(USER_ID);
-        paymentRequestModel.setEmi_ids(EMI_ID);
-        paymentRequestModel.setPayment_type("");
-        paymentRequestModel.setBankname("");
-        paymentRequestModel.setCheckdate("");
-        paymentRequestModel.setRr_number("");
-        paymentRequestModel.setMobile_number(MOBILE_NUMBER);
-        paymentRequestModel.setUpi_id("");
-        paymentRequestModel.setAssessment_id(ASSESMENT_NUMBER);
-
-        paymentRequestModel.setGst_credit(GST_CREDIT_CARD);
-        paymentRequestModel.setGst_debit(GST_DEBIT_CARD);
-
-        paymentRequestModel.setCredit_service_tax_(CREDIT_SERVICE_TAX);
-        paymentRequestModel.setDebit_service_tax_(DEBIT_SERVICE_TAX);
-
-        paymentRequestModel.setActualDueAmount(et_bill.getText().toString());
-        paymentRequestModel.setServiceCharge(SERVICE_CHARGE);
-        paymentRequestModel.setTotal_amount(TOTAL_AMOUNT);
-        paymentRequestModel.setPayment_through("Mobile");
-
-
-        String request = new Gson().toJson(paymentRequestModel);
-
-
-        if (final_amount != 0) {
-
-            upDateBillAmount(request);
-
-
-//            Intent i = new Intent(getActivity(), PaymentModeActivityNew.class);
-//            i.putExtra(Constants.PAYMENT_REQUEST_MODEL, request);
-//            startActivity(i);
-        } else {
-            Globals.showToast(getActivity(), "Unable to Process Amount");
-        }
-    }
-
-    private void openPaymentModesActivity() {
-
-        /*
-         ** Getting Service Charge Details
-         */
-
-        final_amount = 0;
-        id_string = "";
-
-        double User_Charge = 0;
-        double Emi_Amount = 0; //with Arrears etc
-        double Bill_Amount = 0; // without Arrears etc
-        double Final_Bill_Amount = 0;  // Amount to pay include service charge exclude bank charges
-
-
-        for (int position = 0; position < emis.size(); position++) {
-            if (mSelectedEmis.contains(emis.get(position).getId())) {
-                try {
-                    for (int i = 0; i < taxArrayBean.size(); i++) {
-                        Double maxLimit = Double.parseDouble(taxArrayBean.get(i).getTo());
-                        Emi_Amount = Double.parseDouble(emis.get(position).getEmi_amount());  //2177
-                        Bill_Amount = Double.parseDouble(emis.get(position).getBillamt()); // without Arrears etc dummy
-
-                        if (maxLimit > Emi_Amount) {
-                            User_Charge = Double.parseDouble(taxArrayBean.get(i).getTransaction_amount());
-                            User_Charge = User_Charge + ((Emi_Amount * Double.parseDouble(taxArrayBean.get(i).getExtra_tax())) / 100);
-                            User_Charge = Math.round(User_Charge);
-                            user_charges = Utils.parseTwoDigitAmount(String.valueOf(Math.round(User_Charge)));
-                            System.out.println(user_charges);
-                            break;
-                        }
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-                Final_Bill_Amount = Emi_Amount + User_Charge;
-
-                final_amount = final_amount + Final_Bill_Amount;
-
-                /*
-                 ** Getting Tax Details
-                 */
-
-
-                try {
-                    for (int i = 0; i < taxArrayBean.size(); i++) {
-                        Double maxLimit = Double.parseDouble(taxArrayBean.get(i).getTo());
-                        if (maxLimit > final_amount) {
-                            gst_credit = taxArrayBean.get(i).getGst_credit();
-                            gst_debit = taxArrayBean.get(i).getGst_debit();
-                            credit_service_tax = taxArrayBean.get(i).getCredit_service_tax_();
-                            debit_service_tax_ = taxArrayBean.get(i).getDebit_service_tax_();
-                            break;
-                        }
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-
-            }
-        }
-
-        /*
-         ** Prepare Selected Emi
-         */
-
-
-        for (int i = 0; i < mSelectedEmis.size(); i++) {
-            if (i == 0 || mSelectedEmis.size() == i - 1) {
-                id_string = id_string + mSelectedEmis.get(i);
-            } else {
-                id_string = id_string + "&" + mSelectedEmis.get(i);
-            }
-        }
-
-        r_bank_name = "";
-        r_total_amount = String.valueOf(final_amount);
-        due_amount = String.valueOf(Emi_Amount);
-        // due_amount=String.valueOf(Bill_Amount);
-        r_payment_type = "";
-        r_emi_ids = String.valueOf(id_string);
-        r_user_id = SharedPreferenceUtil.getUserId(getActivity());
-        r_check_date = "";
-        r_rrn_number = "";
-
-        if (mResponsedata.getLoan_details().getPhone() != null) {
-            r_mobile_number = mResponsedata.getLoan_details().getPhone();
-        } else {
-            r_mobile_number = "";
-        }
-
-        r_upi_id = "";
-        r_assessment_id = mResponsedata.getLoan_details().getLoan_number();
-
-        if (final_amount != 0) {
-            //upDateBillAmount();
-
-        } else {
-            Globals.showToast(getActivity(), "Unable to Process Amount");
-        }
-
-    }
+//    private void calculateAmount() {
+//
+//        String EMI_ID;
+//        int USER_ID;
+//        String MOBILE_NUMBER;
+//        String ASSESMENT_NUMBER;
+//        String GST_CREDIT_CARD = "";
+//        String GST_DEBIT_CARD = "";
+//        String CREDIT_SERVICE_TAX = "";
+//        String DEBIT_SERVICE_TAX = "";
+//        String ACTUAL_DUE_AMOUNT = "";
+//        String SERVICE_CHARGE = "";
+//        String TOTAL_AMOUNT = "";
+//
+//        double User_Charge = 0;
+//        double Emi_Amount = 0; //with Arrears etc
+//        double Bill_Amount = 0; // without Arrears etc
+//        double Final_Bill_Amount = 0;  // Amount to pay include service charge exclude bank charges
+//        final_amount = 0;
+//
+//
+//        USER_ID = Integer.parseInt(SharedPreferenceUtil.getUserId(getActivity()));
+//
+//        if (mResponsedata.getLoan_details().getPhone() != null) {
+//            MOBILE_NUMBER = mResponsedata.getLoan_details().getPhone();
+//        } else {
+//            MOBILE_NUMBER = "";
+//        }
+//        ASSESMENT_NUMBER = mResponsedata.getLoan_details().getLoan_number();
+//        SERVICE_CHARGE = Utils.parseTwoDigitAmount(String.valueOf(User_Charge));
+//
+//        for (int position = 0; position < emis.size(); position++) {
+//
+//            if (mSelectedEmis.contains(emis.get(position).getId())) {
+//                try {
+//                    for (int i = 0; i < taxArrayBean.size(); i++) {
+//                        Double maxLimit = Double.parseDouble(taxArrayBean.get(i).getTo());
+//                        Emi_Amount = Double.parseDouble(emis.get(position).getEmi_amount());  //2177
+//                        Bill_Amount = Double.parseDouble(emis.get(position).getBillamt()); // without Arrears etc dummy
+//
+//                        if (maxLimit > Emi_Amount) {
+//                            User_Charge = Double.parseDouble(taxArrayBean.get(i).getTransaction_amount());
+//                            User_Charge = User_Charge + ((Emi_Amount * Double.parseDouble(taxArrayBean.get(i).getExtra_tax())) / 100);
+//                            SERVICE_CHARGE = Utils.parseTwoDigitAmount(String.valueOf(User_Charge));
+//                            break;
+//                        }
+//                    }
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//
+//                if (!SharedPreferenceUtil.getLoginType(getActivity()).equals(Constants.LOGIN_TYPE_CUSTOMER)) {
+//                    ll_footer.setVisibility(View.VISIBLE);
+//
+//                    if(et_bill.getText().toString().equals("") && et_arrear.getText().toString().equals("")){
+//
+//                        Final_Bill_Amount = Emi_Amount + User_Charge;
+//                    }else if(et_arrear.getText().toString().equals("")){
+//
+//                        Final_Bill_Amount = Integer.parseInt(et_bill.getText().toString()) +
+//                                User_Charge
+//                                +Double.parseDouble(emis.get(0).getReconnection_fee());
+//                    }else if(et_bill.getText().toString().equals("")){
+//
+//                        Final_Bill_Amount = Double.parseDouble(emis.get(0).getBillamt())+
+//                                +Double.parseDouble(emis.get(0).getReconnection_fee())+
+//                        Integer.parseInt(et_arrear.getText().toString()) + User_Charge;
+//                    }else {
+//
+//                        Final_Bill_Amount = Integer.parseInt(et_bill.getText().toString()) +
+//                                Integer.parseInt(et_arrear.getText().toString()) + User_Charge
+//                                + Double.parseDouble(emis.get(0).getReconnection_fee());
+//                    }
+//
+//
+//                }else{
+//                    ll_footer.setVisibility(View.GONE);
+//                    Final_Bill_Amount = Emi_Amount + User_Charge;
+//
+//                    et_bill.setText(Final_Bill_Amount+"");
+//                    et_arrear.setText("0");
+//
+//
+//                }
+//
+//
+//
+//
+//
+//
+//
+//
+//                final_amount = final_amount + Final_Bill_Amount;
+//
+//                TOTAL_AMOUNT = Utils.parseTwoDigitAmount(String.valueOf(final_amount));
+//                ACTUAL_DUE_AMOUNT = Utils.parseTwoDigitAmount(String.valueOf(Emi_Amount));
+//                //ACTUAL_DUE_AMOUNT = Utils.parseTwoDigitAmount(String.valueOf(Bill_Amount));
+//
+//                /*
+//                 ** Getting Tax Details
+//                 */
+//
+//
+//                try {
+//                    for (int i = 0; i < taxArrayBean.size(); i++) {
+//                        Double maxLimit = Double.parseDouble(taxArrayBean.get(i).getTo());
+//                        if (maxLimit > final_amount) {
+//                            GST_CREDIT_CARD = taxArrayBean.get(i).getGst_credit();
+//                            GST_DEBIT_CARD = taxArrayBean.get(i).getGst_debit();
+//                            CREDIT_SERVICE_TAX = taxArrayBean.get(i).getCredit_service_tax_();
+//                            DEBIT_SERVICE_TAX = taxArrayBean.get(i).getDebit_service_tax_();
+//                            break;
+//                        }
+//                    }
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//
+//
+//            }
+//        }
+//
+//        /*
+//         ** Prepare Selected Emi
+//         */
+//
+//        id_string = "";
+//        for (int i = 0; i < mSelectedEmis.size(); i++) {
+//            if (i == 0 || mSelectedEmis.size() == i - 1) {
+//                id_string = id_string + mSelectedEmis.get(i);
+//            } else {
+//                id_string = id_string + "&" + mSelectedEmis.get(i);
+//            }
+//        }
+//
+//        EMI_ID = id_string;
+//
+//
+//        paymentRequestModel = new PaymentRequestModel();
+//        paymentRequestModel.setUser_id(USER_ID);
+//        paymentRequestModel.setEmi_ids(EMI_ID);
+//        paymentRequestModel.setPayment_type("");
+//        paymentRequestModel.setBankname("");
+//        paymentRequestModel.setCheckdate("");
+//        paymentRequestModel.setRr_number("");
+//        paymentRequestModel.setMobile_number(MOBILE_NUMBER);
+//        paymentRequestModel.setUpi_id("");
+//        paymentRequestModel.setAssessment_id(ASSESMENT_NUMBER);
+//
+//        paymentRequestModel.setGst_credit(GST_CREDIT_CARD);
+//        paymentRequestModel.setGst_debit(GST_DEBIT_CARD);
+//
+//        paymentRequestModel.setCredit_service_tax_(CREDIT_SERVICE_TAX);
+//        paymentRequestModel.setDebit_service_tax_(DEBIT_SERVICE_TAX);
+//
+//        paymentRequestModel.setActualDueAmount(et_bill.getText().toString());
+//        paymentRequestModel.setServiceCharge(SERVICE_CHARGE);
+//        paymentRequestModel.setTotal_amount(TOTAL_AMOUNT);
+//        paymentRequestModel.setPayment_through("Mobile");
+//
+//
+//        String request = new Gson().toJson(paymentRequestModel);
+//
+//
+//        if (final_amount != 0) {
+//
+//            upDateBillAmount(request);
+//
+//
+////            Intent i = new Intent(getActivity(), PaymentModeActivityNew.class);
+////            i.putExtra(Constants.PAYMENT_REQUEST_MODEL, request);
+////            startActivity(i);
+//        } else {
+//            Globals.showToast(getActivity(), "Unable to Process Amount");
+//        }
+//    }
+//
+//    private void openPaymentModesActivity() {
+//
+//        /*
+//         ** Getting Service Charge Details
+//         */
+//
+//        final_amount = 0;
+//        id_string = "";
+//
+//        double User_Charge = 0;
+//        double Emi_Amount = 0; //with Arrears etc
+//        double Bill_Amount = 0; // without Arrears etc
+//        double Final_Bill_Amount = 0;  // Amount to pay include service charge exclude bank charges
+//
+//
+//        for (int position = 0; position < emis.size(); position++) {
+//            if (mSelectedEmis.contains(emis.get(position).getId())) {
+//                try {
+//                    for (int i = 0; i < taxArrayBean.size(); i++) {
+//                        Double maxLimit = Double.parseDouble(taxArrayBean.get(i).getTo());
+//                        Emi_Amount = Double.parseDouble(emis.get(position).getEmi_amount());  //2177
+//                        Bill_Amount = Double.parseDouble(emis.get(position).getBillamt()); // without Arrears etc dummy
+//
+//                        if (maxLimit > Emi_Amount) {
+//                            User_Charge = Double.parseDouble(taxArrayBean.get(i).getTransaction_amount());
+//                            User_Charge = User_Charge + ((Emi_Amount * Double.parseDouble(taxArrayBean.get(i).getExtra_tax())) / 100);
+//                            User_Charge = Math.round(User_Charge);
+//                            user_charges = Utils.parseTwoDigitAmount(String.valueOf(Math.round(User_Charge)));
+//                            System.out.println(user_charges);
+//                            break;
+//                        }
+//                    }
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//
+//                Final_Bill_Amount = Emi_Amount + User_Charge;
+//
+//                final_amount = final_amount + Final_Bill_Amount;
+//
+//                /*
+//                 ** Getting Tax Details
+//                 */
+//
+//
+//                try {
+//                    for (int i = 0; i < taxArrayBean.size(); i++) {
+//                        Double maxLimit = Double.parseDouble(taxArrayBean.get(i).getTo());
+//                        if (maxLimit > final_amount) {
+//                            gst_credit = taxArrayBean.get(i).getGst_credit();
+//                            gst_debit = taxArrayBean.get(i).getGst_debit();
+//                            credit_service_tax = taxArrayBean.get(i).getCredit_service_tax_();
+//                            debit_service_tax_ = taxArrayBean.get(i).getDebit_service_tax_();
+//                            break;
+//                        }
+//                    }
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//
+//
+//            }
+//        }
+//
+//        /*
+//         ** Prepare Selected Emi
+//         */
+//
+//
+//        for (int i = 0; i < mSelectedEmis.size(); i++) {
+//            if (i == 0 || mSelectedEmis.size() == i - 1) {
+//                id_string = id_string + mSelectedEmis.get(i);
+//            } else {
+//                id_string = id_string + "&" + mSelectedEmis.get(i);
+//            }
+//        }
+//
+//        r_bank_name = "";
+//        r_total_amount = String.valueOf(final_amount);
+//        due_amount = String.valueOf(Emi_Amount);
+//        // due_amount=String.valueOf(Bill_Amount);
+//        r_payment_type = "";
+//        r_emi_ids = String.valueOf(id_string);
+//        r_user_id = SharedPreferenceUtil.getUserId(getActivity());
+//        r_check_date = "";
+//        r_rrn_number = "";
+//
+//        if (mResponsedata.getLoan_details().getPhone() != null) {
+//            r_mobile_number = mResponsedata.getLoan_details().getPhone();
+//        } else {
+//            r_mobile_number = "";
+//        }
+//
+//        r_upi_id = "";
+//        r_assessment_id = mResponsedata.getLoan_details().getLoan_number();
+//
+//        if (final_amount != 0) {
+//            //upDateBillAmount();
+//
+//        } else {
+//            Globals.showToast(getActivity(), "Unable to Process Amount");
+//        }
+//
+//    }
 
     private void setData() {
 
@@ -886,27 +930,27 @@ public class SearchBillFragment extends Fragment {
 
 
             double User_Charges = 0;
-
-            try {
-
-                for (int i = 0; i < taxArrayBean.size(); i++) {
-                    Double maxLimit = Double.parseDouble(taxArrayBean.get(i).getTo());
-                    Double emiamount = Double.parseDouble(tenant_matches_listings.get(position).getEmi_amount());
-
-                    if (maxLimit > emiamount) {
-                        User_Charges = Double.parseDouble(taxArrayBean.get(i).getTransaction_amount());
-
-                        if (taxArrayBean.get(i).getExtra_tax() != null) {
-                            User_Charges = User_Charges + ((emiamount * Double.parseDouble(taxArrayBean.get(i).getExtra_tax())) / 100);
-                        }
-                        String amount_format = Utils.parseAmount(String.valueOf(User_Charges));
-                        _listView.tv_fine.setText(getResources().getString(R.string.Rs) + " " + amount_format + " /-");
-                        break;
-                    }
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+//
+//            try {
+//
+//                for (int i = 0; i < taxArrayBean.size(); i++) {
+//                    Double maxLimit = Double.parseDouble(taxArrayBean.get(i).getTo());
+//                    Double emiamount = Double.parseDouble(tenant_matches_listings.get(position).getEmi_amount());
+//
+//                    if (maxLimit > emiamount) {
+//                        User_Charges = Double.parseDouble(taxArrayBean.get(i).getTransaction_amount());
+//
+//                        if (taxArrayBean.get(i).getExtra_tax() != null) {
+//                            User_Charges = User_Charges + ((emiamount * Double.parseDouble(taxArrayBean.get(i).getExtra_tax())) / 100);
+//                        }
+//                        String amount_format = Utils.parseAmount(String.valueOf(User_Charges));
+//                        _listView.tv_fine.setText(getResources().getString(R.string.Rs) + " " + amount_format + " /-");
+//                        break;
+//                    }
+//                }
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
 
             try {
 
@@ -921,7 +965,7 @@ public class SearchBillFragment extends Fragment {
                 _listView.tv_due.setText(getResources().getString(R.string.Rs) + " " + bill_amount + " /-");
 
                 if (data.getLast_paid_date() != null) {
-                    _listView.tv_last_paid_date.setText(Utils.parseDateTime(data.getLast_paid_date()));
+                    _listView.tv_last_paid_date.setText(data.getLast_paid_date());
                 }
 
                 if (data.getLast_paid_amt() != null) {
@@ -943,10 +987,8 @@ public class SearchBillFragment extends Fragment {
                     _listView.tv_total.setText(getResources().getString(R.string.Rs) + " " + "0" + " /-");
                 } else {
 
-                    double totalamount = Double.valueOf(tenant_matches_listings.get(position).getEmi_amount()) + User_Charges;
-                    String amount_format = Utils.parseAmount(String.valueOf(totalamount));
 
-                    _listView.tv_total.setText(getResources().getString(R.string.Rs) + " " + amount_format + " /-");
+                    _listView.tv_total.setText(getResources().getString(R.string.Rs) + " " + data.getFinal_amount() + " /-");
 
                 }
 
@@ -1033,10 +1075,10 @@ public class SearchBillFragment extends Fragment {
                         mResponsedata = new DemandModelNew();
                         mResponsedata = gson.fromJson(data.toString(), DemandModelNew.class);
                         emis.clear();
-                        taxArrayBean.clear();
+
                         mSelectedEmis.clear();
                         emis.addAll(mResponsedata.getEmi());
-                        taxArrayBean.addAll(mResponsedata.getTax_array());
+
                         setData();
 
                         if (emis.size() > 0) {
@@ -1118,6 +1160,7 @@ public class SearchBillFragment extends Fragment {
         JSONObject requestObject = new JSONObject();
         try {
             requestObject.put("assessment_id", et_search.getText().toString());
+            requestObject.put("emi_id", emis.get(0).getId());
             requestObject.put("change_billamt", et_bill.getText().toString());
             requestObject.put("newarrears", et_arrear.getText().toString());
             requestObject.put("user_id", SharedPreferenceUtil.getUserId(getActivity()));

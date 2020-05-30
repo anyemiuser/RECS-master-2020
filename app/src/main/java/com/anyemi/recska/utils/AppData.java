@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 
 import com.anyemi.recska.model.ServicesResponseModel;
 import com.instamojo.android.Instamojo;
+import com.paytm.pgsdk.PaytmPGActivity;
 
 public class AppData extends Application {
     public final static boolean IS_DEBUGGING_ON = false;
@@ -28,6 +29,7 @@ public class AppData extends Application {
     public void onCreate() {
 
         Instamojo.getInstance().initialize(this, Instamojo.Environment.TEST);
+
         // TODO Auto-generated method stub
         super.onCreate();
         font = Typeface.createFromAsset(getAssets(), "fonts/HELVETICANEUELTSTDLTCN.OTF");

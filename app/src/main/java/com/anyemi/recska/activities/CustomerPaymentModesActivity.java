@@ -409,9 +409,9 @@ public class CustomerPaymentModesActivity extends AppCompatActivity implements V
             case R.id.ll_cheque:
 //                getSelectedPayment("");
 
-                Intent checkIntent = new Intent(getApplicationContext(), CheckActivity.class);
-                checkIntent.putExtra(Constants.PAYMENT_REQUEST_MODEL, new Gson().toJson(paymentRequestModel));
-                startActivity(checkIntent);
+//                Intent checkIntent = new Intent(getApplicationContext(), CheckActivity.class);
+//                checkIntent.putExtra(Constants.PAYMENT_REQUEST_MODEL, new Gson().toJson(paymentRequestModel));
+//                startActivity(checkIntent);
                 break;
 
             case R.id.ll_credit_debit:
@@ -434,9 +434,9 @@ public class CustomerPaymentModesActivity extends AppCompatActivity implements V
 
             case R.id.ll_bhim:
 
-                Intent bhim = new Intent(getApplicationContext(), BhimActivity.class);
-                bhim.putExtra(Constants.PAYMENT_REQUEST_MODEL, new Gson().toJson(paymentRequestModel));
-                startActivity(bhim);
+//                Intent bhim = new Intent(getApplicationContext(), BhimActivity.class);
+//                bhim.putExtra(Constants.PAYMENT_REQUEST_MODEL, new Gson().toJson(paymentRequestModel));
+//                startActivity(bhim);
                 break;
 
             case R.id.ll_internet_banking:

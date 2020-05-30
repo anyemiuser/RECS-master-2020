@@ -17,9 +17,7 @@ import com.anyemi.recska.connection.HomeServices;
 import com.anyemi.recska.model.PaymentRequestModel;
 import com.anyemi.recska.utils.Globals;
 import com.google.gson.Gson;
-import com.paytm.pgsdk.PaytmOrder;
-import com.paytm.pgsdk.PaytmPGService;
-import com.paytm.pgsdk.PaytmPaymentTransactionCallback;
+
 
 import org.json.JSONObject;
 
@@ -136,90 +134,90 @@ public class MerchantActivity extends Activity {
         }
     }
 
-    public void onStartTransaction(View view) {
-        PaytmPGService Service = PaytmPGService.getProductionService();
-
-
-        //Kindly create complete Map and checksum on your server side and then put it here in paramMap.
-
-        Map<String, String> paramMap = new HashMap<String, String>();
-        paramMap.put("MID", "ANYEMI14182027236332");
-        paramMap.put("ORDER_ID", orderId);
-        paramMap.put("CUST_ID", String.valueOf(paymentRequestModel.getUser_id()));
-        paramMap.put("INDUSTRY_TYPE_ID", "Retail");
-        paramMap.put("CHANNEL_ID", "WAP");
-        paramMap.put("TXN_AMOUNT", paymentRequestModel.getActualDueAmount());
-        paramMap.put("WEBSITE", "APP_STAGING");
-        paramMap.put("EMAIL", "test@gmail.com");
-        paramMap.put("MOBILE_NO", "9642444934");
-        paramMap.put("CALLBACK_URL", "https://pguat.paytm.com/paytmchecksum/paytmCallback.jsp");
-        paramMap.put("CHECKSUMHASH", hash);
-        PaytmOrder Order = new PaytmOrder((HashMap<String, String>) paramMap);
-
-
-        Service.initialize(Order, null);
-
-        Service.startPaymentTransaction(this, true, true,
-                new PaytmPaymentTransactionCallback() {
-
-                    @Override
-                    public void someUIErrorOccurred(String inErrorMessage) {
-                        // Some UI Error Occurred in Payment Gateway Activity.
-                        // // This may be due to initialization of views in
-                        // Payment Gateway Activity or may be due to //
-                        // initialization of webview. // Error Message details
-                        // the error occurred.
-                    }
-
-                    @Override
-                    public void onTransactionResponse(Bundle inResponse) {
-                        Log.d("LOG", "Payment Transaction : " + inResponse);
-                        String status = inResponse.getString("STATUS");
-                        Log.d("Status", status);
-                        Toast.makeText(getApplicationContext(), "Payment Transaction response " + inResponse.toString(), Toast.LENGTH_LONG).show();
-                        paymentRequestModel.setRr_number(inResponse.getString("TXNID"));
-                        paymentRequestModel.setPayment_type(inResponse.getString("Paytm"));
-                        submitPayment();
-                    }
-
-                    @Override
-                    public void networkNotAvailable() {
-                        // If network is not
-                        // available, then this
-                        // method gets called.
-                    }
-
-                    @Override
-                    public void clientAuthenticationFailed(String inErrorMessage) {
-                        // This method gets called if client authentication
-                        // failed. // Failure may be due to following reasons //
-                        // 1. Server error or downtime. // 2. Server unable to
-                        // generate checksum or checksum response is not in
-                        // proper format. // 3. Server failed to authenticate
-                        // that client. That is value of payt_STATUS is 2. //
-                        // Error Message describes the reason for failure.
-                    }
-
-                    @Override
-                    public void onErrorLoadingWebPage(int iniErrorCode,
-                                                      String inErrorMessage, String inFailingUrl) {
-
-                    }
-
-                    // had to be added: NOTE
-                    @Override
-                    public void onBackPressedCancelTransaction() {
-                        // TODO Auto-generated method stub
-                    }
-
-                    @Override
-                    public void onTransactionCancel(String inErrorMessage, Bundle inResponse) {
-                        Log.d("LOG", "Payment Transaction Failed " + inErrorMessage);
-                        Toast.makeText(getBaseContext(), "Payment Transaction Failed ", Toast.LENGTH_LONG).show();
-                    }
-
-                });
-    }
+//    public void onStartTransaction(View view) {
+//        PaytmPGService Service = PaytmPGService.getProductionService();
+//
+//
+//        //Kindly create complete Map and checksum on your server side and then put it here in paramMap.
+//
+//        Map<String, String> paramMap = new HashMap<String, String>();
+//        paramMap.put("MID", "ANYEMI14182027236332");
+//        paramMap.put("ORDER_ID", orderId);
+//        paramMap.put("CUST_ID", String.valueOf(paymentRequestModel.getUser_id()));
+//        paramMap.put("INDUSTRY_TYPE_ID", "Retail");
+//        paramMap.put("CHANNEL_ID", "WAP");
+//        paramMap.put("TXN_AMOUNT", paymentRequestModel.getActualDueAmount());
+//        paramMap.put("WEBSITE", "APP_STAGING");
+//        paramMap.put("EMAIL", "test@gmail.com");
+//        paramMap.put("MOBILE_NO", "9642444934");
+//        paramMap.put("CALLBACK_URL", "https://pguat.paytm.com/paytmchecksum/paytmCallback.jsp");
+//        paramMap.put("CHECKSUMHASH", hash);
+//        PaytmOrder Order = new PaytmOrder((HashMap<String, String>) paramMap);
+//
+//
+//        Service.initialize(Order, null);
+//
+//        Service.startPaymentTransaction(this, true, true,
+//                new PaytmPaymentTransactionCallback() {
+//
+//                    @Override
+//                    public void someUIErrorOccurred(String inErrorMessage) {
+//                        // Some UI Error Occurred in Payment Gateway Activity.
+//                        // // This may be due to initialization of views in
+//                        // Payment Gateway Activity or may be due to //
+//                        // initialization of webview. // Error Message details
+//                        // the error occurred.
+//                    }
+//
+//                    @Override
+//                    public void onTransactionResponse(Bundle inResponse) {
+//                        Log.d("LOG", "Payment Transaction : " + inResponse);
+//                        String status = inResponse.getString("STATUS");
+//                        Log.d("Status", status);
+//                        Toast.makeText(getApplicationContext(), "Payment Transaction response " + inResponse.toString(), Toast.LENGTH_LONG).show();
+//                        paymentRequestModel.setRr_number(inResponse.getString("TXNID"));
+//                        paymentRequestModel.setPayment_type(inResponse.getString("Paytm"));
+//                        submitPayment();
+//                    }
+//
+//                    @Override
+//                    public void networkNotAvailable() {
+//                        // If network is not
+//                        // available, then this
+//                        // method gets called.
+//                    }
+//
+//                    @Override
+//                    public void clientAuthenticationFailed(String inErrorMessage) {
+//                        // This method gets called if client authentication
+//                        // failed. // Failure may be due to following reasons //
+//                        // 1. Server error or downtime. // 2. Server unable to
+//                        // generate checksum or checksum response is not in
+//                        // proper format. // 3. Server failed to authenticate
+//                        // that client. That is value of payt_STATUS is 2. //
+//                        // Error Message describes the reason for failure.
+//                    }
+//
+//                    @Override
+//                    public void onErrorLoadingWebPage(int iniErrorCode,
+//                                                      String inErrorMessage, String inFailingUrl) {
+//
+//                    }
+//
+//                    // had to be added: NOTE
+//                    @Override
+//                    public void onBackPressedCancelTransaction() {
+//                        // TODO Auto-generated method stub
+//                    }
+//
+//                    @Override
+//                    public void onTransactionCancel(String inErrorMessage, Bundle inResponse) {
+//                        Log.d("LOG", "Payment Transaction Failed " + inErrorMessage);
+//                        Toast.makeText(getBaseContext(), "Payment Transaction Failed ", Toast.LENGTH_LONG).show();
+//                    }
+//
+//                });
+//    }
 
     private void submitPayment() {
 

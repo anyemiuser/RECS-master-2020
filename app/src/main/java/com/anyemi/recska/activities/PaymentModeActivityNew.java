@@ -118,7 +118,7 @@ public class PaymentModeActivityNew extends AppCompatActivity implements AepPaym
 
         paymentRequestModel.setUser_id(Integer.parseInt(mResponsedata.getId()));
         paymentRequestModel.setMID_ID(mResponsedata.getAEP_MID());
-        paymentRequestModel.setORDER_ID(orderId);
+      //  paymentRequestModel.setORDER_ID(orderId);
         paymentRequestModel.setFIN_ID(SharedPreferenceUtil.getFIN_ID(getApplicationContext()));
         paymentRequestModel.setFIN_ID(SharedPreferenceUtil.getFIN_ID(getApplicationContext()));
 
@@ -127,7 +127,7 @@ public class PaymentModeActivityNew extends AppCompatActivity implements AepPaym
         aprm.setUser_id(Integer.parseInt(mResponsedata.getId()));
         aprm.setMID_ID(mResponsedata.getAEP_MID());
      //   aprm.setMID_ID("AnyEMI");
-        aprm.setORDER_ID(orderId);
+       // aprm.setORDER_ID(orderId);
         aprm.setTotal_amount(paymentRequestModel.getTotal_amount());
         aprm.setActualDueAmount(paymentRequestModel.getTotal_amount());
         aprm.setMobile_number(mResponsedata.getUser_phone_number());
@@ -138,110 +138,8 @@ public class PaymentModeActivityNew extends AppCompatActivity implements AepPaym
         is_valid = false;
 
 
-//        tv_amount = (TextView) findViewById(R.id.tv_amount);
-//        String resultStr = String.valueOf(paymentRequestModel.getTotal_amount());
-//        resultStr = Utils.parseAmount(resultStr);
-//        tv_amount.setText("Rs." + resultStr + " /-");
-//
-//
-//        //gv_services = (GridView) findViewById(R.id.gv_services);
-//        gv_services = (ListView) findViewById(R.id.gv_services);
-//        mAdapter = new PaymentModesAdapter(getApplicationContext(), ary_data);
-//        gv_services.setAdapter(mAdapter);
-//        parseData();
-//
-//        gv_services.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//
-//                /*
-//                 *
-//                 * Payment ID
-//                 * FIN_ID
-//                 */
-//
-//                if (ary_data.get(i).getStatus().equals("1")) {
-//                    paymentRequestModel.setPayment_type(ary_data.get(i).getPaymentmode_code());
-//                    paymentRequestModel.setFIN_ID(SharedPreferenceUtil.getFIN_ID(getApplicationContext()));
-//                    paymentRequestModel.setUser_id(Integer.parseInt(SharedPreferenceUtil.getUserId(getApplicationContext())));
-//                    getSelectedPayment(ary_data.get(i).getPaymentmode_code());
-//                } else {
-//                    Globals.showToast(getApplicationContext(), "We Will Update Soon");
-//                }
-//
-//            }
-//        });
     }
 
-
-//    public void getSelectedPayment(String payment_mode) {
-//
-//
-//        Intent paymentIntent;
-//
-//        if (payment_mode.equals(Constants.PAYMENT_MODE_PAYTM_SBI_UPI)) {
-//            paymentIntent = new Intent(getApplicationContext(), SbiPayPaymentActivity.class);
-//        } else if (payment_mode.equals(Constants.PAYMENT_MODE_CASH)) {
-//            paymentIntent = new Intent(getApplicationContext(), CompleateTransactionActivity.class);
-//        } else if (payment_mode.equals(Constants.PAYMENT_MODE_ANYEMI_WALLET)) {
-//            paymentIntent = new Intent(getApplicationContext(), CompleateTransactionActivity.class);
-//        } else if (payment_mode.equals(Constants.PAYMENT_MODE_CHEQUE)) {
-//            paymentIntent = new Intent(getApplicationContext(), CheckActivity.class);
-//        } else if (payment_mode.equals(Constants.PAYMENT_MODE_CREDIT_CARD)) {
-//            paymentIntent = new Intent(getApplicationContext(), CreditAndDebitCardActivity.class);
-//        } else if (payment_mode.equals(Constants.PAYMENT_MODE_DEBIT_CARD)) {
-//            paymentIntent = new Intent(getApplicationContext(), CreditAndDebitCardActivity.class);
-//        } else if (payment_mode.equals(Constants.PAYMENT_MODE_PAYTM_QR)) {
-//            paymentIntent = new Intent(getApplicationContext(), ScanAndPayActivity.class);
-//        } else if (payment_mode.equals(Constants.PAYMENT_MODE_BHIM)) {
-//            paymentIntent = new Intent(getApplicationContext(), BhimActivity.class);
-//        } else if (payment_mode.equals(Constants.PAYMENT_MODE_NET_BANKING)) {
-//            paymentIntent = new Intent(getApplicationContext(), CompleateTransactionActivity.class);
-//        } else if (payment_mode.equals(Constants.PAYMENT_MODE_AADHAR)) {
-//            paymentIntent = new Intent(getApplicationContext(), CompleateTransactionActivity.class);
-//        } else if (payment_mode.equals(Constants.PAYMENT_MODE_PAYTM_PG)) {
-//            paymentIntent = new Intent(getApplicationContext(), PaytmPgActivity.class);
-//        } else if (payment_mode.equals(Constants.PAYMENT_MODE_INSTAMOJO)) {
-//            paymentIntent = new Intent(getApplicationContext(), InstamojoActivity.class);
-//        } else if (payment_mode.equals(Constants.PAYMENT_MODE_HDFC)) {
-//            paymentIntent = new Intent(getApplicationContext(), HdfcPgActivity.class);
-//        } else if (payment_mode.equals(Constants.PAYMENT_MODE_HDFC_UPI)) {
-//            paymentIntent = new Intent(getApplicationContext(), SbiPayPaymentActivity.class);
-//        } else {
-//            paymentIntent = new Intent(getApplicationContext(), CompleateTransactionActivity.class);
-//        }
-//
-//        paymentIntent.putExtra(Constants.PAYMENT_REQUEST_MODEL, new Gson().toJson(paymentRequestModel));
-//        startActivity(paymentIntent);
-//    }
-
-
-//    private void parseData() {
-//
-//        try {
-//            ary_data.clear();
-//            String group_id = SharedPreferenceUtil.getGroupId(getApplicationContext());
-//            String FIN_ID = SharedPreferenceUtil.getFIN_ID(getApplicationContext());
-//
-//            for (ServicesResponseModel.FinancerBean financerBean : servicesResponseModel.getFinancer()) {
-//                if (financerBean.getId().equals(FIN_ID)) {
-//                    for (ServicesResponseModel.FinancerBean.PaymentModeBean paymentModeBean : financerBean.getPayment_mode()) {
-//                        if (paymentModeBean.getIs_public().equals("0")) {
-//                            if (group_id.equals(LOGIN_TYPE_AGENT)) {
-//                                ary_data.add(paymentModeBean);
-//                            }
-//                        } else {
-//                            ary_data.add(paymentModeBean);
-//                        }
-//                    }
-//                    break;
-//                }
-//            }
-//            mAdapter.notifyDataSetChanged();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
 
 
     private void createActionBar() {
@@ -302,10 +200,11 @@ public class PaymentModeActivityNew extends AppCompatActivity implements AepPaym
         paymentRequestModel.setTrsno(prm.getTrsno());
         paymentRequestModel.setPayment_type(prm.getPayment_type());
         paymentRequestModel.setMobile_number(prm.getMobile_number());
+        paymentRequestModel.setRemarks(new Gson().toJson(s));
         // Globals.showToast(getApplicationContext(),s);
         submitPayment();
 
-        finish();
+     //   finish();
 
     }
 

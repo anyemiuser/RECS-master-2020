@@ -61,7 +61,8 @@ public class Constants {
     public static final String GET_PENDING_TRANSACTIONS = base_url + "getPendingTransactions?id=";
     public static final String RESET_PASSWORD = base_url + "changePassword";
 //    public static final String ASS_URL = base_url + "getassment_details";
-    public static final String ASS_URL = "https://api.anyemi.com/recs_v1/getassment_details";
+//    public static final String ASS_URL = "https://api.anyemi.com/recs_v1/getassment_details";
+    public static final String ASS_URL = "https://api.anyemi.com/recs/getassment_details_new";
     public static final String UPDATE_BILL = base_url + "updatebilldata";
     public static final String UPI_LIST = base_url + "getuserUPI";
    // public static final String GET_SUB_CATEGORIES = base_url + "/mod_PaymentWiseTranscitions";
@@ -81,7 +82,7 @@ public class Constants {
     public static final String POST_RESEND_OTP = base_url + "resendotp";
     public static final String POST_OTP_VERIFY = base_url + "otpverify";
   //  public static final String POST_OTP_VERIFY = "https://dev.anyemi.com/webservices/anyemi/otpverify";
-    public static final String POST_PAYMENT_SUBMIT = base_url + "pay";
+    public static final String POST_PAYMENT_SUBMIT = base_url + "pay_new";
     public static final String GET_SAMPLE_PAYMENT_SUBMIT = "https://pguat.paytm.com/oltp/HANDLER_INTERNAL/getTxnStatus?JsonData=";
     public static final String POST_LOCATION = base_url + "location";
     public static final String GET_BANKS = base_url + "getbanks";

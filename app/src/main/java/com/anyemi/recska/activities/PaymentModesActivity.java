@@ -259,9 +259,9 @@ public class PaymentModesActivity extends AppCompatActivity implements View.OnCl
             paymentIntent.putExtra(Constants.PAYMENT_REQUEST_MODEL, new Gson().toJson(paymentRequestModel));
             startActivity(paymentIntent);
         } else if (payment_mode.equals(Constants.PAYMENT_MODE_CHEQUE)) {
-            paymentIntent = new Intent(getApplicationContext(), CheckActivity.class);
-            paymentIntent.putExtra(Constants.PAYMENT_REQUEST_MODEL, new Gson().toJson(paymentRequestModel));
-            startActivity(paymentIntent);
+//            paymentIntent = new Intent(getApplicationContext(), CheckActivity.class);
+//            paymentIntent.putExtra(Constants.PAYMENT_REQUEST_MODEL, new Gson().toJson(paymentRequestModel));
+//            startActivity(paymentIntent);
         } else if (payment_mode.equals(Constants.PAYMENT_MODE_CREDIT_CARD)) {
 //            paymentIntent = new Intent(getApplicationContext(), CompleateTransactionActivity.class);
 //            paymentIntent.putExtra(Constants.PAYMENT_REQUEST_MODEL, new Gson().toJson(paymentRequestModel));
@@ -276,9 +276,9 @@ public class PaymentModesActivity extends AppCompatActivity implements View.OnCl
             paymentIntent.putExtra(Constants.PAYMENT_REQUEST_MODEL, new Gson().toJson(paymentRequestModel));
             startActivity(paymentIntent);
         } else if (payment_mode.equals(Constants.PAYMENT_MODE_BHIM)) {
-            paymentIntent = new Intent(getApplicationContext(), BhimActivity.class);
-            paymentIntent.putExtra(Constants.PAYMENT_REQUEST_MODEL, new Gson().toJson(paymentRequestModel));
-            startActivity(paymentIntent);
+//            paymentIntent = new Intent(getApplicationContext(), BhimActivity.class);
+//            paymentIntent.putExtra(Constants.PAYMENT_REQUEST_MODEL, new Gson().toJson(paymentRequestModel));
+//            startActivity(paymentIntent);
         } else if (payment_mode.equals(Constants.PAYMENT_MODE_NET_BANKING)) {
             paymentRequestModel.setPayment_type(Constants.PAYMENT_MODE_NET_BANKING);
             paymentIntent = new Intent(getApplicationContext(), CompleateTransactionActivity.class);

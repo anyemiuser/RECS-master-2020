@@ -1,5 +1,7 @@
 package com.anyemi.recska.activities;
 
+import android.Manifest;
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -7,7 +9,11 @@ import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.StrictMode;
+import android.provider.Settings;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -48,6 +54,12 @@ import com.itextpdf.text.Section;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.single.PermissionListener;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -262,7 +274,7 @@ public class CollectionsDetailsActivity extends AppCompatActivity implements Vie
             Double total_amount_with_bank_charges = bank_charges + total_amount;
 
 
-            String resultStr = Utils.parseAmount(String.valueOf(total_amount_with_bank_charges));
+            String resultStr = Utils.parseAmount(String.valueOf(total_amount));
             tv_total_amount.setText("Rs." + resultStr + " /-");
 
 
@@ -316,9 +328,44 @@ public class CollectionsDetailsActivity extends AppCompatActivity implements Vie
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_print_on_device:
-                selectPaymentMethod();
+                checkPermin();
+
                 break;
         }
+    }
+
+
+    private void checkPermin() {
+
+        Dexter.withActivity((Activity) CollectionsDetailsActivity.this)
+                .withPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .withListener(new PermissionListener() {
+                    @Override
+                    public void onPermissionGranted(PermissionGrantedResponse response) {
+                        selectPaymentMethod();
+                    }
+
+                    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+                    @Override
+                    public void onPermissionDenied(PermissionDeniedResponse response) {
+                        // check for permanent denial of permission
+                        if (response.isPermanentlyDenied()) {
+                            // navigate user to app settings
+
+                            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                            Uri uri = Uri.fromParts("package", getPackageName(), null);
+                            intent.setData(uri);
+                            startActivity(intent);
+                        }
+                    }
+
+                    @Override
+                    public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {
+                        token.continuePermissionRequest();
+                    }
+                }).check();
+
+
     }
 
     private void selectPaymentMethod() {
@@ -334,7 +381,7 @@ public class CollectionsDetailsActivity extends AppCompatActivity implements Vie
 
             item_details.getLoan_number();
 
-            final String fpath = "/sdcard/Download/" + item_details.getLoan_number() + Utils.getCurrentDateTime() + ".pdf";
+            final String fpath = "/sdcard/Download/" + Utils.getCurrentDateTime() + ".pdf";
             File file = new File(fpath);
             if (!file.exists()) {
                 try {
@@ -353,51 +400,36 @@ public class CollectionsDetailsActivity extends AppCompatActivity implements Vie
                 addContent(document);
                 document.close();
 
+//
+//                MediaScannerConnection.scanFile(this, new String[]{file.getAbsolutePath()},
+//                        null,
+//                        new MediaScannerConnection.OnScanCompletedListener() {
+//                            @Override
+//                            public void onScanCompleted(String path, Uri uri) {
+//                            }
+//                        });
+//
+//
+               Globals.showToast(CollectionsDetailsActivity.this, "Bill Downloaded Successfully");
 
-                MediaScannerConnection.scanFile(this, new String[]{file.getAbsolutePath()},
-                        null,
-                        new MediaScannerConnection.OnScanCompletedListener() {
-                            @Override
-                            public void onScanCompleted(String path, Uri uri) {
-                            }
-                        });
-
-
-                Globals.showToast(CollectionsDetailsActivity.this, "Bill Downloaded Successfully");
-//
-//                infoDialog = new Dialog(CollectionsDetailsActivity.this);
-//
-//
-//                infoDialog.setContentView(R.layout.dialog_info);
-//
-//                final TextView tv_info = (TextView) infoDialog.findViewById(R.id.tv_info);
-//                final Button btn_send_sms = (Button) infoDialog.findViewById(R.id.btn_send_sms);
-//                final ProgressBar prgs_load = (ProgressBar) infoDialog.findViewById(R.id.prgs_load);
-//
-//                btn_send_sms.setText("");
-//
-//                btn_send_sms.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-//                        Uri uri = Uri.parse(fpath);
-////                        intent.setDataAndType(uri, "text/csv");
-////                        startActivity(Intent.createChooser(intent, "Open folder"));
-//
-//                        intent.setDataAndType(uri, "application/pdf");
-//                        intent.setFlags(Intent. FLAG_ACTIVITY_CLEAR_TOP);
-//                        startActivity(Intent.createChooser(intent, "Open folder"));
-//
-//
-//                    }
-//                });
-//
-//                infoDialog.show();
+                StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+                StrictMode.setVmPolicy(builder.build());
 
 
+            //    File pdfFile = new File(fpath);  // -> filename = maven.pdf
+                Uri path = Uri.fromFile(file);
 
+                Intent shareIntent = new Intent();
+                shareIntent.setAction(Intent.ACTION_SEND);
+                shareIntent.putExtra(Intent.EXTRA_STREAM, path);
+                // shareIntent.setType("image/*");
+                shareIntent.setType("application/pdf");
 
-        } catch (Exception e) {
+                //shareIntent.setType("image/jpeg");
+                // Launch sharing dialog for image
+                startActivity(Intent.createChooser(shareIntent, "Share Pdf "));
+
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -468,7 +500,7 @@ public class CollectionsDetailsActivity extends AppCompatActivity implements Vie
 
         if (item_details.getPayment_type() != null) {
             //int taxtype = paymmentModesId.indexOf();
-            p_type =item_details.getPayment_type();
+            p_type = item_details.getPayment_type();
         }
 
         // Second parameter is the number of the chapter
@@ -625,12 +657,15 @@ public class CollectionsDetailsActivity extends AppCompatActivity implements Vie
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                if(getIntent().getStringExtra("redirect").equals("collection")){
+                if(getIntent().getStringExtra("redirect")!=null &&getIntent().getStringExtra("redirect")
+                        .equals("collection")){
                     Intent intent = new Intent(context, NavigationActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                //    intent.putExtra("FRAGMENT", "COLLECTION");
+                    intent.putExtra("FRAGMENT", "COLLECTION");
                     context.startActivity(intent);
-                }else
+
+                    finish();
+                } else
                     finish();
 
 
@@ -644,13 +679,15 @@ public class CollectionsDetailsActivity extends AppCompatActivity implements Vie
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        if(getIntent().getStringExtra("redirect").equals("collection")){
+        if(getIntent().getStringExtra("redirect")!=null &&getIntent().getStringExtra("redirect")
+                .equals("collection")){
             Intent intent = new Intent(context, NavigationActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
          //   intent.putExtra("FRAGMENT", "COLLECTION");
             context.startActivity(intent);
         }else
             finish();
+
 
 
     }

@@ -41,9 +41,6 @@ import com.anyemi.recska.utils.Globals;
 import com.anyemi.recska.utils.PrintLog;
 import com.anyemi.recska.utils.Utils;
 import com.google.gson.Gson;
-import com.paytm.pgsdk.PaytmOrder;
-import com.paytm.pgsdk.PaytmPGService;
-import com.paytm.pgsdk.PaytmPaymentTransactionCallback;
 
 import org.json.JSONObject;
 
@@ -207,7 +204,7 @@ public class PaytmPgActivity extends AppCompatActivity implements TextWatcher {
                     if (checkSumModel.getStatus().equals("success")) {
                         hash = checkSumModel.getCheckSum();
                         PrintLog.print("HASH KEY", hash);
-                        onStartTransaction();
+                        //onStartTransaction();
                     } else {
                         Globals.showToast(getApplicationContext(), "Unable to generate hash");
                     }
@@ -246,108 +243,108 @@ public class PaytmPgActivity extends AppCompatActivity implements TextWatcher {
     }
 
 
-    public void onStartTransaction() {
-        PaytmPGService Service = PaytmPGService.getProductionService();
-        // PaytmPGService Service = PaytmPGService.getStagingService();
-
-
-        HashMap<String, String> paramMap = new HashMap<String, String>();
-
-//production
-
-        paramMap.put("MID", "ANYEMI64501677609833");
-        paramMap.put("ORDER_ID", orderId);
-       // paramMap.put("ORDER_ID", "01234586");
-        paramMap.put("CUST_ID", paymentRequestModel.getAssessment_id().replace(" ", ""));
-        paramMap.put("INDUSTRY_TYPE_ID", "Retail92");
-        paramMap.put("CHANNEL_ID", "WAP");
-        paramMap.put("TXN_AMOUNT", paymentRequestModel.getTotal_amount());
-        // paramMap.put("TXN_AMOUNT", "1");
-        paramMap.put("WEBSITE", "ANYEMIWAP");
-        paramMap.put("EMAIL", "");
-        paramMap.put("MOBILE_NO", et_phone_num.getText().toString());
-        paramMap.put("CALLBACK_URL", "https://securegw.paytm.in/theia/paytmCallback?ORDER_ID=" + orderId);
-       // paramMap.put("CALLBACK_URL", "https://securegw.paytm.in/theia/paytmCallback?ORDER_ID=" + "01234586");
-        paramMap.put("CHECKSUMHASH", hash);
-
-
-//Development
-
-/*
-        //   paramMap.put("MID", "ANYEMI14182027236332");
-        paramMap.put("MID", "ANYEMI14182027236332");
-        paramMap.put("ORDER_ID", orderId);
-        paramMap.put("CUST_ID", paymentRequestModel.getAssessment_id().replace(" ", ""));
-        paramMap.put("INDUSTRY_TYPE_ID", "Retail");
-        paramMap.put("CHANNEL_ID", "WAP");
-        paramMap.put("TXN_AMOUNT", paymentRequestModel.getTotal_amount());
-        // paramMap.put("TXN_AMOUNT", "1");
-        paramMap.put("WEBSITE", "APP_STAGING");
-        paramMap.put("EMAIL", "");
-        paramMap.put("MOBILE_NO", et_phone_num.getText().toString());
-        paramMap.put("CALLBACK_URL", "https://pguat.paytm.com/paytmchecksum/paytmCallback.jsp");
-        paramMap.put("CHECKSUMHASH", hash);
-*/
-
-        //  PaytmOrder Order = new PaytmOrder(paramMap);
-        PaytmOrder Order = new PaytmOrder(paramMap);
-
-
-        Service.initialize(Order, null);
-
-        Service.startPaymentTransaction(this, true, true,
-                new PaytmPaymentTransactionCallback() {
-
-                    @Override
-                    public void someUIErrorOccurred(String inErrorMessage) {
-                    }
-
-                    @Override
-                    public void onTransactionResponse(Bundle inResponse) {
-                        Log.d("LOG", "Payment Transaction : " + inResponse);
-                        String status = inResponse.getString("STATUS");
-                        Log.d("Status", status);
-                        if (status.equals("TXN_SUCCESS")) {
-
-                            paymentRequestModel.setRr_number(inResponse.getString("TXNID"));
-                            paymentRequestModel.setTrsno(inResponse.getString("TXNID"));
-
-                            Globals.showToast(getApplicationContext(), "Payment success");
-                            submitPayment();
-                        } else {
-                            openInfoDialog(inResponse.getString("RESPMSG"), "Payment Failed");
-                        }
-                    }
-
-                    @Override
-                    public void networkNotAvailable() {
-                    }
-
-                    @Override
-                    public void clientAuthenticationFailed(String inErrorMessage) {
-
-                    }
-
-                    @Override
-                    public void onErrorLoadingWebPage(int iniErrorCode,
-                                                      String inErrorMessage, String inFailingUrl) {
-
-                    }
-
-                    // had to be added: NOTE
-                    @Override
-                    public void onBackPressedCancelTransaction() {
-                        // TODO Auto-generated method stub
-                    }
-
-                    @Override
-                    public void onTransactionCancel(String inErrorMessage, Bundle inResponse) {
-                        Log.d("LOG", "Payment Transaction Failed " + inErrorMessage);
-                        Toast.makeText(getBaseContext(), "Payment Transaction Failed ", Toast.LENGTH_LONG).show();
-                    }
-
-                });
-    }
+//    public void onStartTransaction() {
+//        PaytmPGService Service = PaytmPGService.getProductionService();
+//        // PaytmPGService Service = PaytmPGService.getStagingService();
+//
+//
+//        HashMap<String, String> paramMap = new HashMap<String, String>();
+//
+////production
+//
+//        paramMap.put("MID", "ANYEMI64501677609833");
+//        paramMap.put("ORDER_ID", orderId);
+//       // paramMap.put("ORDER_ID", "01234586");
+//        paramMap.put("CUST_ID", paymentRequestModel.getAssessment_id().replace(" ", ""));
+//        paramMap.put("INDUSTRY_TYPE_ID", "Retail92");
+//        paramMap.put("CHANNEL_ID", "WAP");
+//        paramMap.put("TXN_AMOUNT", paymentRequestModel.getTotal_amount());
+//        // paramMap.put("TXN_AMOUNT", "1");
+//        paramMap.put("WEBSITE", "ANYEMIWAP");
+//        paramMap.put("EMAIL", "");
+//        paramMap.put("MOBILE_NO", et_phone_num.getText().toString());
+//        paramMap.put("CALLBACK_URL", "https://securegw.paytm.in/theia/paytmCallback?ORDER_ID=" + orderId);
+//       // paramMap.put("CALLBACK_URL", "https://securegw.paytm.in/theia/paytmCallback?ORDER_ID=" + "01234586");
+//        paramMap.put("CHECKSUMHASH", hash);
+//
+//
+////Development
+//
+///*
+//        //   paramMap.put("MID", "ANYEMI14182027236332");
+//        paramMap.put("MID", "ANYEMI14182027236332");
+//        paramMap.put("ORDER_ID", orderId);
+//        paramMap.put("CUST_ID", paymentRequestModel.getAssessment_id().replace(" ", ""));
+//        paramMap.put("INDUSTRY_TYPE_ID", "Retail");
+//        paramMap.put("CHANNEL_ID", "WAP");
+//        paramMap.put("TXN_AMOUNT", paymentRequestModel.getTotal_amount());
+//        // paramMap.put("TXN_AMOUNT", "1");
+//        paramMap.put("WEBSITE", "APP_STAGING");
+//        paramMap.put("EMAIL", "");
+//        paramMap.put("MOBILE_NO", et_phone_num.getText().toString());
+//        paramMap.put("CALLBACK_URL", "https://pguat.paytm.com/paytmchecksum/paytmCallback.jsp");
+//        paramMap.put("CHECKSUMHASH", hash);
+//*/
+//
+//        //  PaytmOrder Order = new PaytmOrder(paramMap);
+//        PaytmOrder Order = new PaytmOrder(paramMap);
+//
+//
+//        Service.initialize(Order, null);
+//
+//        Service.startPaymentTransaction(this, true, true,
+//                new PaytmPaymentTransactionCallback() {
+//
+//                    @Override
+//                    public void someUIErrorOccurred(String inErrorMessage) {
+//                    }
+//
+//                    @Override
+//                    public void onTransactionResponse(Bundle inResponse) {
+//                        Log.d("LOG", "Payment Transaction : " + inResponse);
+//                        String status = inResponse.getString("STATUS");
+//                        Log.d("Status", status);
+//                        if (status.equals("TXN_SUCCESS")) {
+//
+//                            paymentRequestModel.setRr_number(inResponse.getString("TXNID"));
+//                            paymentRequestModel.setTrsno(inResponse.getString("TXNID"));
+//
+//                            Globals.showToast(getApplicationContext(), "Payment success");
+//                            submitPayment();
+//                        } else {
+//                            openInfoDialog(inResponse.getString("RESPMSG"), "Payment Failed");
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void networkNotAvailable() {
+//                    }
+//
+//                    @Override
+//                    public void clientAuthenticationFailed(String inErrorMessage) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onErrorLoadingWebPage(int iniErrorCode,
+//                                                      String inErrorMessage, String inFailingUrl) {
+//
+//                    }
+//
+//                    // had to be added: NOTE
+//                    @Override
+//                    public void onBackPressedCancelTransaction() {
+//                        // TODO Auto-generated method stub
+//                    }
+//
+//                    @Override
+//                    public void onTransactionCancel(String inErrorMessage, Bundle inResponse) {
+//                        Log.d("LOG", "Payment Transaction Failed " + inErrorMessage);
+//                        Toast.makeText(getBaseContext(), "Payment Transaction Failed ", Toast.LENGTH_LONG).show();
+//                    }
+//
+//                });
+//    }
 
 
     private void openInfoDialog(String respmsg, final String s) {

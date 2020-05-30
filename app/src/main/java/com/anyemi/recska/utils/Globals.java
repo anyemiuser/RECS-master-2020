@@ -164,7 +164,7 @@ public class Globals {
             if(l_type.equals(Constants.LOGIN_TYPE_CUSTOMER)) {
                 Intent intent = new Intent(context, NavigationActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                intent.putExtra("FRAGMENT", "COLLECTION");
+                intent.putExtra("redirect","collection");
                 context.startActivity(intent);
             }else {
                 Log.e("l_type",l_type);

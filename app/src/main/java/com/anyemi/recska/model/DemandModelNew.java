@@ -13,8 +13,8 @@ public class DemandModelNew {
     /**
      * status : Success
      * msg : Successfully send
-     * loan_details : {"id":"121","date_time":"2018-04-09 13:49:50","financer":"1","loan_number":"90701 09933","total_loan_amount":"363","emi_amount":"363","roi":"6","tenture":"0","emi_start_date":"2018-03-20 00:00:00","customer_name":"COMMISSIONER G.V.M.C   78 B3","phone":"9876541230","email":null,"loan_id":null,"status":"open","remarks":null,"address":"AGANAMPUDISTREET LIGHTS","adhaar":"123456789012"}
-     * emi : [{"id":"324","date_time":"2018-04-17 00:00:00","financer":"1","customer":"COMMISSIONER G.V.M.C   78 B3","loan_number":"90701 09933         ","emi_amount":"-10086","due_date":"2018-04-20 00:00:00","over_due":"0","p_status":"no","loan_id":"121","payment_to":null,"payment_type":null,"remarks":null,"paid_amount":"0","paid_over_due":"0","adjamt":"855","newarrears":"855","reconnection_fee":"855"}]
+     * loan_details : {"id":"17363","date_time":"2018-09-24 14:44:56","financer":"1","loan_number":"80849 00077","total_loan_amount":"710","emi_amount":"710","roi":"PARAWADA","tenture":"100","emi_start_date":"2018-09-30 00:00:00","customer_name":"CHITTA NARAYANAMMA","phone":"","email":null,"loan_id":null,"status":"open","remarks":null,"address":"SANYASUDU,,JAJULAVANI PALEM","adhaar":null,"areacode":"80849","category":"100"}
+     * emi : [{"id":"473383","date_time":"2020-05-30 00:00:00","financer":"1","customer":"CHITTA NARAYANAMMA","loan_number":"80849 00077","emi_amount":"416","due_date":"2020-05-31 00:00:00","over_due":"0","p_status":"no","loan_id":"17363","payment_to":null,"payment_type":null,"remarks":null,"paid_amount":"0","paid_over_due":"0","request_id":"1349959","adjamt":"0","newarrears":"-311","last_paid_date":"2020-04-19","last_paid_amt":"311","billamt":"727","reconnection_fee":"0.00","billdate":"05-05-2020","surcharge_fee":"0","paytm_status":null,"service_charge":"2","final_amount":418,"debit_final_amount":418,"credit_final_amount":425.28}]
      * pay_array : {"C":"Cash","CQ":"Check","CC":"Credit Card","BQ":"Barath QR","DC":"Debit Card","NB":"Net Banking","Paytm":"Paytm","PhonePe":"PhonePe","PayU":"PayUMoney","*99#":"*99#","BHIM":"BHIM","AADHAR":"Aadhar Pay","UPI":"SBI UPI","Jio":"Jio Money","Airtel":"Airtel Money","M-Pesa":"M-Pesa","FC":"Free Charge","PQ":"Paytm QR","SBIUPI":"SBI UPI"}
      * tax_array : [{"id":"1","transaction_amount":"2","from":"1","to":"1000","credit_service_tax_":"1.75","gst_debit":"0","gst_credit":"18","debit_service_tax_":"0","extra_tax":"0"},{"id":"2","transaction_amount":"5","from":"1000.01","to":"2000","credit_service_tax_":"1.75","gst_debit":"0","gst_credit":"18","debit_service_tax_":"0","extra_tax":"0"},{"id":"3","transaction_amount":"10","from":"2000.01","to":"2500","credit_service_tax_":"1.75","gst_debit":"0","gst_credit":"18","debit_service_tax_":"0","extra_tax":"0"},{"id":"4","transaction_amount":"25","from":"2500.01","to":"5000","credit_service_tax_":"1.75","gst_debit":"18","gst_credit":"18","debit_service_tax_":"1","extra_tax":"0"},{"id":"5","transaction_amount":"25","from":"5000.01","to":"9999999999999","credit_service_tax_":"1.75","gst_debit":"18","gst_credit":"18","debit_service_tax_":"1","extra_tax":"0.15"}]
      */
@@ -76,23 +76,25 @@ public class DemandModelNew {
 
     public static class LoanDetailsBean {
         /**
-         * id : 121
-         * date_time : 2018-04-09 13:49:50
+         * id : 17363
+         * date_time : 2018-09-24 14:44:56
          * financer : 1
-         * loan_number : 90701 09933
-         * total_loan_amount : 363
-         * emi_amount : 363
-         * roi : 6
-         * tenture : 0
-         * emi_start_date : 2018-03-20 00:00:00
-         * customer_name : COMMISSIONER G.V.M.C   78 B3
-         * phone : 9876541230
+         * loan_number : 80849 00077
+         * total_loan_amount : 710
+         * emi_amount : 710
+         * roi : PARAWADA
+         * tenture : 100
+         * emi_start_date : 2018-09-30 00:00:00
+         * customer_name : CHITTA NARAYANAMMA
+         * phone :
          * email : null
          * loan_id : null
          * status : open
          * remarks : null
-         * address : AGANAMPUDISTREET LIGHTS
-         * adhaar : 123456789012
+         * address : SANYASUDU,,JAJULAVANI PALEM
+         * adhaar : null
+         * areacode : 80849
+         * category : 100
          */
 
         private String id;
@@ -112,6 +114,8 @@ public class DemandModelNew {
         private Object remarks;
         private String address;
         private String adhaar;
+        private String areacode;
+        private String category;
 
         public String getId() {
             return id;
@@ -248,6 +252,22 @@ public class DemandModelNew {
         public void setAdhaar(String adhaar) {
             this.adhaar = adhaar;
         }
+
+        public String getAreacode() {
+            return areacode;
+        }
+
+        public void setAreacode(String areacode) {
+            this.areacode = areacode;
+        }
+
+        public String getCategory() {
+            return category;
+        }
+
+        public void setCategory(String category) {
+            this.category = category;
+        }
     }
 
     public static class PayArrayBean {
@@ -283,7 +303,7 @@ public class DemandModelNew {
         private String PhonePe;
         private String PayU;
         @SerializedName("*99#")
-        private String _$99212; // FIXME check this code
+        private String _$99101; // FIXME check this code
         private String BHIM;
         private String AADHAR;
         private String UPI;
@@ -367,12 +387,12 @@ public class DemandModelNew {
             this.PayU = PayU;
         }
 
-        public String get_$99212() {
-            return _$99212;
+        public String get_$99101() {
+            return _$99101;
         }
 
-        public void set_$99212(String _$99212) {
-            this._$99212 = _$99212;
+        public void set_$99101(String _$99101) {
+            this._$99101 = _$99101;
         }
 
         public String getBHIM() {
@@ -450,24 +470,35 @@ public class DemandModelNew {
 
     public static class EmiBean {
         /**
-         * id : 324
-         * date_time : 2018-04-17 00:00:00
+         * id : 473383
+         * date_time : 2020-05-30 00:00:00
          * financer : 1
-         * customer : COMMISSIONER G.V.M.C   78 B3
-         * loan_number : 90701 09933
-         * emi_amount : -10086
-         * due_date : 2018-04-20 00:00:00
+         * customer : CHITTA NARAYANAMMA
+         * loan_number : 80849 00077
+         * emi_amount : 416
+         * due_date : 2020-05-31 00:00:00
          * over_due : 0
          * p_status : no
-         * loan_id : 121
+         * loan_id : 17363
          * payment_to : null
          * payment_type : null
          * remarks : null
          * paid_amount : 0
          * paid_over_due : 0
-         * adjamt : 855
-         * newarrears : 855
-         * reconnection_fee : 855
+         * request_id : 1349959
+         * adjamt : 0
+         * newarrears : -311
+         * last_paid_date : 2020-04-19
+         * last_paid_amt : 311
+         * billamt : 727
+         * reconnection_fee : 0.00
+         * billdate : 05-05-2020
+         * surcharge_fee : 0
+         * paytm_status : null
+         * service_charge : 2
+         * final_amount : 418
+         * debit_final_amount : 418
+         * credit_final_amount : 425.28
          */
 
         private String id;
@@ -485,48 +516,20 @@ public class DemandModelNew {
         private Object remarks;
         private String paid_amount;
         private String paid_over_due;
+        private String request_id;
         private String adjamt;
         private String newarrears;
-        private String reconnection_fee;
         private String last_paid_date;
         private String last_paid_amt;
-        private String surcharge_fee;
-
-        public String getLast_paid_date() {
-            return last_paid_date;
-        }
-
-        public void setLast_paid_date(String last_paid_date) {
-            this.last_paid_date = last_paid_date;
-        }
-
-        public String getLast_paid_amt() {
-            return last_paid_amt;
-        }
-
-        public void setLast_paid_amt(String last_paid_amt) {
-            this.last_paid_amt = last_paid_amt;
-        }
-
-        public String getSurcharge_fee() {
-            return surcharge_fee;
-        }
-
-        public void setSurcharge_fee(String surcharge_fee) {
-            this.surcharge_fee = surcharge_fee;
-        }
-
-
-
-        public String getBillamt() {
-            return billamt;
-        }
-
-        public void setBillamt(String billamt) {
-            this.billamt = billamt;
-        }
-
         private String billamt;
+        private String reconnection_fee;
+        private String billdate;
+        private String surcharge_fee;
+        private Object paytm_status;
+        private String service_charge;
+        private int final_amount;
+        private int debit_final_amount;
+        private double credit_final_amount;
 
         public String getId() {
             return id;
@@ -648,6 +651,14 @@ public class DemandModelNew {
             this.paid_over_due = paid_over_due;
         }
 
+        public String getRequest_id() {
+            return request_id;
+        }
+
+        public void setRequest_id(String request_id) {
+            this.request_id = request_id;
+        }
+
         public String getAdjamt() {
             return adjamt;
         }
@@ -664,12 +675,92 @@ public class DemandModelNew {
             this.newarrears = newarrears;
         }
 
+        public String getLast_paid_date() {
+            return last_paid_date;
+        }
+
+        public void setLast_paid_date(String last_paid_date) {
+            this.last_paid_date = last_paid_date;
+        }
+
+        public String getLast_paid_amt() {
+            return last_paid_amt;
+        }
+
+        public void setLast_paid_amt(String last_paid_amt) {
+            this.last_paid_amt = last_paid_amt;
+        }
+
+        public String getBillamt() {
+            return billamt;
+        }
+
+        public void setBillamt(String billamt) {
+            this.billamt = billamt;
+        }
+
         public String getReconnection_fee() {
             return reconnection_fee;
         }
 
         public void setReconnection_fee(String reconnection_fee) {
             this.reconnection_fee = reconnection_fee;
+        }
+
+        public String getBilldate() {
+            return billdate;
+        }
+
+        public void setBilldate(String billdate) {
+            this.billdate = billdate;
+        }
+
+        public String getSurcharge_fee() {
+            return surcharge_fee;
+        }
+
+        public void setSurcharge_fee(String surcharge_fee) {
+            this.surcharge_fee = surcharge_fee;
+        }
+
+        public Object getPaytm_status() {
+            return paytm_status;
+        }
+
+        public void setPaytm_status(Object paytm_status) {
+            this.paytm_status = paytm_status;
+        }
+
+        public String getService_charge() {
+            return service_charge;
+        }
+
+        public void setService_charge(String service_charge) {
+            this.service_charge = service_charge;
+        }
+
+        public int getFinal_amount() {
+            return final_amount;
+        }
+
+        public void setFinal_amount(int final_amount) {
+            this.final_amount = final_amount;
+        }
+
+        public int getDebit_final_amount() {
+            return debit_final_amount;
+        }
+
+        public void setDebit_final_amount(int debit_final_amount) {
+            this.debit_final_amount = debit_final_amount;
+        }
+
+        public double getCredit_final_amount() {
+            return credit_final_amount;
+        }
+
+        public void setCredit_final_amount(double credit_final_amount) {
+            this.credit_final_amount = credit_final_amount;
         }
     }
 
