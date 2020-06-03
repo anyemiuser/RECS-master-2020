@@ -25,7 +25,7 @@ public class Constants {
     public static final String PRINT_HEADER_CDMA = "CDMA";
     public static final String PRINT_HEADER_GVMC = "GVMC";
     public static final String PRINT_HEADER_RECS = "RECS";
-    public static final String VERSION_ID = "1.0"; // 13/08/2018  10/08/2019 0.9-11/10/19 --1.0  17/10/2019
+    public static final String VERSION_ID = "2.0"; // 13/08/2018  10/08/2019 0.9-11/10/19 --1.0  17/10/2019
     public static String SHOW_ADDS = "0";
 
     public static final String PAYMENT_MODE_ANYEMI_WALLET = "AW";

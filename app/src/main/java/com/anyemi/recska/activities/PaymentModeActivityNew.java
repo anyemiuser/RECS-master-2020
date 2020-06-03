@@ -51,6 +51,7 @@ public class PaymentModeActivityNew extends AppCompatActivity implements AepPaym
     ImageView iv_add_new;
     Toolbar toolbar;
     boolean is_valid = true;
+    boolean transDone = true;
     //    GridView gv_services;
     ListView gv_services;
     ArrayList<ServicesResponseModel.FinancerBean.PaymentModeBean> ary_data = new ArrayList<>();
@@ -118,23 +119,30 @@ public class PaymentModeActivityNew extends AppCompatActivity implements AepPaym
 
         paymentRequestModel.setUser_id(Integer.parseInt(mResponsedata.getId()));
         paymentRequestModel.setMID_ID(mResponsedata.getAEP_MID());
-      //  paymentRequestModel.setORDER_ID(orderId);
+        //  paymentRequestModel.setORDER_ID(orderId);
         paymentRequestModel.setFIN_ID(SharedPreferenceUtil.getFIN_ID(getApplicationContext()));
         paymentRequestModel.setFIN_ID(SharedPreferenceUtil.getFIN_ID(getApplicationContext()));
+
+     //   paymentRequestModel.setTotal_amount("1");
+//        paymentRequestModel.setActualDueAmount("1");
 
         PaymentRequestModel aprm = paymentRequestModel;
 
         aprm.setUser_id(Integer.parseInt(mResponsedata.getId()));
         aprm.setMID_ID(mResponsedata.getAEP_MID());
-     //   aprm.setMID_ID("AnyEMI");
-       // aprm.setORDER_ID(orderId);
+        //   aprm.setMID_ID("AnyEMI");
+        // aprm.setORDER_ID(orderId);
         aprm.setTotal_amount(paymentRequestModel.getTotal_amount());
         aprm.setActualDueAmount(paymentRequestModel.getTotal_amount());
         aprm.setMobile_number(mResponsedata.getUser_phone_number());
 
 
-        InitPaymentActivity.getInstance().initialize(PaymentModeActivityNew.this, this, new Gson().toJson(paymentRequestModel));
-
+        if (is_valid){
+            InitPaymentActivity.getInstance().initialize(PaymentModeActivityNew.this,
+                    this, new Gson().toJson(paymentRequestModel));
+         }else{
+            finish();
+        }
         is_valid = false;
 
 
@@ -202,8 +210,10 @@ public class PaymentModeActivityNew extends AppCompatActivity implements AepPaym
         paymentRequestModel.setMobile_number(prm.getMobile_number());
   //      paymentRequestModel.setRemarks(new Gson().toJson(s));
         // Globals.showToast(getApplicationContext(),s);
-        submitPayment();
-
+        if(transDone) {
+            transDone=false;
+            submitPayment();
+        }
      //   finish();
 
     }
