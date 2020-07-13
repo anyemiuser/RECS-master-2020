@@ -93,6 +93,7 @@ public class PrintFragment extends Fragment implements View.OnClickListener {
 
         Gson gson = new Gson();
         printDetails = gson.fromJson(data, CollectionsModel.CollectionsBean.class);
+        Log.e("printDetails",data);
         intiView(view);
         return view;
     }
@@ -705,6 +706,10 @@ public class PrintFragment extends Fragment implements View.OnClickListener {
 //                            int taxtype = paymmentModesId.indexOf(printDetails.getPayment_type());
 //                            p_type=(paymmentModesNames.get(taxtype));
 
+                                    if(printDetails.getPayment_type().equals("C")){
+                                        p_type = "CASH";
+
+                                    }else
                                     p_type = printDetails.getPayment_type();
                                 }
 

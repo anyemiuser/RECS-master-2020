@@ -6,12 +6,9 @@
     <string name="transaction">Process is going on......</string>
     <string name="Amount">Amount</string>
 
-    <string name="admob_publisher_id"
-        translatable="false">ca-app-pub-1013900452874783~5405394873</string>
-    <string name="admob_banner"
-        translatable="false">ca-app-pub-1013900452874783/5022251495</string>
+    <string name="admob_publisher_id" translatable="false">ca-app-pub-1013900452874783~5405394873</string>
+    <string name="admob_banner" translatable="false">ca-app-pub-1013900452874783/5022251495</string>
     <!--<string name="admob_banner" translatable="false">ca-app-pub-1013900452874783/2108881453</string>-->
-
 
 
     <!-- Strings related to login -->
@@ -51,7 +48,9 @@
     <!--<string name="info_txt">You will Receive collect request from anyEMI Online services in the UPI app which was used to create your VPA</string>-->
     <!---->
     <string name="info_txt">You will receive a collect request from anyEMI</string>
-
+    <string name="condition_dialog">1) For broken transactions(i.e payment receipt is not generated), the payment data will be updated in database after getting confirmation from bank(i.e two working days). The updated transaction details can be checked by clicking on the PAYMENT-HISTORY tab.
+    \n2) Late payment charges will be added in the subsequesnt bill for the payments made after the due date
+    \n3) Service tax and other Government levies applicable on Transaction fee would be charged extra.</string>
 
 
     <string name="set_logo">Set logo</string>
@@ -78,22 +77,22 @@
 
 
     <!--<string-array name="payment_names">-->
-        <!--<item>Cheque</item>-->
-        <!--<item>CASH</item>-->
-        <!--<item>AADHAR</item>-->
-        <!--<item>ATM Transfer</item>-->
-        <!--<item>BHIM</item>-->
-        <!--<item>BioMetric</item>-->
-        <!--<item>Credit Card</item>-->
-        <!--<item>Debit Card</item>-->
-        <!--<item>FreeCharge</item>-->
-        <!--<item>Net Banking</item>-->
-        <!--<item>PhonePe</item>-->
-        <!--<item>Paytm</item>-->
-        <!--<item>PayUMoney</item>-->
-        <!--<item>Bharat QR</item>-->
-        <!--<item>UPI</item>-->
-        <!--<item>SBI UPI</item>-->
+    <!--<item>Cheque</item>-->
+    <!--<item>CASH</item>-->
+    <!--<item>AADHAR</item>-->
+    <!--<item>ATM Transfer</item>-->
+    <!--<item>BHIM</item>-->
+    <!--<item>BioMetric</item>-->
+    <!--<item>Credit Card</item>-->
+    <!--<item>Debit Card</item>-->
+    <!--<item>FreeCharge</item>-->
+    <!--<item>Net Banking</item>-->
+    <!--<item>PhonePe</item>-->
+    <!--<item>Paytm</item>-->
+    <!--<item>PayUMoney</item>-->
+    <!--<item>Bharat QR</item>-->
+    <!--<item>UPI</item>-->
+    <!--<item>SBI UPI</item>-->
 
     <!--</string-array>-->
 
@@ -175,7 +174,7 @@
     </string-array>
 
 
- <string-array name="ero_names">
+    <string-array name="ero_names">
         <item>Select Ero</item>
         <item>KASIMKOTA</item>
         <item>MUNAGAPAKA</item>
@@ -231,8 +230,6 @@
         <item>Meter Reading</item>
         <item>Supplier</item>
     </string-array>
-
-
 
 
     <string name="waiting_for_card">Please insert or swipe card now.</string>
@@ -760,7 +757,6 @@
     <string name="no_than_one_paried_printer_found">no than one paried printer found.</string>
 
 
-
     <!--PREAUTH COMPLETION-->
 
     <string name="preauth_menu">Preauth Menu</string>
@@ -832,10 +828,10 @@
     <string name="cashsalesignatureactivity_please_sign_the_receipt_to_proceed">please sign the receipt to proceed.</string>
     <string name="cashsalesignatureactivity_receipt_uploaded_successfully">receipt uploaded successfully.</string>
     <string name="cashsalesignatureactivity_paired_devices">Paired devices</string>
-    <string name ="error_in_uploading_the_receipt_to_server">error in uploading the receipt to mswipe server.</string>
+    <string name="error_in_uploading_the_receipt_to_server">error in uploading the receipt to mswipe server.</string>
 
 
-    <string name ="loginactivity_disclaimer_message">You have to do login just once and reuse the session details received in response for accessing the other featured of the SDK, the Session and Reference_id can be saved in preference and be reused, this details would not expired until you login or change the password on this particular device, and are unique for every device.</string>
+    <string name="loginactivity_disclaimer_message">You have to do login just once and reuse the session details received in response for accessing the other featured of the SDK, the Session and Reference_id can be saved in preference and be reused, this details would not expired until you login or change the password on this particular device, and are unique for every device.</string>
     <string name="cardsaleactivity_disclaimer_msg">You can use the option available on the screen for Gateway connection concurrently while setting up the transaction data, this  will speeden up the over all latency of transaction process throughout.</string>
     <string name="cardsaleactivity_wisepadamountset_msg">If the AutoConnect is set to true the device has already connected it would call checkCard, if not it will first initiated the connection by calling startSerial and if the checkCardAfterConnection is set to true(through initiateWisepadConnection) then the SDK will call up checkCard internally.</string>
 
@@ -845,6 +841,9 @@
     <string name="cardsaleactivity_cardswiperead_msg_CreditSaleSwiperFragment">CreditSaleSwiperFragment Screen \n\n swipe card successfull, select ok to post the details online</string>
     <string name="cardsaleactivity_cardinsertinsert_msg_CreditSaleSwiperFragment">CreditSaleSwiperFragment Screen \n\n card insert successfull, select ok to post the details online</string>
     <string name="filter_input">abcdefghijklmnopqrstuvwxyz0123456789 ABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

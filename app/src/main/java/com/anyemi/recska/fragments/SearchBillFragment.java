@@ -108,7 +108,7 @@ public class SearchBillFragment extends Fragment {
     EditText et_number;
     TextView tv_header;
     Button btn_pay;
-
+    Boolean isAccepted=false;
     public SearchBillFragment() {
 
     }
@@ -318,16 +318,7 @@ public class SearchBillFragment extends Fragment {
                 if (et_search.getText().toString().equals("")) {
                     Globals.showToast(getActivity(), "Assessment number should not be empty");
                 } else {
-                    Utils.hideKeyboard(getActivity());
-                    if (et_search.getText().toString().length() == 10) {
-                        String s = et_search.getText().toString();
-                        String start = s.substring(0, 5);
-                        String end = s.substring(5);
-                        String finals = start + " " + end;
-                        et_search.setText(finals);
-                    }
-
-                    getDeatails();
+                    openSearchConditionDialog("");
 
                 }
             }
@@ -885,7 +876,6 @@ public class SearchBillFragment extends Fragment {
             mInflater = LayoutInflater.from(c);
         }
 
-
         @Override
         public int getCount() {
             //return tenant_matches_listings.size();
@@ -1222,6 +1212,41 @@ public class SearchBillFragment extends Fragment {
                     } else {
                         Globals.showToast(getActivity(), "Please enter valid Aadhar Number");
                     }
+                }
+            }
+        });
+        dialog.show();
+    }
+    private void openSearchConditionDialog(final String query) {
+
+        dialog = new Dialog(getActivity());
+       // dialog.setTitle("Reset " + query);
+        dialog.setContentView(R.layout.dialog_condition_bill);
+
+
+       Button btn_ok = dialog.findViewById(R.id.btn_pay);
+
+
+        final CheckBox checkbox = dialog.findViewById(R.id.checkbox);
+
+        btn_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(checkbox.isChecked()){
+                    dialog.dismiss();
+                    Utils.hideKeyboard(getActivity());
+                    if (et_search.getText().toString().length() == 10) {
+                        String s = et_search.getText().toString();
+                        String start = s.substring(0, 5);
+                        String end = s.substring(5);
+                        String finals = start + " " + end;
+                        et_search.setText(finals);
+                    }
+
+                    getDeatails();
+
+                }else {
+                    Globals.showToast(getActivity(),"Please Accept Terms and Conditions");
                 }
             }
         });
